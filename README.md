@@ -6,7 +6,7 @@
 
 #### 联系方式
 
-* E-mail [peknight@qq.com](peknight@qq.com)
+* E-mail peknight@qq.com
 * Web-Site [PeKnight.com(尚未开发)](http://www.peknight.com/)
 
 ***
