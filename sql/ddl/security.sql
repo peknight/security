@@ -12,8 +12,10 @@ CREATE TABLE `app_crypto` (
   `pwd_complexity` tinyint(4) DEFAULT NULL COMMENT '密码复杂度',
   `pwd_time` datetime DEFAULT NULL COMMENT '操作时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注信息',
-  `add_time` datetime DEFAULT NULL COMMENT '添加时间',
-  `mod_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `create_by` bigint(20) DEFAULT NULL COMMENT '创建者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_by` bigint(20) DEFAULT NULL COMMENT '更新者',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `status` tinyint(4) DEFAULT NULL COMMENT '状态',
   PRIMARY KEY (`cpt_id`),
   UNIQUE KEY `index_uid_desc` (`sub_user_id`,`user_app_desc`) USING BTREE COMMENT '用户ID&应用描述联合唯一索引'
@@ -26,12 +28,14 @@ DROP TABLE IF EXISTS `sys_application`;
 CREATE TABLE `sys_application` (
   `app_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `app_name` varchar(255) DEFAULT NULL COMMENT '应用名称',
-  `app_org_id` bigint(20) DEFAULT NULL COMMENT '应用所属组织ID',
+  `org_id` bigint(20) DEFAULT NULL COMMENT '应用所属组织ID',
   `app_type` bigint(20) DEFAULT NULL COMMENT '应用类别',
   `parent_app_id` bigint(20) DEFAULT NULL COMMENT '父应用ID',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注信息',
-  `add_time` datetime DEFAULT NULL COMMENT '添加时间',
-  `mod_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `create_by` bigint(20) DEFAULT NULL COMMENT '创建者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_by` bigint(20) DEFAULT NULL COMMENT '更新者',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `status` tinyint(4) DEFAULT NULL COMMENT '状态',
   PRIMARY KEY (`app_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='应用表';
@@ -45,16 +49,39 @@ CREATE TABLE `sys_character` (
   `c_world` bigint(4) DEFAULT NULL COMMENT '所属世界',
   `c_species` bigint(20) DEFAULT NULL COMMENT '类型',
   `c_name` varchar(255) DEFAULT NULL COMMENT '名字',
-  `c_birthday` varchar(255) DEFAULT NULL COMMENT '出生时间',
+  `c_birthday` varchar(255) DEFAULT NULL COMMENT '诞生时间',
   `c_deathday` varchar(255) DEFAULT NULL COMMENT '死亡时间',
   `c_father_id` bigint(20) DEFAULT NULL COMMENT '父亲ID',
   `c_mother_id` bigint(20) DEFAULT NULL COMMENT '母亲ID',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注信息',
-  `add_time` datetime DEFAULT NULL COMMENT '添加时间',
-  `mod_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `create_by` bigint(20) DEFAULT NULL COMMENT '创建者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_by` bigint(20) DEFAULT NULL COMMENT '更新者',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `status` tinyint(4) DEFAULT NULL COMMENT '状态',
   PRIMARY KEY (`c_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='生物表';
+
+-- ----------------------------
+-- Table structure for sys_object
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_object`;
+CREATE TABLE `sys_object` (
+  `obj_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `obj_world` bigint(20) DEFAULT NULL COMMENT '所属世界',
+  `obj_type` bigint(20) DEFAULT NULL COMMENT '对象类别',
+  `obj_name` varchar(255) DEFAULT NULL COMMENT '对象名称',
+  `obj_birthday` varchar(255) DEFAULT NULL COMMENT '诞生时间',
+  `obj_deathday` varchar(255) DEFAULT NULL COMMENT '销往时间',
+  `creator_c_id` bigint(20) DEFAULT NULL COMMENT '创造者ID',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注信息',
+  `create_by` bigint(20) DEFAULT NULL COMMENT '创建者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_by` bigint(20) DEFAULT NULL COMMENT '更新者',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  `status` tinyint(4) DEFAULT NULL COMMENT '状态',
+  PRIMARY KEY (`obj_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='对象表';
 
 -- ----------------------------
 -- Table structure for sys_organization
@@ -69,8 +96,10 @@ CREATE TABLE `sys_organization` (
   `org_deathday` varchar(255) DEFAULT NULL COMMENT '组织死亡时间',
   `parent_org_id` bigint(20) DEFAULT NULL COMMENT '上级组织ID',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注信息',
-  `add_time` datetime DEFAULT NULL COMMENT '添加时间',
-  `mod_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `create_by` bigint(20) DEFAULT NULL COMMENT '创建者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_by` bigint(20) DEFAULT NULL COMMENT '更新者',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `status` tinyint(4) DEFAULT NULL COMMENT '状态',
   PRIMARY KEY (`org_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='组织表';
@@ -91,8 +120,10 @@ CREATE TABLE `sys_sub_user` (
   `sub_user_secret` varchar(255) DEFAULT NULL COMMENT '子账号验证信息',
   `parent_suser_id` bigint(20) DEFAULT NULL COMMENT '父账号ID',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注信息',
-  `add_time` datetime DEFAULT NULL COMMENT '添加时间',
-  `mod_time` datetime DEFAULT NULL COMMENT '更新时间',
+  `create_by` bigint(20) DEFAULT NULL COMMENT '创建者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_by` bigint(20) DEFAULT NULL COMMENT '更新者',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `status` tinyint(4) DEFAULT NULL COMMENT '状态',
   PRIMARY KEY (`sub_user_id`),
   KEY `index_user_app` (`sub_user_name`,`app_id`,`sub_user_flag`) USING BTREE,
@@ -112,11 +143,14 @@ CREATE TABLE `sys_user` (
   `user_phone` varchar(64) DEFAULT NULL COMMENT '账号电话',
   `user_secret` varchar(255) DEFAULT NULL COMMENT '账号验证信息',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注信息',
-  `add_time` datetime DEFAULT NULL COMMENT '添加时间',
-  `mod_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `create_by` bigint(20) DEFAULT NULL COMMENT '创建者',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_by` bigint(20) DEFAULT NULL COMMENT '更新者',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `status` tinyint(4) DEFAULT NULL COMMENT '状态',
   PRIMARY KEY (`user_id`),
   KEY `index_user_name` (`user_name`) USING BTREE,
   KEY `index_user_email` (`user_email`) USING BTREE,
   KEY `index_user_phone` (`user_phone`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='账号表';
+SET FOREIGN_KEY_CHECKS=1;
