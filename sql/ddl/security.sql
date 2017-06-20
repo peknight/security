@@ -72,7 +72,7 @@ CREATE TABLE `sys_object` (
   `obj_type` bigint(20) unsigned DEFAULT NULL COMMENT '对象类别',
   `obj_name` varchar(255) DEFAULT NULL COMMENT '对象名称',
   `obj_birthday` varchar(255) DEFAULT NULL COMMENT '诞生时间',
-  `obj_deathday` varchar(255) DEFAULT NULL COMMENT '销往时间',
+  `obj_deathday` varchar(255) DEFAULT NULL COMMENT '销亡时间',
   `creator_id` bigint(20) unsigned DEFAULT NULL COMMENT '创造者ID',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注信息',
   `create_by` bigint(20) unsigned DEFAULT NULL COMMENT '创建者',
