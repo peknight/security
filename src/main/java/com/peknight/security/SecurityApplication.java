@@ -1,6 +1,6 @@
 package com.peknight.security;
 
-import com.peknight.common.annotation.EnableCommonConfiguration;
+import com.peknight.common.config.EnableCommonConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
