@@ -1,13 +1,13 @@
-drop table if exists sys_object;
-create table sys_object
+drop table if exists object;
+create table object
 (
 	obj_id bigint auto_increment comment '主键'
 		primary key,
-	obj_world bigint null comment '所属世界',
-	obj_type bigint null comment '对象类别',
-	obj_name varchar(255) null comment '对象名称',
-	obj_birthday varchar(255) null comment '诞生时间',
-	obj_deathday varchar(255) null comment '销亡时间',
+	world bigint null comment '所属世界',
+	type bigint null comment '对象类别',
+	name varchar(255) null comment '对象名称',
+	birthday varchar(255) null comment '诞生时间',
+	deathday varchar(255) null comment '销亡时间',
 	creator_id bigint null comment '创造者ID',
 	remark varchar(255) null comment '备注信息',
 	create_by bigint null comment '创建者',

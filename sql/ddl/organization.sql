@@ -1,5 +1,5 @@
-drop table if exists sys_organization;
-create table sys_organization
+drop table if exists organization;
+create table organization
 (
 	org_id bigint auto_increment comment '主键'
 		primary key,

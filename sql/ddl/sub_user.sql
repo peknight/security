@@ -1,5 +1,5 @@
-drop table if exists sys_sub_user;
-create table sys_sub_user
+drop table if exists sub_user;
+create table sub_user
 (
 	sub_user_id bigint auto_increment comment '主键'
 		primary key,
@@ -23,14 +23,14 @@ comment '子账号表'
 ;
 
 create index idx_email_app
-	on sys_sub_user (sub_user_email, app_id, sub_user_flag)
+	on sub_user (sub_user_email, app_id, sub_user_flag)
 ;
 
 create index idx_phone_app
-	on sys_sub_user (sub_user_phone, app_id, sub_user_flag)
+	on sub_user (sub_user_phone, app_id, sub_user_flag)
 ;
 
 create index idx_user_app
-	on sys_sub_user (sub_user_name, app_id, sub_user_flag)
+	on sub_user (sub_user_name, app_id, sub_user_flag)
 ;
 

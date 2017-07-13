@@ -1,5 +1,5 @@
-drop table if exists sys_application;
-create table sys_application
+drop table if exists application;
+create table application
 (
 	app_id bigint auto_increment comment '主键'
 		primary key,
