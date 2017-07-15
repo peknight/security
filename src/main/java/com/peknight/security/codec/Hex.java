@@ -41,7 +41,7 @@ public class Hex {
      */
     public static char[] encode(byte[] data) {
         int length = data.length;
-        char[] result = new char[length * 2];
+        char[] result = new char[length << 1];
         for (int i = 0, index = 0; i < length; i++) {
             result[index++] = DIGITS[(240 & data[i]) >>> 4];
             result[index++] = DIGITS[15 & data[i]];
