@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-	<include resource="com/peknight/common/logging/logback/pek-base.xml" />
-</configuration>
