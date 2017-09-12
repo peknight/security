@@ -1,9 +1,9 @@
-drop table if exists type;
-create table type
+create table if not exists type
 (
 	type_id bigint auto_increment comment '主键'
 		primary key,
 	world bigint null comment '所属世界',
+	org_id bigint null comment '所属组织',
 	name varchar(255) null comment '类型名称',
   level varchar(255) null comment '类型级别',
 	parent_type_id bigint null comment '父类型ID',

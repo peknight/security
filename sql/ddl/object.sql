@@ -1,5 +1,4 @@
-drop table if exists object;
-create table object
+create table if not exists object
 (
 	obj_id bigint auto_increment comment '主键'
 		primary key,

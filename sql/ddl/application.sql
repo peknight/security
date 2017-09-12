@@ -1,10 +1,10 @@
-drop table if exists application;
-create table application
+create table if not exists application
 (
 	app_id bigint auto_increment comment '主键'
 		primary key,
 	app_name varchar(255) null comment '应用名称',
 	org_id bigint null comment '应用所属组织ID',
+	obj_type bigint null comment '所属对象类别',
 	app_type bigint null comment '应用类别',
 	parent_app_id bigint null comment '父应用ID',
 	remark varchar(255) null comment '备注信息',

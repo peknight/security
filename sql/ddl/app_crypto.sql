@@ -1,11 +1,11 @@
-drop table if exists app_crypto;
-create table app_crypto
+create table if not exists app_crypto
 (
 	cpt_id bigint auto_increment comment '主键'
 		primary key,
 	sub_user_id bigint not null comment '账号ID',
 	user_app_desc varchar(128) not null comment '记录描述',
 	app_id bigint null comment '应用ID',
+	obj_id bigint null comment '所属对象',
 	pwd_basic varchar(255) null comment '基础密码',
 	pwd_length int null comment '密码长度',
 	pwd_complexity tinyint null comment '密码复杂度',

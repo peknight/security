@@ -1,5 +1,4 @@
-drop table if exists sys_user;
-create table sys_user
+create table if not exists sys_user
 (
 	user_id bigint auto_increment comment '主键'
 		primary key,

@@ -23,13 +23,13 @@
  */
 package com.peknight.security.crypto.charshift;
 
-import java.io.File;
-import java.util.List;
-import java.util.Scanner;
-
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+
+import java.io.File;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * 包含主方法、用于生成密码的类
@@ -247,10 +247,10 @@ public class Generator {
 	
 	@SuppressWarnings("unchecked")
 	public static void generator4XML(String xmlPath) {
-//		Scanner scanner = new Scanner(System.in);
-//		System.out.println("请输入请求密码信息");
-//		String desc = scanner.nextLine();
-//		scanner.close();
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("请输入基础密码");
+		String basicPwd = scanner.nextLine();
+		scanner.close();
 		try {
 			SAXReader reader = new SAXReader();
 			File properties = new File(xmlPath);
@@ -258,7 +258,7 @@ public class Generator {
 			Element root = doc.getRootElement();
 			List<Element> users = root.elements();
 			for (Element user : users) {
-				String basicPwd = user.elementText("basicpwd");
+//				String basicPwd = user.elementText("basicpwd");
 				List<Element> applications = user.element("applications").elements("application");
 				for (Element application : applications) {
 					String description = application.elementText("description");
@@ -282,6 +282,6 @@ public class Generator {
 	}
 	
 	public static void main(String[] args) {
-		generator4XML("src/com/peknight/passwordgenerator/applications.xml");
+		generator4XML("security/src/main/resources/com/peknight/security/crypto/charshift/applications.xml");
 	}
 }

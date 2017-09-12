@@ -1,5 +1,4 @@
-drop table if exists sub_user;
-create table sub_user
+create table if not exists sub_user
 (
 	sub_user_id bigint auto_increment comment '主键'
 		primary key,

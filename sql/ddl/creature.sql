@@ -1,5 +1,4 @@
-drop table if exists creature;
-create table creature
+create table if not exists creature
 (
 	c_id bigint auto_increment comment '主键'
 		primary key,

@@ -1,5 +1,4 @@
-drop table if exists locale;
-create table locale
+create table if not exists locale
 (
 	loc_id bigint auto_increment comment '主键'
 		primary key,

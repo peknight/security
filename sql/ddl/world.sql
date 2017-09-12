@@ -1,5 +1,4 @@
-drop table if exists world;
-create table world
+create table if not exists world
 (
 	world_id bigint auto_increment comment '主键'
 		primary key,
