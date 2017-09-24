@@ -80,6 +80,13 @@
 				<complexity>4</complexity>
 			</application>
 			<application state="1">
+				<description>苹果账号163登录</description>
+				<appname>Apple_AppleId_Login_201709</appname>
+				<remark>peknight@163.com</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>4</complexity>
+			</application>
+			<application state="1">
 				<description>iPhone7锁屏</description>
 				<appname>Apple_iPhone_Passcode_201704</appname>
 				<remark>iPhone7_MNGX2CH/A_DNPT3B4GHG71</remark>
@@ -125,6 +132,27 @@
 				<description>iPhone4备份</description>
 				<appname>Apple_iPhone_Backup_201701</appname>
 				<remark>iPhone4_MC603ZP/A_84132K0KA4S</remark>
+				<pwdlength>12</pwdlength>
+				<complexity>4</complexity>
+			</application>
+			<application state="1">
+				<description>iPad Pro 2锁屏</description>
+				<appname>Apple_iPad_Pro_2_Passcode_201709</appname>
+				<remark>iPad_Pro_2_MPL02CH/A_DLXVC05PHPJ5</remark>
+				<pwdlength>6</pwdlength>
+				<complexity>0</complexity>
+			</application>
+			<application state="1">
+				<description>iPad Pro 2访问限制</description>
+				<appname>Apple_iPad_Pro_2_Access_201709</appname>
+				<remark>iPad_Pro_2_MPL02CH/A_DLXVC05PHPJ5</remark>
+				<pwdlength>4</pwdlength>
+				<complexity>0</complexity>
+			</application>
+			<application state="1">
+				<description>iPad Pro 2备份</description>
+				<appname>Apple_iPad_Pro_2_Backup_201709</appname>
+				<remark>iPad_Pro_2_MPL02CH/A_DLXVC05PHPJ5</remark>
 				<pwdlength>12</pwdlength>
 				<complexity>4</complexity>
 			</application>
