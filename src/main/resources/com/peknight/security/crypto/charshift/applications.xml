@@ -1006,6 +1006,13 @@
 				<complexity>2</complexity>
 			</application>
 			<application state="1">
+				<description>爱奇艺登录</description>
+				<appname>IQIYI_Login_201701</appname>
+				<remark>18640047727</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
 				<description>鼠绘漫画登录</description>
 				<appname>iShuhui_Login_201701</appname>
 				<remark>peknight@qq.com</remark>
