@@ -1201,6 +1201,13 @@
                 <pwdlength>16</pwdlength>
                 <complexity>2</complexity>
             </application>
+			<application state="1">
+				<description>EA_Origin密码</description>
+				<appname>EA_Origin_Login_201709</appname>
+				<remark>peknight@qq.com</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>2</complexity>
+			</application>
         </applications>
 	</user>
 </key>
