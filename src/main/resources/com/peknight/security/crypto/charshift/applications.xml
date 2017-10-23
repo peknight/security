@@ -1222,6 +1222,13 @@
 				<pwdlength>16</pwdlength>
 				<complexity>2</complexity>
 			</application>
+			<application state="1">
+				<description>Jira密码</description>
+				<appname>Jira_Login_201710</appname>
+				<remark>rengang@joinquant.com</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>2</complexity>
+			</application>
         </applications>
 	</user>
 </key>
