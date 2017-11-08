@@ -31,6 +31,20 @@
 				<complexity>2</complexity>
 			</application>
 			<application state="1">
+				<description>HUAWEI2路由器登录</description>
+				<appname>Mobile WiFi 2 Pro_E5885Ls-93a_864758031037623_Login_201711</appname>
+				<remark>admin</remark>
+				<pwdlength>12</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
+				<description>HUAWEI2路由器WiFi登录</description>
+				<appname>Mobile WiFi 2 Pro_E5885Ls-93a_864758031037623_WPA_201711</appname>
+				<remark>PEKNIGHT-Mobile</remark>
+				<pwdlength>8</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
 				<description>笔记本电脑登录</description>
 				<appname>Personal_Computer_Login_201701</appname>
 				<remark>Lenovo_Ideapad_Y570_CB09442853_Peknight</remark>
