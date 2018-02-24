@@ -101,6 +101,13 @@
 				<complexity>4</complexity>
 			</application>
 			<application state="1">
+				<description>刘-苹果账号登录</description>
+				<appname>Apple_AppleId_Login_201801</appname>
+				<remark>532378590@qq.com</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>4</complexity>
+			</application>
+			<application state="1">
 				<description>苹果账号163登录</description>
 				<appname>Apple_AppleId_Login_201709</appname>
 				<remark>peknight@163.com</remark>
@@ -374,14 +381,14 @@
 				<complexity>2</complexity>
 			</application>
 			<application state="1">
-				<description>SoftEtherVPN VeraBeijing服务器登录</description>
+				<description>SoftEtherVPN VeraBeijing服务器登录vera</description>
 				<appname>SoftEther_VPN_Server_Password_201710</appname>
 				<remark>beijing.server.verashen.com_vera</remark>
 				<pwdlength>8</pwdlength>
 				<complexity>2</complexity>
 			</application>
 			<application state="1">
-				<description>SoftEtherVPN VeraBeijing服务器登录</description>
+				<description>SoftEtherVPN VeraBeijing服务器登录waiwai</description>
 				<appname>SoftEther_VPN_Server_Password_201710</appname>
 				<remark>beijing.server.verashen.com_waiwai</remark>
 				<pwdlength>8</pwdlength>
@@ -419,6 +426,13 @@
 				<description>SoftEtherVPN NYC01服务器登录</description>
 				<appname>SoftEther_VPN_Server_Password_201708</appname>
 				<remark>nyc01.server.peknight.com_peknight</remark>
+				<pwdlength>8</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
+				<description>SoftEtherVPN NYC01服务器登录lvtu20</description>
+				<appname>SoftEther_VPN_Server_Password_201802</appname>
+				<remark>nyc01.server.peknight.com_lvtu20</remark>
 				<pwdlength>8</pwdlength>
 				<complexity>2</complexity>
 			</application>
@@ -509,6 +523,13 @@
 			<application state="0">
 				<description>Amazon登录</description>
 				<appname>Amazon_Login_201702</appname>
+				<remark>peknight@qq.com</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>4</complexity>
+			</application>
+			<application state="1">
+				<description>Piriform_CCleanerCloud登录</description>
+				<appname>Piriform_CCleaner_Cloud_Login_201802</appname>
 				<remark>peknight@qq.com</remark>
 				<pwdlength>16</pwdlength>
 				<complexity>4</complexity>

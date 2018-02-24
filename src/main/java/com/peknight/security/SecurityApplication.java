@@ -23,12 +23,10 @@
  */
 package com.peknight.security;
 
-import com.peknight.common.config.EnableCommonConfiguration;
+import com.peknight.common.config.PekApplication;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@EnableCommonConfiguration
-@SpringBootApplication
+@PekApplication
 public class SecurityApplication {
 
 	public static void main(String[] args) {
