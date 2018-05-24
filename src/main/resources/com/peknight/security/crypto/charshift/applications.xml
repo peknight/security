@@ -1327,6 +1327,20 @@
 				<pwdlength>16</pwdlength>
 				<complexity>2</complexity>
 			</application>
+			<application state="1">
+				<description>Ubuntu登录</description>
+				<appname>Personal_Computer_Ubuntu_Login_201809</appname>
+				<remark>peknight</remark>
+				<pwdlength>8</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
+				<description>Ubuntu_root登录</description>
+				<appname>Personal_Computer_Ubuntu_Login_201809</appname>
+				<remark>root</remark>
+				<pwdlength>8</pwdlength>
+				<complexity>2</complexity>
+			</application>
         </applications>
 	</user>
 </key>
