@@ -822,6 +822,13 @@
 				<complexity>4</complexity>
 			</application>
 			<application state="1">
+				<description>小米登录</description>
+				<appname>Mi_Login_201806</appname>
+				<remark>peknight@qq.com</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>4</complexity>
+			</application>
+			<application state="1">
 				<description>YY登录</description>
 				<appname>YY_Login_201701</appname>
 				<remark>peknight</remark>
