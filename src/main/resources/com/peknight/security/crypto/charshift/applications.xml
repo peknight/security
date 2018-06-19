@@ -317,6 +317,13 @@
 				<pwdlength>16</pwdlength>
 				<complexity>2</complexity>
 			</application>
+			<application state="1">
+				<description>Jenkins密码</description>
+				<appname>Jenkins_Password_201806</appname>
+				<remark>peknight</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>2</complexity>
+			</application>
 			<application state="0">
 				<description>Navicat登录</description>
 				<appname>Navicat_Login_201706</appname>
