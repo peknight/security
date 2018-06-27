@@ -227,6 +227,13 @@
 				<complexity>4</complexity>
 			</application>
 			<application state="1">
+				<description>Ubuntu_Online登录</description>
+				<appname>Ubuntu_Online_Login_201806</appname>
+				<remark>peknight@qq.com</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>4</complexity>
+			</application>
+			<application state="1">
 				<description>Google登录</description>
 				<appname>Google_Login_201701</appname>
 				<remark>JKpeknight@gmail.com</remark>
