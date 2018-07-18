@@ -508,9 +508,9 @@
 				<complexity>2</complexity>
 			</application>
 			<application state="1">
-				<description>Aliyun Beijing服务器00_peknight</description>
+				<description>Aliyun Beijing服务器00_pek</description>
 				<appname>Aliyun_Server_201807</appname>
-				<remark>beijing00.server.peknight.com_peknight</remark>
+				<remark>beijing00.server.peknight.com_pek</remark>
 				<pwdlength>16</pwdlength>
 				<complexity>2</complexity>
 			</application>
@@ -522,9 +522,9 @@
 				<complexity>2</complexity>
 			</application>
 			<application state="1">
-				<description>Digital Ocean SGP服务器00_peknight</description>
+				<description>Digital Ocean SGP服务器00_pek</description>
 				<appname>Digital_Ocean_Server_201807</appname>
-				<remark>sgp00.server.peknight.com_peknight</remark>
+				<remark>sgp00.server.peknight.com_pek</remark>
 				<pwdlength>16</pwdlength>
 				<complexity>2</complexity>
 			</application>
@@ -536,9 +536,9 @@
 				<complexity>2</complexity>
 			</application>
 			<application state="1">
-				<description>Digital Ocean NYC服务器01_peknight</description>
+				<description>Digital Ocean NYC服务器01_pek</description>
 				<appname>Digital_Ocean_Server_201807</appname>
-				<remark>nyc01.server.peknight.com_peknight</remark>
+				<remark>nyc01.server.peknight.com_pek</remark>
 				<pwdlength>16</pwdlength>
 				<complexity>2</complexity>
 			</application>
@@ -596,27 +596,6 @@
 
 
 			<application state="1">
-				<description>Aliyun Beijing服务器</description>
-				<appname>Aliyun_Server_201710</appname>
-				<remark>beijing.server.verashen.com_root</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>SoftEtherVPN VeraBeijing服务器管理密码</description>
-				<appname>SoftEther_VPN_Server_201710</appname>
-				<remark>beijing.server.verashen.com_Administrator</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>SoftEtherVPNS VeraBeijing服务器IPsec预共享密钥</description>
-				<appname>SoftEther_VPN_Server_IPsec_Pre-shared_Key_201710</appname>
-				<remark>beijing.server.verashen.com</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
 				<description>SoftEtherVPN VeraBeijing服务器登录vera</description>
 				<appname>SoftEther_VPN_Server_Password_201710</appname>
 				<remark>beijing.server.verashen.com_vera</remark>
@@ -630,6 +609,7 @@
 				<pwdlength>8</pwdlength>
 				<complexity>2</complexity>
 			</application>
+
 			<application state="1">
 				<description>DigitalOcean NYC01服务器</description>
 				<appname>DigitalOcean_Server_201708</appname>
