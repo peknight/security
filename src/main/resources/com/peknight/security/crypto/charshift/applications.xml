@@ -499,6 +499,102 @@
                 <pwdlength>16</pwdlength>
                 <complexity>2</complexity>
             </application>
+
+			<application state="1">
+				<description>Aliyun Beijing服务器00_root</description>
+				<appname>Aliyun_Server_201807</appname>
+				<remark>beijing00.server.peknight.com_root</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
+				<description>Aliyun Beijing服务器00_peknight</description>
+				<appname>Aliyun_Server_201807</appname>
+				<remark>beijing00.server.peknight.com_peknight</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
+				<description>Digital Ocean SGP服务器00_root</description>
+				<appname>Digital_Ocean_Server_201807</appname>
+				<remark>sgp00.server.peknight.com_root</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
+				<description>Digital Ocean SGP服务器00_peknight</description>
+				<appname>Digital_Ocean_Server_201807</appname>
+				<remark>sgp00.server.peknight.com_peknight</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
+				<description>Digital Ocean NYC服务器01_root</description>
+				<appname>Digital_Ocean_Server_201807</appname>
+				<remark>nyc01.server.peknight.com_root</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
+				<description>Digital Ocean NYC服务器01_peknight</description>
+				<appname>Digital_Ocean_Server_201807</appname>
+				<remark>nyc01.server.peknight.com_peknight</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>2</complexity>
+			</application>
+
+			<application state="1">
+				<description>SoftEtherVPN服务器管理密码</description>
+				<appname>SoftEther_VPN_Server_201807</appname>
+				<remark>Administrator</remark>
+				<pwdlength>12</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
+				<description>SoftEtherVPN服务器IPsec预共享密钥</description>
+				<appname>SoftEther_VPN_Server_201807</appname>
+				<remark>IPsec_Pre-shared_Key</remark>
+				<pwdlength>8</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
+				<description>SoftEtherVPN服务器登录peknight</description>
+				<appname>SoftEther_VPN_Server_Password_201807</appname>
+				<remark>peknight</remark>
+				<pwdlength>8</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
+				<description>SoftEtherVPN服务器登录tauriel</description>
+				<appname>SoftEther_VPN_Server_Password_201807</appname>
+				<remark>tauriel</remark>
+				<pwdlength>8</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
+				<description>SoftEtherVPN服务器登录vera</description>
+				<appname>SoftEther_VPN_Server_Password_201807</appname>
+				<remark>vera</remark>
+				<pwdlength>8</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
+				<description>SoftEtherVPN服务器登录waiwai</description>
+				<appname>SoftEther_VPN_Server_Password_201807</appname>
+				<remark>waiwai</remark>
+				<pwdlength>8</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
+				<description>SoftEtherVPN服务器登录lvtu20</description>
+				<appname>SoftEther_VPN_Server_Password_201807</appname>
+				<remark>lvtu20</remark>
+				<pwdlength>8</pwdlength>
+				<complexity>2</complexity>
+			</application>
+
+
+
 			<application state="1">
 				<description>Aliyun Beijing服务器</description>
 				<appname>Aliyun_Server_201710</appname>
