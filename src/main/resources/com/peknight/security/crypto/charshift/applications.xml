@@ -515,6 +515,34 @@
 				<complexity>2</complexity>
 			</application>
 			<application state="1">
+				<description>Aliyun Beijing服务器00_tauriel</description>
+				<appname>Aliyun_Server_201902</appname>
+				<remark>beijing00.server.peknight.com_tauriel</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
+				<description>腾讯云北京服务器00_root</description>
+				<appname>Tencent_Server_201902</appname>
+				<remark>beijing01.server.peknight.com_root</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>4</complexity>
+			</application>
+			<application state="1">
+				<description>腾讯云北京服务器00_pek</description>
+				<appname>Tencent_Server_201902</appname>
+				<remark>beijing01.server.peknight.com_pek</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>4</complexity>
+			</application>
+			<application state="1">
+				<description>腾讯云北京服务器00_tauriel</description>
+				<appname>Tencent_Server_201902</appname>
+				<remark>beijing01.server.peknight.com_tauriel</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
 				<description>Digital Ocean SGP服务器00_root</description>
 				<appname>Digital_Ocean_Server_201807</appname>
 				<remark>sgp00.server.peknight.com_root</remark>
@@ -529,14 +557,14 @@
 				<complexity>2</complexity>
 			</application>
 			<application state="1">
-				<description>Digital Ocean NYC服务器01_root</description>
+				<description>Digital Ocean NYC服务器00_root</description>
 				<appname>Digital_Ocean_Server_201807</appname>
 				<remark>nyc01.server.peknight.com_root</remark>
 				<pwdlength>16</pwdlength>
 				<complexity>2</complexity>
 			</application>
 			<application state="1">
-				<description>Digital Ocean NYC服务器01_pek</description>
+				<description>Digital Ocean NYC服务器00_pek</description>
 				<appname>Digital_Ocean_Server_201807</appname>
 				<remark>nyc01.server.peknight.com_pek</remark>
 				<pwdlength>16</pwdlength>
@@ -819,13 +847,6 @@
 				<remark>peknight</remark>
 				<pwdlength>6</pwdlength>
 				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>腾讯云成都服务器00_Administrator</description>
-				<appname>Tencent_Cloud_Chengdu_201901</appname>
-				<remark>chengdu00.server.peknight.com_Administrator</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
 			</application>
 			<application state="1">
 				<description>支付宝登录</description>
