@@ -550,6 +550,20 @@
 				<complexity>2</complexity>
 			</application>
 			<application state="1">
+				<description>nexus_admin</description>
+				<appname>Docker_Nexus_201902</appname>
+				<remark>admin</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
+				<description>jenkins_admin</description>
+				<appname>Docker_Jenkins_201902</appname>
+				<remark>admin</remark>
+				<pwdlength>16</pwdlength>
+				<complexity>2</complexity>
+			</application>
+			<application state="1">
 				<description>Digital Ocean SGP服务器00_root</description>
 				<appname>Digital_Ocean_Server_201807</appname>
 				<remark>sgp00.server.peknight.com_root</remark>
