@@ -1,70 +1,70 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <key>
-	<user>
-		<applications>
-			<application state="0">
-				<description>自如登录</description>
-				<appname>Lianjia_Ziroom_Login_201706</appname>
-				<remark>18612977614</remark>
-				<pwdlength>14</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="0">
-				<description>自如手势密码</description>
-				<appname>Lianjia_Ziroom_Gesture_201707</appname>
-				<remark>18612977614_peknight</remark>
-				<pwdlength>5</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="0">
-				<description>远洋自然房间门</description>
-				<appname>Lianjia_Ziroom_Yuanyangziran_2_1_1301_01_201706</appname>
-				<remark>18612977614</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>路由器登录</description>
-				<appname>TP-Link_TL-WR720N_Login_201702</appname>
-				<remark>peknight</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>路由器WiFi登录</description>
-				<appname>TP-Link_TL-WR720N_PSK_201702</appname>
-				<remark>PEKNIGHT</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>1</complexity>
-			</application>
-			<application state="1">
-				<description>HUAWEI路由器登录</description>
-				<appname>Mobile WiFi Pro_E5771h-937_869679021510699_Login_201704</appname>
-				<remark>admin</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>HUAWEI路由器WiFi登录</description>
-				<appname>Mobile WiFi Pro_E5771h-937_869679021510699_WPA_201704</appname>
-				<remark>PEKNIGHT-Mobile</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>HUAWEI2路由器登录</description>
-				<appname>Mobile WiFi 2 Pro_E5885Ls-93a_864758031037623_Login_201711</appname>
-				<remark>admin</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>HUAWEI2路由器WiFi登录</description>
-				<appname>Mobile WiFi 2 Pro_E5885Ls-93a_864758031037623_WPA_201711</appname>
-				<remark>PEKNIGHT-Mobile</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
+    <user>
+        <applications>
+            <application state="0">
+                <description>自如登录</description>
+                <appname>Lianjia_Ziroom_Login_201706</appname>
+                <remark>18612977614</remark>
+                <pwdlength>14</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="0">
+                <description>自如手势密码</description>
+                <appname>Lianjia_Ziroom_Gesture_201707</appname>
+                <remark>18612977614_peknight</remark>
+                <pwdlength>5</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="0">
+                <description>远洋自然房间门</description>
+                <appname>Lianjia_Ziroom_Yuanyangziran_2_1_1301_01_201706</appname>
+                <remark>18612977614</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>路由器登录</description>
+                <appname>TP-Link_TL-WR720N_Login_201702</appname>
+                <remark>peknight</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>路由器WiFi登录</description>
+                <appname>TP-Link_TL-WR720N_PSK_201702</appname>
+                <remark>PEKNIGHT</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>1</complexity>
+            </application>
+            <application state="1">
+                <description>HUAWEI路由器登录</description>
+                <appname>Mobile WiFi Pro_E5771h-937_869679021510699_Login_201704</appname>
+                <remark>admin</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>HUAWEI路由器WiFi登录</description>
+                <appname>Mobile WiFi Pro_E5771h-937_869679021510699_WPA_201704</appname>
+                <remark>PEKNIGHT-Mobile</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>HUAWEI2路由器登录</description>
+                <appname>Mobile WiFi 2 Pro_E5885Ls-93a_864758031037623_Login_201711</appname>
+                <remark>admin</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>HUAWEI2路由器WiFi登录</description>
+                <appname>Mobile WiFi 2 Pro_E5885Ls-93a_864758031037623_WPA_201711</appname>
+                <remark>PEKNIGHT-Mobile</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
             <application state="1">
                 <description>HUAWEI2路由器Guest WiFi登录</description>
                 <appname>Mobile WiFi 2 Pro_E5885Ls-93a_864758031037623_WPA_201711</appname>
@@ -72,413 +72,413 @@
                 <pwdlength>8</pwdlength>
                 <complexity>2</complexity>
             </application>
-			<application state="1">
-				<description>笔记本电脑登录</description>
-				<appname>Personal_Computer_Login_201701</appname>
-				<remark>Lenovo_Ideapad_Y570_CB09442853_Peknight</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>笔记本电脑PIN</description>
-				<appname>Microsoft_Windows_PIN_201701</appname>
-				<remark>Lenovo_Ideapad_Y570_CB09442853_peknight@qq.com</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>笔记本电脑WIFI</description>
-				<appname>Microsoft_Windows_WIFI_201703</appname>
-				<remark>Lenovo_Ideapad_Y570_CB09442853_Peknight-PC</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>工作笔记本电脑登录</description>
-				<appname>Personal_Computer_JoinQuant_Login_201704</appname>
-				<remark>Peknight-Work</remark>
-				<pwdlength>4</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>Ubuntu_pek登录</description>
-				<appname>Personal_Computer_Ubuntu_Login_201806</appname>
-				<remark>pek</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>1</complexity>
-			</application>
-			<application state="1">
-				<description>Ubuntu_root登录</description>
-				<appname>Personal_Computer_Ubuntu_Login_201806</appname>
-				<remark>root</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Ubuntu_rengang登录</description>
-				<appname>Personal_Computer_Ubuntu_Login_201806</appname>
-				<remark>rengang</remark>
-				<pwdlength>4</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>Microsoft QQ登录</description>
-				<appname>Microsoft_Account_Login_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>Microsoft Hotmail登录</description>
-				<appname>Microsoft_Account_Login_201701</appname>
-				<remark>JKpeknight@hotmail.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>苹果账号登录</description>
-				<appname>Apple_AppleId_Login_201701</appname>
-				<remark>JKpeknight@gmail.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>刘-苹果账号登录</description>
-				<appname>Apple_AppleId_Login_201801</appname>
-				<remark>532378590@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>苹果账号163登录</description>
-				<appname>Apple_AppleId_Login_201709</appname>
-				<remark>peknight@163.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>iPhone7锁屏</description>
-				<appname>Apple_iPhone_Passcode_201704</appname>
-				<remark>iPhone7_MNGX2CH/A_DNPT3B4GHG71</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>iPhone7访问限制</description>
-				<appname>Apple_iPhone_Access_201704</appname>
-				<remark>iPhone7_MNGX2CH/A_DNPT3B4GHG71</remark>
-				<pwdlength>4</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>iPhone7个人热点</description>
-				<appname>Apple_iPhone_Personal Hotspot_201704</appname>
-				<remark>iPhone7_MNGX2CH/A_DNPT3B4GHG71</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>1</complexity>
-			</application>
-			<application state="1">
-				<description>iPhone7备份</description>
-				<appname>Apple_iPhone_Backup_201704</appname>
-				<remark>iPhone7_MNGX2CH/A_DNPT3B4GHG71</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>iPhone5S锁屏</description>
-				<appname>Apple_iPhone_Passcode_201701</appname>
-				<remark>iPhone5S_ME450CH/A_F17LV7B4FP6H</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>iPhone4锁屏</description>
-				<appname>Apple_iPhone_Passcode_201701</appname>
-				<remark>iPhone4_MC603ZP/A_84132K0KA4S</remark>
-				<pwdlength>4</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>iPhone4备份</description>
-				<appname>Apple_iPhone_Backup_201701</appname>
-				<remark>iPhone4_MC603ZP/A_84132K0KA4S</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>iPad Pro 2锁屏</description>
-				<appname>Apple_iPad_Pro_2_Passcode_201709</appname>
-				<remark>iPad_Pro_2_MPL02CH/A_DLXVC05PHPJ5</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>iPad Pro 2访问限制</description>
-				<appname>Apple_iPad_Pro_2_Access_201709</appname>
-				<remark>iPad_Pro_2_MPL02CH/A_DLXVC05PHPJ5</remark>
-				<pwdlength>4</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>iPad Pro 2备份</description>
-				<appname>Apple_iPad_Pro_2_Backup_201709</appname>
-				<remark>iPad_Pro_2_MPL02CH/A_DLXVC05PHPJ5</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>Ubuntu_Online登录</description>
-				<appname>Ubuntu_Online_Login_201806</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>Google登录</description>
-				<appname>Google_Login_201701</appname>
-				<remark>JKpeknight@gmail.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>PayPal登录</description>
-				<appname>PayPal_Login_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="0">
-				<description>PayPal支付</description>
-				<appname>PayPal_IDCode_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>Adobe登录</description>
-				<appname>Adobe_ID_Login_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>Oracle登录</description>
-				<appname>Oracle_Login_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>Oracle_MySQL登录</description>
-				<appname>Oracle_MySQL_Login_201703</appname>
-				<remark>root</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
+            <application state="1">
+                <description>笔记本电脑登录</description>
+                <appname>Personal_Computer_Login_201701</appname>
+                <remark>Lenovo_Ideapad_Y570_CB09442853_Peknight</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>笔记本电脑PIN</description>
+                <appname>Microsoft_Windows_PIN_201701</appname>
+                <remark>Lenovo_Ideapad_Y570_CB09442853_peknight@qq.com</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>笔记本电脑WIFI</description>
+                <appname>Microsoft_Windows_WIFI_201703</appname>
+                <remark>Lenovo_Ideapad_Y570_CB09442853_Peknight-PC</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>工作笔记本电脑登录</description>
+                <appname>Personal_Computer_JoinQuant_Login_201704</appname>
+                <remark>Peknight-Work</remark>
+                <pwdlength>4</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>Ubuntu_pek登录</description>
+                <appname>Personal_Computer_Ubuntu_Login_201806</appname>
+                <remark>pek</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>1</complexity>
+            </application>
+            <application state="1">
+                <description>Ubuntu_root登录</description>
+                <appname>Personal_Computer_Ubuntu_Login_201806</appname>
+                <remark>root</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Ubuntu_rengang登录</description>
+                <appname>Personal_Computer_Ubuntu_Login_201806</appname>
+                <remark>rengang</remark>
+                <pwdlength>4</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>Microsoft QQ登录</description>
+                <appname>Microsoft_Account_Login_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>Microsoft Hotmail登录</description>
+                <appname>Microsoft_Account_Login_201701</appname>
+                <remark>JKpeknight@hotmail.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>苹果账号登录</description>
+                <appname>Apple_AppleId_Login_201701</appname>
+                <remark>JKpeknight@gmail.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>刘-苹果账号登录</description>
+                <appname>Apple_AppleId_Login_201801</appname>
+                <remark>532378590@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>苹果账号163登录</description>
+                <appname>Apple_AppleId_Login_201709</appname>
+                <remark>peknight@163.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>iPhone7锁屏</description>
+                <appname>Apple_iPhone_Passcode_201704</appname>
+                <remark>iPhone7_MNGX2CH/A_DNPT3B4GHG71</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>iPhone7访问限制</description>
+                <appname>Apple_iPhone_Access_201704</appname>
+                <remark>iPhone7_MNGX2CH/A_DNPT3B4GHG71</remark>
+                <pwdlength>4</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>iPhone7个人热点</description>
+                <appname>Apple_iPhone_Personal Hotspot_201704</appname>
+                <remark>iPhone7_MNGX2CH/A_DNPT3B4GHG71</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>1</complexity>
+            </application>
+            <application state="1">
+                <description>iPhone7备份</description>
+                <appname>Apple_iPhone_Backup_201704</appname>
+                <remark>iPhone7_MNGX2CH/A_DNPT3B4GHG71</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>iPhone5S锁屏</description>
+                <appname>Apple_iPhone_Passcode_201701</appname>
+                <remark>iPhone5S_ME450CH/A_F17LV7B4FP6H</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>iPhone4锁屏</description>
+                <appname>Apple_iPhone_Passcode_201701</appname>
+                <remark>iPhone4_MC603ZP/A_84132K0KA4S</remark>
+                <pwdlength>4</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>iPhone4备份</description>
+                <appname>Apple_iPhone_Backup_201701</appname>
+                <remark>iPhone4_MC603ZP/A_84132K0KA4S</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>iPad Pro 2锁屏</description>
+                <appname>Apple_iPad_Pro_2_Passcode_201709</appname>
+                <remark>iPad_Pro_2_MPL02CH/A_DLXVC05PHPJ5</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>iPad Pro 2访问限制</description>
+                <appname>Apple_iPad_Pro_2_Access_201709</appname>
+                <remark>iPad_Pro_2_MPL02CH/A_DLXVC05PHPJ5</remark>
+                <pwdlength>4</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>iPad Pro 2备份</description>
+                <appname>Apple_iPad_Pro_2_Backup_201709</appname>
+                <remark>iPad_Pro_2_MPL02CH/A_DLXVC05PHPJ5</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>Ubuntu_Online登录</description>
+                <appname>Ubuntu_Online_Login_201806</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>Google登录</description>
+                <appname>Google_Login_201701</appname>
+                <remark>JKpeknight@gmail.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>PayPal登录</description>
+                <appname>PayPal_Login_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="0">
+                <description>PayPal支付</description>
+                <appname>PayPal_IDCode_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>Adobe登录</description>
+                <appname>Adobe_ID_Login_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>Oracle登录</description>
+                <appname>Oracle_Login_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>Oracle_MySQL登录</description>
+                <appname>Oracle_MySQL_Login_201703</appname>
+                <remark>root</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
                 <description>Oracle_MySQL_test登录</description>
                 <appname>Oracle_MySQL_Login_201706</appname>
                 <remark>test</remark>
                 <pwdlength>16</pwdlength>
                 <complexity>4</complexity>
             </application>
-			<application state="1">
-				<description>Docker MySQL root密码</description>
-				<appname>Docker_MySQL_Password_201709</appname>
-				<remark>root</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Docker MySQL pek密码</description>
-				<appname>Docker_MySQL_Password_201709</appname>
-				<remark>pek</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Docker Redis密码</description>
-				<appname>Docker_Redis_Password_201711</appname>
-				<remark>docker-pek-redis</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="0">
-				<description>RabbitMQ登录pek</description>
-				<appname>Docker_RabbitMQ_Password_201902</appname>
-				<remark>pek</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Jenkins密码</description>
-				<appname>Jenkins_Password_201806</appname>
-				<remark>peknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="0">
-				<description>Navicat登录</description>
-				<appname>Navicat_Login_201706</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>14</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="0">
-				<description>JetBrains登录</description>
-				<appname>JetBrains_Login_201706</appname>
-				<remark>peknight@bupt.edu.cn</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>GitHub登录</description>
-				<appname>GitHub_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>GitHub-JoinQuant登录</description>
-				<appname>GitHub_Login_201704</appname>
-				<remark>rengang@joinquant.com_Peknight-JoinQuant</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="0">
-				<description>Stack Overflow登录</description>
-				<appname>Stack Overflow_Login_201706</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>14</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
+            <application state="1">
+                <description>Docker MySQL root密码</description>
+                <appname>Docker_MySQL_Password_201709</appname>
+                <remark>root</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Docker MySQL pek密码</description>
+                <appname>Docker_MySQL_Password_201709</appname>
+                <remark>pek</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Docker Redis密码</description>
+                <appname>Docker_Redis_Password_201711</appname>
+                <remark>docker-pek-redis</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="0">
+                <description>RabbitMQ登录pek</description>
+                <appname>Docker_RabbitMQ_Password_201902</appname>
+                <remark>pek</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Jenkins密码</description>
+                <appname>Jenkins_Password_201806</appname>
+                <remark>peknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="0">
+                <description>Navicat登录</description>
+                <appname>Navicat_Login_201706</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>14</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="0">
+                <description>JetBrains登录</description>
+                <appname>JetBrains_Login_201706</appname>
+                <remark>peknight@bupt.edu.cn</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>GitHub登录</description>
+                <appname>GitHub_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>GitHub-JoinQuant登录</description>
+                <appname>GitHub_Login_201704</appname>
+                <remark>rengang@joinquant.com_Peknight-JoinQuant</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="0">
+                <description>Stack Overflow登录</description>
+                <appname>Stack Overflow_Login_201706</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>14</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
                 <description>Docker登录</description>
                 <appname>Docker_Login_201708</appname>
                 <remark>peknight_JKpeknight@gmail.com</remark>
                 <pwdlength>12</pwdlength>
                 <complexity>2</complexity>
             </application>
-			<application state="1">
-				<description>Facebook登录</description>
-				<appname>Facebook_Login_201701</appname>
-				<remark>JKpeknight@gmail.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>Twitter登录</description>
-				<appname>Twitter_Login_201701</appname>
-				<remark>JKpeknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="0">
-				<description>LinkedIn登录</description>
-				<appname>LinkedIn_Login_201707</appname>
-				<remark>JKpeknight@gmail.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>TeamViewer登录</description>
-				<appname>TeamViewer_Login_201710</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>TeamViewer_WORK电脑密码</description>
-				<appname>TeamViewer_PC_Password_201710</appname>
-				<remark>PEKNIGHT-WORK</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>1</complexity>
-			</application>
-			<application state="1">
-				<description>Firefox登录</description>
-				<appname>Mozilla_Firefox_Login_201806</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="0">
-				<description>OpenVPN_PrivateTunnel登录</description>
-				<appname>OpenVPN_PrivateTunnel_Login_201708</appname>
-				<remark>JKpeknight@gmail.com</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Day One登录</description>
-				<appname>Day One_Login_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>Day One密码</description>
-				<appname>Day One_Passcode_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>4</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>IEEE.org登录</description>
-				<appname>IEEE_org_Login_201701</appname>
-				<remark>JKpeknight@gmail.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>InsanelyMac登录</description>
-				<appname>InsanelyMac_Login_201701</appname>
-				<remark>peknight_JKpeknight@gmail.com</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>MyDigitalLife登录</description>
-				<appname>MyDigitalLife_Login_201701</appname>
-				<remark>peknight_JKpeknight@gmail.com</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Sheethost登录</description>
-				<appname>Sheethost_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>PDAWIKI密码</description>
-				<appname>PDAWIKI_Login_201711</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>DigitalOcean登录</description>
-				<appname>DigitalOcean_Login_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>SecureCRT</description>
-				<appname>SecureCRT_Configuration_Passphrase_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>SSH Term</description>
-				<appname>SSH Term_Password_201704</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>1</complexity>
-			</application>
-			<application state="1">
+            <application state="1">
+                <description>Facebook登录</description>
+                <appname>Facebook_Login_201701</appname>
+                <remark>JKpeknight@gmail.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>Twitter登录</description>
+                <appname>Twitter_Login_201701</appname>
+                <remark>JKpeknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="0">
+                <description>LinkedIn登录</description>
+                <appname>LinkedIn_Login_201707</appname>
+                <remark>JKpeknight@gmail.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>TeamViewer登录</description>
+                <appname>TeamViewer_Login_201710</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>TeamViewer_WORK电脑密码</description>
+                <appname>TeamViewer_PC_Password_201710</appname>
+                <remark>PEKNIGHT-WORK</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>1</complexity>
+            </application>
+            <application state="1">
+                <description>Firefox登录</description>
+                <appname>Mozilla_Firefox_Login_201806</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="0">
+                <description>OpenVPN_PrivateTunnel登录</description>
+                <appname>OpenVPN_PrivateTunnel_Login_201708</appname>
+                <remark>JKpeknight@gmail.com</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Day One登录</description>
+                <appname>Day One_Login_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>Day One密码</description>
+                <appname>Day One_Passcode_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>4</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>IEEE.org登录</description>
+                <appname>IEEE_org_Login_201701</appname>
+                <remark>JKpeknight@gmail.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>InsanelyMac登录</description>
+                <appname>InsanelyMac_Login_201701</appname>
+                <remark>peknight_JKpeknight@gmail.com</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>MyDigitalLife登录</description>
+                <appname>MyDigitalLife_Login_201701</appname>
+                <remark>peknight_JKpeknight@gmail.com</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Sheethost登录</description>
+                <appname>Sheethost_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>PDAWIKI密码</description>
+                <appname>PDAWIKI_Login_201711</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>DigitalOcean登录</description>
+                <appname>DigitalOcean_Login_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>SecureCRT</description>
+                <appname>SecureCRT_Configuration_Passphrase_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>SSH Term</description>
+                <appname>SSH Term_Password_201704</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>1</complexity>
+            </application>
+            <application state="1">
                 <description>Docker Pek密码</description>
                 <appname>Docker_Linux_Password_201709</appname>
                 <remark>centos_pek</remark>
@@ -486,573 +486,573 @@
                 <complexity>2</complexity>
             </application>
 
-			<application state="1">
-				<description>Aliyun Beijing服务器00_root</description>
-				<appname>Aliyun_Server_201807</appname>
-				<remark>beijing00.server.peknight.com_root</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Aliyun Beijing服务器00_pek</description>
-				<appname>Aliyun_Server_201807</appname>
-				<remark>beijing00.server.peknight.com_pek</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Aliyun Beijing服务器00_tauriel</description>
-				<appname>Aliyun_Server_201902</appname>
-				<remark>beijing00.server.peknight.com_tauriel</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>腾讯云北京服务器01_root</description>
-				<appname>Tencent_Server_201902</appname>
-				<remark>beijing01.server.peknight.com_root</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>腾讯云北京服务器01_pek</description>
-				<appname>Tencent_Server_201902</appname>
-				<remark>beijing01.server.peknight.com_pek</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>腾讯云北京服务器01_tauriel</description>
-				<appname>Tencent_Server_201902</appname>
-				<remark>beijing01.server.peknight.com_tauriel</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>腾讯云北京服务器01_server</description>
-				<appname>Tencent_Server_201902</appname>
-				<remark>beijing01.server.peknight.com_server</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>nexus_admin</description>
-				<appname>Docker_Nexus_201902</appname>
-				<remark>admin</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>jenkins_admin</description>
-				<appname>Docker_Jenkins_201902</appname>
-				<remark>admin</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>jenkins_pek</description>
-				<appname>Docker_Jenkins_201902</appname>
-				<remark>pek</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Digital Ocean SGP服务器00_root</description>
-				<appname>Digital_Ocean_Server_201807</appname>
-				<remark>sgp00.server.peknight.com_root</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Digital Ocean SGP服务器00_pek</description>
-				<appname>Digital_Ocean_Server_201807</appname>
-				<remark>sgp00.server.peknight.com_pek</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Digital Ocean NYC服务器00_root</description>
-				<appname>Digital_Ocean_Server_201807</appname>
-				<remark>nyc01.server.peknight.com_root</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Digital Ocean NYC服务器00_pek</description>
-				<appname>Digital_Ocean_Server_201807</appname>
-				<remark>nyc01.server.peknight.com_pek</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
+            <application state="1">
+                <description>Aliyun Beijing服务器00_root</description>
+                <appname>Aliyun_Server_201807</appname>
+                <remark>beijing00.server.peknight.com_root</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Aliyun Beijing服务器00_pek</description>
+                <appname>Aliyun_Server_201807</appname>
+                <remark>beijing00.server.peknight.com_pek</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Aliyun Beijing服务器00_tauriel</description>
+                <appname>Aliyun_Server_201902</appname>
+                <remark>beijing00.server.peknight.com_tauriel</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>腾讯云北京服务器01_root</description>
+                <appname>Tencent_Server_201902</appname>
+                <remark>beijing01.server.peknight.com_root</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>腾讯云北京服务器01_pek</description>
+                <appname>Tencent_Server_201902</appname>
+                <remark>beijing01.server.peknight.com_pek</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>腾讯云北京服务器01_tauriel</description>
+                <appname>Tencent_Server_201902</appname>
+                <remark>beijing01.server.peknight.com_tauriel</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>腾讯云北京服务器01_server</description>
+                <appname>Tencent_Server_201902</appname>
+                <remark>beijing01.server.peknight.com_server</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>nexus_admin</description>
+                <appname>Docker_Nexus_201902</appname>
+                <remark>admin</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>jenkins_admin</description>
+                <appname>Docker_Jenkins_201902</appname>
+                <remark>admin</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>jenkins_pek</description>
+                <appname>Docker_Jenkins_201902</appname>
+                <remark>pek</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Digital Ocean SGP服务器00_root</description>
+                <appname>Digital_Ocean_Server_201807</appname>
+                <remark>sgp00.server.peknight.com_root</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Digital Ocean SGP服务器00_pek</description>
+                <appname>Digital_Ocean_Server_201807</appname>
+                <remark>sgp00.server.peknight.com_pek</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Digital Ocean NYC服务器00_root</description>
+                <appname>Digital_Ocean_Server_201807</appname>
+                <remark>nyc01.server.peknight.com_root</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Digital Ocean NYC服务器00_pek</description>
+                <appname>Digital_Ocean_Server_201807</appname>
+                <remark>nyc01.server.peknight.com_pek</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
 
-			<application state="1">
-				<description>SoftEtherVPN服务器管理密码</description>
-				<appname>SoftEther_VPN_Server_201807</appname>
-				<remark>Administrator</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>SoftEtherVPN服务器IPsec预共享密钥</description>
-				<appname>SoftEther_VPN_Server_201807</appname>
-				<remark>IPsec_Pre-shared_Key</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>SoftEtherVPN服务器登录peknight</description>
-				<appname>SoftEther_VPN_Server_Password_201807</appname>
-				<remark>peknight</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>SoftEtherVPN服务器登录tauriel</description>
-				<appname>SoftEther_VPN_Server_Password_201807</appname>
-				<remark>tauriel</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>SoftEtherVPN服务器登录vera</description>
-				<appname>SoftEther_VPN_Server_Password_201807</appname>
-				<remark>vera</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>SoftEtherVPN服务器登录waiwai</description>
-				<appname>SoftEther_VPN_Server_Password_201807</appname>
-				<remark>waiwai</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>SoftEtherVPN服务器登录lvtu20</description>
-				<appname>SoftEther_VPN_Server_Password_201807</appname>
-				<remark>lvtu20</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
+            <application state="1">
+                <description>SoftEtherVPN服务器管理密码</description>
+                <appname>SoftEther_VPN_Server_201807</appname>
+                <remark>Administrator</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>SoftEtherVPN服务器IPsec预共享密钥</description>
+                <appname>SoftEther_VPN_Server_201807</appname>
+                <remark>IPsec_Pre-shared_Key</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>SoftEtherVPN服务器登录peknight</description>
+                <appname>SoftEther_VPN_Server_Password_201807</appname>
+                <remark>peknight</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>SoftEtherVPN服务器登录tauriel</description>
+                <appname>SoftEther_VPN_Server_Password_201807</appname>
+                <remark>tauriel</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>SoftEtherVPN服务器登录vera</description>
+                <appname>SoftEther_VPN_Server_Password_201807</appname>
+                <remark>vera</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>SoftEtherVPN服务器登录waiwai</description>
+                <appname>SoftEther_VPN_Server_Password_201807</appname>
+                <remark>waiwai</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>SoftEtherVPN服务器登录lvtu20</description>
+                <appname>SoftEther_VPN_Server_Password_201807</appname>
+                <remark>lvtu20</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
 
 
 
-			<application state="1">
-				<description>SoftEtherVPN VeraBeijing服务器登录vera</description>
-				<appname>SoftEther_VPN_Server_Password_201710</appname>
-				<remark>beijing.server.verashen.com_vera</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>SoftEtherVPN VeraBeijing服务器登录waiwai</description>
-				<appname>SoftEther_VPN_Server_Password_201710</appname>
-				<remark>beijing.server.verashen.com_waiwai</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
+            <application state="1">
+                <description>SoftEtherVPN VeraBeijing服务器登录vera</description>
+                <appname>SoftEther_VPN_Server_Password_201710</appname>
+                <remark>beijing.server.verashen.com_vera</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>SoftEtherVPN VeraBeijing服务器登录waiwai</description>
+                <appname>SoftEther_VPN_Server_Password_201710</appname>
+                <remark>beijing.server.verashen.com_waiwai</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
 
-			<application state="1">
-				<description>DigitalOcean NYC01服务器</description>
-				<appname>DigitalOcean_Server_201708</appname>
-				<remark>nyc01.server.peknight.com_root</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
+            <application state="1">
+                <description>DigitalOcean NYC01服务器</description>
+                <appname>DigitalOcean_Server_201708</appname>
+                <remark>nyc01.server.peknight.com_root</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
                 <description>DigitalOcean NYC01 pek服务器</description>
                 <appname>DigitalOcean_Server_201709</appname>
                 <remark>nyc01.server.peknight.com_pek</remark>
                 <pwdlength>16</pwdlength>
                 <complexity>2</complexity>
             </application>
-			<application state="1">
-				<description>SoftEtherVPN NYC01服务器管理密码</description>
-				<appname>SoftEther_VPN_Server_201708</appname>
-				<remark>nyc01.server.peknight.com_Administrator</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>SoftEtherVPNS NYC01服务器IPsec预共享密钥</description>
-				<appname>SoftEther_VPN_Server_IPsec_Pre-shared_Key_201708</appname>
-				<remark>nyc01.server.peknight.com</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>SoftEtherVPN NYC01服务器登录</description>
-				<appname>SoftEther_VPN_Server_Password_201708</appname>
-				<remark>nyc01.server.peknight.com_peknight</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>SoftEtherVPN NYC01服务器登录lvtu20</description>
-				<appname>SoftEther_VPN_Server_Password_201802</appname>
-				<remark>nyc01.server.peknight.com_lvtu20</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>DigitalOcean SG服务器</description>
-				<appname>DigitalOcean_Server_201701</appname>
-				<remark>188.166.181.154_root</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>SoftEtherVPN SG服务器管理密码</description>
-				<appname>SoftEther_VPN_Server_201701</appname>
-				<remark>188.166.181.154_Administrator</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>SoftEtherVPN SG服务器IPsec预共享密钥</description>
-				<appname>SoftEther_VPN_Server_IPsec_Pre-shared_Key_201701</appname>
-				<remark>188.166.181.154</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>SoftEtherVPN SG服务器登录</description>
-				<appname>SoftEther_VPN_Server_Password_201701</appname>
-				<remark>188.166.181.154_peknight</remark>
-				<pwdlength>8</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="0">
-				<description>SG服务器MySQL登录</description>
-				<appname>MySQL_Login_201701</appname>
-				<remark>188.166.181.154_root</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>DigitalOcean 2GB服务器 节点1</description>
-				<appname>DigitalOcean_Server_201704</appname>
-				<remark>PekServer01_root</remark>
-				<pwdlength>20</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="0">
-				<description>2GB服务器节点1MySQL登录</description>
-				<appname>MySQL_Login_201704</appname>
-				<remark>PekServer01_root</remark>
-				<pwdlength>10</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>DigitalOcean 1GB服务器 节点2</description>
-				<appname>DigitalOcean_Server_201704</appname>
-				<remark>PekServer02_root</remark>
-				<pwdlength>20</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>DigitalOcean 1GB服务器 节点3</description>
-				<appname>DigitalOcean_Server_201704</appname>
-				<remark>PekServer03_root</remark>
-				<pwdlength>20</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>DigitalOcean 1GB服务器 节点4</description>
-				<appname>DigitalOcean_Server_201704</appname>
-				<remark>PekServer04_root</remark>
-				<pwdlength>20</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>DigitalOcean 1GB服务器 节点5</description>
-				<appname>DigitalOcean_Server_201704</appname>
-				<remark>PekServer05_root</remark>
-				<pwdlength>20</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>DigitalOcean 1GB服务器 节点6</description>
-				<appname>DigitalOcean_Server_201704</appname>
-				<remark>PekServer06_root</remark>
-				<pwdlength>20</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="0">
-				<description>Amazon登录</description>
-				<appname>Amazon_Login_201702</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>Piriform_CCleanerCloud登录</description>
-				<appname>Piriform_CCleaner_Cloud_Login_201802</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>Steam International登录</description>
-				<appname>Valve_Steam_Login_201701</appname>
-				<remark>JKpeknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>Steam登录</description>
-				<appname>Valve_Steam_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>BattleNet登录</description>
-				<appname>BlizzardEntertainment_Battle.Net_Login_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>Mojang登录</description>
-				<appname>Mojang_Account_Login_201701</appname>
-				<remark>JKpeknight_JKpeknight@gmail.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>EA_Origin密码</description>
-				<appname>EA_Origin_Login_201709</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>QQ登录</description>
-				<appname>Tencent_QQ_Login_201701</appname>
-				<remark>306338632</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>QQ邮箱</description>
-				<appname>Tencent_QQ_Mail_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>QQ邮箱文件夹</description>
-				<appname>Tencent_QQ_Mail_Folder_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>微信登录</description>
-				<appname>Tencent_WeChat_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>微信支付</description>
-				<appname>Tencent_WeChat_Payment_Password_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>支付宝登录</description>
-				<appname>Alibaba_Alipay_Login_201701</appname>
-				<remark>18640047727</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>支付宝支付</description>
-				<appname>Alibaba_Alipay_Payment_Password_201701</appname>
-				<remark>18640047727</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>淘宝登录</description>
-				<appname>Alibaba_Taobao_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>淘宝内置安全码</description>
-				<appname>Alibaba_Taobao_Security_Code_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>4</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>百度登录</description>
-				<appname>Baidu_Login_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>14</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>百度网盘密码锁</description>
-				<appname>Baidu_Netdisk_Passcode_201704</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>4</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>百度网盘隐藏空间</description>
-				<appname>Baidu_Netdisk_Hidden_Space_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>网易云音乐登录</description>
-				<appname>NetEase_Music_Login_201701</appname>
-				<remark>18640047727</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>网易邮箱job登录</description>
-				<appname>NetEase_Mail_Login_201701</appname>
-				<remark>rengang_job@163.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>网易邮箱job授权码</description>
-				<appname>NetEase_Mail_Authorization_201704</appname>
-				<remark>rengang_job@163.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>网易邮箱登录</description>
-				<appname>NetEase_Mail_Login_201701</appname>
-				<remark>peknight@163.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>网易邮箱126登录</description>
-				<appname>NetEase_Mail_Login_201701</appname>
-				<remark>peknight@126.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>新浪微博登录</description>
-				<appname>Sina_Weibo_Login_201704</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>小米登录</description>
-				<appname>Mi_Login_201806</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>YY登录</description>
-				<appname>YY_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>当当登录</description>
-				<appname>Dangdang_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>京东登录</description>
-				<appname>JD_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1" origin="tocQW05LUkDn">
-				<description>京东支付密码</description>
-				<appname>JD_Payment_Password_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>会分期登录</description>
-				<appname>Huifenqi_Login_201703</appname>
-				<remark>18612977614</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>中国邮政储蓄银行3592</description>
-				<appname>PostalSavingsBankOfChina_201612</appname>
-				<remark>6221501000002893592</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>中国农业银行3972支付密码</description>
-				<appname>AgriculturalBankOfChina_Payment_Password_201701</appname>
-				<remark>6228480018082013972</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>中国农业银行3972查询密码</description>
-				<appname>AgriculturalBankOfChina_Query_Password_201701</appname>
-				<remark>6228480018082013972</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>中国农业银行2518支付密码</description>
-				<appname>AgriculturalBankOfChina_Payment_Password_201701</appname>
-				<remark>6228480040693412518</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>中国农业银行2518查询密码</description>
-				<appname>AgriculturalBankOfChina_Query_Password_201701</appname>
-				<remark>6228480040693412518</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>中国邮政储蓄银行登录</description>
-				<appname>PostalSavingsBankOfChina_Login_201701</appname>
-				<remark>210123199302070216</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>中国农业银行登录</description>
-				<appname>AgriculturalBankOfChina_Login_201701</appname>
-				<remark>210123199302070216</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			
-			<application state="0">
-				<description>中国招商银行</description>
-				<appname>ChinaMerchantsBank_201704</appname>
-				<remark>18612977614</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
+            <application state="1">
+                <description>SoftEtherVPN NYC01服务器管理密码</description>
+                <appname>SoftEther_VPN_Server_201708</appname>
+                <remark>nyc01.server.peknight.com_Administrator</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>SoftEtherVPNS NYC01服务器IPsec预共享密钥</description>
+                <appname>SoftEther_VPN_Server_IPsec_Pre-shared_Key_201708</appname>
+                <remark>nyc01.server.peknight.com</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>SoftEtherVPN NYC01服务器登录</description>
+                <appname>SoftEther_VPN_Server_Password_201708</appname>
+                <remark>nyc01.server.peknight.com_peknight</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>SoftEtherVPN NYC01服务器登录lvtu20</description>
+                <appname>SoftEther_VPN_Server_Password_201802</appname>
+                <remark>nyc01.server.peknight.com_lvtu20</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>DigitalOcean SG服务器</description>
+                <appname>DigitalOcean_Server_201701</appname>
+                <remark>188.166.181.154_root</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>SoftEtherVPN SG服务器管理密码</description>
+                <appname>SoftEther_VPN_Server_201701</appname>
+                <remark>188.166.181.154_Administrator</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>SoftEtherVPN SG服务器IPsec预共享密钥</description>
+                <appname>SoftEther_VPN_Server_IPsec_Pre-shared_Key_201701</appname>
+                <remark>188.166.181.154</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>SoftEtherVPN SG服务器登录</description>
+                <appname>SoftEther_VPN_Server_Password_201701</appname>
+                <remark>188.166.181.154_peknight</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="0">
+                <description>SG服务器MySQL登录</description>
+                <appname>MySQL_Login_201701</appname>
+                <remark>188.166.181.154_root</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>DigitalOcean 2GB服务器 节点1</description>
+                <appname>DigitalOcean_Server_201704</appname>
+                <remark>PekServer01_root</remark>
+                <pwdlength>20</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="0">
+                <description>2GB服务器节点1MySQL登录</description>
+                <appname>MySQL_Login_201704</appname>
+                <remark>PekServer01_root</remark>
+                <pwdlength>10</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>DigitalOcean 1GB服务器 节点2</description>
+                <appname>DigitalOcean_Server_201704</appname>
+                <remark>PekServer02_root</remark>
+                <pwdlength>20</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>DigitalOcean 1GB服务器 节点3</description>
+                <appname>DigitalOcean_Server_201704</appname>
+                <remark>PekServer03_root</remark>
+                <pwdlength>20</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>DigitalOcean 1GB服务器 节点4</description>
+                <appname>DigitalOcean_Server_201704</appname>
+                <remark>PekServer04_root</remark>
+                <pwdlength>20</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>DigitalOcean 1GB服务器 节点5</description>
+                <appname>DigitalOcean_Server_201704</appname>
+                <remark>PekServer05_root</remark>
+                <pwdlength>20</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>DigitalOcean 1GB服务器 节点6</description>
+                <appname>DigitalOcean_Server_201704</appname>
+                <remark>PekServer06_root</remark>
+                <pwdlength>20</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="0">
+                <description>Amazon登录</description>
+                <appname>Amazon_Login_201702</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>Piriform_CCleanerCloud登录</description>
+                <appname>Piriform_CCleaner_Cloud_Login_201802</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>Steam International登录</description>
+                <appname>Valve_Steam_Login_201701</appname>
+                <remark>JKpeknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>Steam登录</description>
+                <appname>Valve_Steam_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>BattleNet登录</description>
+                <appname>BlizzardEntertainment_Battle.Net_Login_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>Mojang登录</description>
+                <appname>Mojang_Account_Login_201701</appname>
+                <remark>JKpeknight_JKpeknight@gmail.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>EA_Origin密码</description>
+                <appname>EA_Origin_Login_201709</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>QQ登录</description>
+                <appname>Tencent_QQ_Login_201701</appname>
+                <remark>306338632</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>QQ邮箱</description>
+                <appname>Tencent_QQ_Mail_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>QQ邮箱文件夹</description>
+                <appname>Tencent_QQ_Mail_Folder_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>微信登录</description>
+                <appname>Tencent_WeChat_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>微信支付</description>
+                <appname>Tencent_WeChat_Payment_Password_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>支付宝登录</description>
+                <appname>Alibaba_Alipay_Login_201701</appname>
+                <remark>18640047727</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>支付宝支付</description>
+                <appname>Alibaba_Alipay_Payment_Password_201701</appname>
+                <remark>18640047727</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>淘宝登录</description>
+                <appname>Alibaba_Taobao_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>淘宝内置安全码</description>
+                <appname>Alibaba_Taobao_Security_Code_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>4</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>百度登录</description>
+                <appname>Baidu_Login_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>14</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>百度网盘密码锁</description>
+                <appname>Baidu_Netdisk_Passcode_201704</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>4</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>百度网盘隐藏空间</description>
+                <appname>Baidu_Netdisk_Hidden_Space_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>网易云音乐登录</description>
+                <appname>NetEase_Music_Login_201701</appname>
+                <remark>18640047727</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>网易邮箱job登录</description>
+                <appname>NetEase_Mail_Login_201701</appname>
+                <remark>rengang_job@163.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>网易邮箱job授权码</description>
+                <appname>NetEase_Mail_Authorization_201704</appname>
+                <remark>rengang_job@163.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>网易邮箱登录</description>
+                <appname>NetEase_Mail_Login_201701</appname>
+                <remark>peknight@163.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>网易邮箱126登录</description>
+                <appname>NetEase_Mail_Login_201701</appname>
+                <remark>peknight@126.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>新浪微博登录</description>
+                <appname>Sina_Weibo_Login_201704</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>小米登录</description>
+                <appname>Mi_Login_201806</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>YY登录</description>
+                <appname>YY_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>当当登录</description>
+                <appname>Dangdang_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>京东登录</description>
+                <appname>JD_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1" origin="tocQW05LUkDn">
+                <description>京东支付密码</description>
+                <appname>JD_Payment_Password_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>会分期登录</description>
+                <appname>Huifenqi_Login_201703</appname>
+                <remark>18612977614</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>中国邮政储蓄银行3592</description>
+                <appname>PostalSavingsBankOfChina_201612</appname>
+                <remark>6221501000002893592</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>中国农业银行3972支付密码</description>
+                <appname>AgriculturalBankOfChina_Payment_Password_201701</appname>
+                <remark>6228480018082013972</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>中国农业银行3972查询密码</description>
+                <appname>AgriculturalBankOfChina_Query_Password_201701</appname>
+                <remark>6228480018082013972</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>中国农业银行2518支付密码</description>
+                <appname>AgriculturalBankOfChina_Payment_Password_201701</appname>
+                <remark>6228480040693412518</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>中国农业银行2518查询密码</description>
+                <appname>AgriculturalBankOfChina_Query_Password_201701</appname>
+                <remark>6228480040693412518</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>中国邮政储蓄银行登录</description>
+                <appname>PostalSavingsBankOfChina_Login_201701</appname>
+                <remark>210123199302070216</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>中国农业银行登录</description>
+                <appname>AgriculturalBankOfChina_Login_201701</appname>
+                <remark>210123199302070216</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+
+            <application state="0">
+                <description>中国招商银行</description>
+                <appname>ChinaMerchantsBank_201704</appname>
+                <remark>18612977614</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
                 <description>中国招商银行一网通登录</description>
                 <appname>ChinaMerchantsBank_Login_201704</appname>
                 <remark>18612977614</remark>
@@ -1123,308 +1123,308 @@
                 <complexity>0</complexity>
             </application>
             
-			<application state="1">
-				<description>Evernote登录</description>
-				<appname>Evernote_International_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>印象笔记登录</description>
-				<appname>Evernote_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>随手记登录</description>
-				<appname>Kingdee_Feidee_Login_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>随手记密码保护</description>
-				<appname>Kingdee_Feidee_Passcode_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>4</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>欧路词典登录</description>
-				<appname>Eudic_Dictionary_Login_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>搜狗登录</description>
-				<appname>Sogou_Login_201702</appname>
-				<remark>peknight@sogou.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>北邮人BT登录</description>
-				<appname>BYRBT_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>卡巴斯基登录</description>
-				<appname>Kaspersky_Login_201702</appname>
-				<remark>JKpeknight@gmail.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>卡巴斯基内置密码</description>
-				<appname>Kaspersky_Password_201702</appname>
-				<remark>JKpeknight@gmail.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>Splashtop登录</description>
-				<appname>Splashtop_Login_201702</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Splashtop安全码</description>
-				<appname>Splashtop_Security_Code_201702</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>AppZapp登录</description>
-				<appname>AppZapp_Login_201704</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>nPlayer密码</description>
-				<appname>nPlayer_Passcode_201704</appname>
-				<remark>iPhone7_MNGX2CH/A_DNPT3B4GHG71</remark>
-				<pwdlength>4</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>7614联通手机营业厅服务密码</description>
-				<appname>China Unicom_Login_201704</appname>
-				<remark>18612977614</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>7727联通手机营业厅服务密码</description>
-				<appname>China Unicom_Login_201704</appname>
-				<remark>18640047727</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>6612联通手机营业厅服务密码</description>
-				<appname>China Unicom_Login_201704</appname>
-				<remark>15600166612</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="0">
-				<description>360登录</description>
-				<appname>Qihu_360_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>12306登录</description>
-				<appname>12306_Login_201806</appname>
-				<remark>peknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="0" comment="201806修改失败">
-				<description>12306兑奖密码</description>
-				<appname>12306_Prize_Password_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="1">
-				<description>中国知网登录</description>
-				<appname>CNKI_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>CSDN登录</description>
-				<appname>CSDN_Login_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>MyEclipse中文官网登录</description>
-				<appname>MyEclipseCN_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>学信网登录</description>
-				<appname>CHSI_Login_201701</appname>
-				<remark>18640047727</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>句酷批改网登录</description>
-				<appname>PigaiOrg_Login_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Tmooc登录</description>
-				<appname>Tarena_Tmooc_Login_201701</appname>
-				<remark>306338632@qq.com</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>灰机Wiki冰与火之歌维基登录</description>
-				<appname>HuijiWiki_ASongOfIceAndFire_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>智联招聘登录</description>
-				<appname>Zhilian Zhaopin_Login_201704</appname>
-				<remark>18640047727</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>猎聘登录</description>
-				<appname>Liepin_Login_201704</appname>
-				<remark>18612977614</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>拉钩登录</description>
-				<appname>Lagou_Login_201704</appname>
-				<remark>18612977614</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Boss直聘登录</description>
-				<appname>Boss Zhipin_Login_201704</appname>
-				<remark>18612977614</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Bilibili登录</description>
-				<appname>Bilibili_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>斗鱼TV登录</description>
-				<appname>DouyuTV_Login_20170409</appname>
-				<remark>peknight</remark>
-				<pwdlength>25</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>斗鱼TV_JK登录</description>
-				<appname>DouyuTV_Login_201701</appname>
-				<remark>JKpeknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>战旗TV登录</description>
-				<appname>ZhanqiTV_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>火猫TV登录</description>
-				<appname>HuomaoTV_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>14</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>熊猫TV登录</description>
-				<appname>PandaTV_Login_201701</appname>
-				<remark>18640047727</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>4</complexity>
-			</application>
-			<application state="1">
-				<description>优酷登录</description>
-				<appname>Youku_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>爱奇艺登录</description>
-				<appname>IQIYI_Login_201701</appname>
-				<remark>18640047727</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>鼠绘漫画登录</description>
-				<appname>iShuhui_Login_201701</appname>
-				<remark>peknight@qq.com</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>动漫之家登录</description>
-				<appname>DMZJ_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>威锋网登录</description>
-				<appname>Feng_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
-				<description>Max+登录</description>
-				<appname>Dotamax_Login_201701</appname>
-				<remark>18640047727</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="0">
-				<description>UUU9登录</description>
-				<appname>UUU9_Login_201701</appname>
-				<remark>peknight</remark>
-				<pwdlength>12</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="1">
+            <application state="1">
+                <description>Evernote登录</description>
+                <appname>Evernote_International_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>印象笔记登录</description>
+                <appname>Evernote_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>随手记登录</description>
+                <appname>Kingdee_Feidee_Login_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>随手记密码保护</description>
+                <appname>Kingdee_Feidee_Passcode_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>4</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>欧路词典登录</description>
+                <appname>Eudic_Dictionary_Login_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>搜狗登录</description>
+                <appname>Sogou_Login_201702</appname>
+                <remark>peknight@sogou.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>北邮人BT登录</description>
+                <appname>BYRBT_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>卡巴斯基登录</description>
+                <appname>Kaspersky_Login_201702</appname>
+                <remark>JKpeknight@gmail.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>卡巴斯基内置密码</description>
+                <appname>Kaspersky_Password_201702</appname>
+                <remark>JKpeknight@gmail.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>Splashtop登录</description>
+                <appname>Splashtop_Login_201702</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Splashtop安全码</description>
+                <appname>Splashtop_Security_Code_201702</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>AppZapp登录</description>
+                <appname>AppZapp_Login_201704</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>nPlayer密码</description>
+                <appname>nPlayer_Passcode_201704</appname>
+                <remark>iPhone7_MNGX2CH/A_DNPT3B4GHG71</remark>
+                <pwdlength>4</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>7614联通手机营业厅服务密码</description>
+                <appname>China Unicom_Login_201704</appname>
+                <remark>18612977614</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>7727联通手机营业厅服务密码</description>
+                <appname>China Unicom_Login_201704</appname>
+                <remark>18640047727</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>6612联通手机营业厅服务密码</description>
+                <appname>China Unicom_Login_201704</appname>
+                <remark>15600166612</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="0">
+                <description>360登录</description>
+                <appname>Qihu_360_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>12306登录</description>
+                <appname>12306_Login_201806</appname>
+                <remark>peknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="0" comment="201806修改失败">
+                <description>12306兑奖密码</description>
+                <appname>12306_Prize_Password_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
+                <description>中国知网登录</description>
+                <appname>CNKI_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>CSDN登录</description>
+                <appname>CSDN_Login_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>MyEclipse中文官网登录</description>
+                <appname>MyEclipseCN_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>学信网登录</description>
+                <appname>CHSI_Login_201701</appname>
+                <remark>18640047727</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>句酷批改网登录</description>
+                <appname>PigaiOrg_Login_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Tmooc登录</description>
+                <appname>Tarena_Tmooc_Login_201701</appname>
+                <remark>306338632@qq.com</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>灰机Wiki冰与火之歌维基登录</description>
+                <appname>HuijiWiki_ASongOfIceAndFire_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>智联招聘登录</description>
+                <appname>Zhilian Zhaopin_Login_201704</appname>
+                <remark>18640047727</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>猎聘登录</description>
+                <appname>Liepin_Login_201704</appname>
+                <remark>18612977614</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>拉钩登录</description>
+                <appname>Lagou_Login_201704</appname>
+                <remark>18612977614</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Boss直聘登录</description>
+                <appname>Boss Zhipin_Login_201704</appname>
+                <remark>18612977614</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Bilibili登录</description>
+                <appname>Bilibili_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>斗鱼TV登录</description>
+                <appname>DouyuTV_Login_20170409</appname>
+                <remark>peknight</remark>
+                <pwdlength>25</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>斗鱼TV_JK登录</description>
+                <appname>DouyuTV_Login_201701</appname>
+                <remark>JKpeknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>战旗TV登录</description>
+                <appname>ZhanqiTV_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>火猫TV登录</description>
+                <appname>HuomaoTV_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>14</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>熊猫TV登录</description>
+                <appname>PandaTV_Login_201701</appname>
+                <remark>18640047727</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>4</complexity>
+            </application>
+            <application state="1">
+                <description>优酷登录</description>
+                <appname>Youku_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>爱奇艺登录</description>
+                <appname>IQIYI_Login_201701</appname>
+                <remark>18640047727</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>鼠绘漫画登录</description>
+                <appname>iShuhui_Login_201701</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>动漫之家登录</description>
+                <appname>DMZJ_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>威锋网登录</description>
+                <appname>Feng_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Max+登录</description>
+                <appname>Dotamax_Login_201701</appname>
+                <remark>18640047727</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="0">
+                <description>UUU9登录</description>
+                <appname>UUU9_Login_201701</appname>
+                <remark>peknight</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
                 <description>聚宽量化7614登录</description>
                 <appname>JoinQuant_Login_201704</appname>
                 <remark>18612977614</remark>
@@ -1452,34 +1452,34 @@
                 <pwdlength>16</pwdlength>
                 <complexity>2</complexity>
             </application>
-			<application state="1">
-				<description>Jira密码</description>
-				<appname>Jira_Login_201710</appname>
-				<remark>rengang@joinquant.com</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="0">
-				<description>易快报登录</description>
-				<appname>Ekuaibao_Login_201705</appname>
-				<remark>18640047727</remark>
-				<pwdlength>14</pwdlength>
-				<complexity>2</complexity>
-			</application>
-			<application state="0">
-				<description>一创登录</description>
-				<appname>YiChuang_Login_201708</appname>
-				<remark>18612977614</remark>
-				<pwdlength>6</pwdlength>
-				<complexity>0</complexity>
-			</application>
-			<application state="0">
-				<description>文华赢顺云交易登录</description>
-				<appname>WenHua_Login_201708</appname>
-				<remark>18612977614</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>0</complexity>
-			</application>
+            <application state="1">
+                <description>Jira密码</description>
+                <appname>Jira_Login_201710</appname>
+                <remark>rengang@joinquant.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="0">
+                <description>易快报登录</description>
+                <appname>Ekuaibao_Login_201705</appname>
+                <remark>18640047727</remark>
+                <pwdlength>14</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="0">
+                <description>一创登录</description>
+                <appname>YiChuang_Login_201708</appname>
+                <remark>18612977614</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="0">
+                <description>文华赢顺云交易登录</description>
+                <appname>WenHua_Login_201708</appname>
+                <remark>18612977614</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>0</complexity>
+            </application>
             <application state="0">
                 <description>同花顺登录</description>
                 <appname>10JQKA_Login_201704</appname>
@@ -1487,13 +1487,20 @@
                 <pwdlength>16</pwdlength>
                 <complexity>2</complexity>
             </application>
-			<application state="1">
-				<description>58同城-登录</description>
-				<appname>58.com_Login_201705</appname>
-				<remark>18640047727</remark>
-				<pwdlength>16</pwdlength>
-				<complexity>2</complexity>
-			</application>
+            <application state="1">
+                <description>58同城-登录</description>
+                <appname>58.com_Login_201705</appname>
+                <remark>18640047727</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="0">
+                <description>火币登录</description>
+                <appname>Huobi_Login_201903</appname>
+                <remark>18612977614</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
         </applications>
-	</user>
+    </user>
 </key>
