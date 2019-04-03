@@ -1508,6 +1508,13 @@
                 <pwdlength>8</pwdlength>
                 <complexity>2</complexity>
             </application>
+            <application state="0">
+                <description>readfree登录</description>
+                <appname>Readfree_Login_201904</appname>
+                <remark>peknight@qq.com</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
         </applications>
     </user>
 </key>
