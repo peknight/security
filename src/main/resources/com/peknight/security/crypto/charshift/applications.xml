@@ -1522,6 +1522,13 @@
                 <pwdlength>12</pwdlength>
                 <complexity>2</complexity>
             </application>
+            <application state="0">
+                <description>Aria2</description>
+                <appname>Aria2_RPC_SECRET_201904</appname>
+                <remark>rpc-secret</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
         </applications>
     </user>
 </key>
