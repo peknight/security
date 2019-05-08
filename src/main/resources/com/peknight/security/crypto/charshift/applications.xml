@@ -778,6 +778,15 @@
                 <pwdlength>20</pwdlength>
                 <complexity>4</complexity>
             </application>
+
+            <application state="1">
+                <description>Shadowsocks密码</description>
+                <appname>Shadowsocks_201905</appname>
+                <remark>shadowsocks_password</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+
             <application state="0">
                 <description>Amazon登录</description>
                 <appname>Amazon_Login_201702</appname>
