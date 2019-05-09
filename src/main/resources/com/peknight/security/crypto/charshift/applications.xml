@@ -1538,6 +1538,13 @@
                 <pwdlength>8</pwdlength>
                 <complexity>2</complexity>
             </application>
+            <application state="0">
+                <description>Transmission</description>
+                <appname>Transmission_RPC_PASSWORD_201905</appname>
+                <remark>peknight</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
         </applications>
     </user>
 </key>
