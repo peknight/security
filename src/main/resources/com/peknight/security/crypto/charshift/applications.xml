@@ -780,6 +780,14 @@
             </application>
 
             <application state="1">
+                <description>Cloudflare登录</description>
+                <appname>Cloudflare_Login_201905</appname>
+                <remark>JKpeknight@gmail.com</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+
+            <application state="1">
                 <description>Shadowsocks密码</description>
                 <appname>Shadowsocks_201905</appname>
                 <remark>shadowsocks_password</remark>
