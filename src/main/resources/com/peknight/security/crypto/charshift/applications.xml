@@ -591,6 +591,27 @@
                 <pwdlength>16</pwdlength>
                 <complexity>2</complexity>
             </application>
+            <application state="1">
+                <description>Digital Ocean SFO服务器00_root</description>
+                <appname>Digital_Ocean_Server_201906</appname>
+                <remark>sfo00.server.peknight.com_root</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Digital Ocean SFO服务器00_pek</description>
+                <appname>Digital_Ocean_Server_201906</appname>
+                <remark>sfo00.server.peknight.com_pek</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>Digital Ocean SFO服务器00_server</description>
+                <appname>Digital_Ocean_Server_201906</appname>
+                <remark>sfo00.server.peknight.com_server</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
 
             <application state="1">
                 <description>SoftEtherVPN服务器管理密码</description>
@@ -657,133 +678,6 @@
                 <remark>beijing.server.verashen.com_waiwai</remark>
                 <pwdlength>8</pwdlength>
                 <complexity>2</complexity>
-            </application>
-
-            <application state="1">
-                <description>DigitalOcean NYC01服务器</description>
-                <appname>DigitalOcean_Server_201708</appname>
-                <remark>nyc01.server.peknight.com_root</remark>
-                <pwdlength>16</pwdlength>
-                <complexity>2</complexity>
-            </application>
-            <application state="1">
-                <description>DigitalOcean NYC01 pek服务器</description>
-                <appname>DigitalOcean_Server_201709</appname>
-                <remark>nyc01.server.peknight.com_pek</remark>
-                <pwdlength>16</pwdlength>
-                <complexity>2</complexity>
-            </application>
-            <application state="1">
-                <description>SoftEtherVPN NYC01服务器管理密码</description>
-                <appname>SoftEther_VPN_Server_201708</appname>
-                <remark>nyc01.server.peknight.com_Administrator</remark>
-                <pwdlength>12</pwdlength>
-                <complexity>2</complexity>
-            </application>
-            <application state="1">
-                <description>SoftEtherVPNS NYC01服务器IPsec预共享密钥</description>
-                <appname>SoftEther_VPN_Server_IPsec_Pre-shared_Key_201708</appname>
-                <remark>nyc01.server.peknight.com</remark>
-                <pwdlength>8</pwdlength>
-                <complexity>2</complexity>
-            </application>
-            <application state="1">
-                <description>SoftEtherVPN NYC01服务器登录</description>
-                <appname>SoftEther_VPN_Server_Password_201708</appname>
-                <remark>nyc01.server.peknight.com_peknight</remark>
-                <pwdlength>8</pwdlength>
-                <complexity>2</complexity>
-            </application>
-            <application state="1">
-                <description>SoftEtherVPN NYC01服务器登录lvtu20</description>
-                <appname>SoftEther_VPN_Server_Password_201802</appname>
-                <remark>nyc01.server.peknight.com_lvtu20</remark>
-                <pwdlength>8</pwdlength>
-                <complexity>2</complexity>
-            </application>
-            <application state="1">
-                <description>DigitalOcean SG服务器</description>
-                <appname>DigitalOcean_Server_201701</appname>
-                <remark>188.166.181.154_root</remark>
-                <pwdlength>16</pwdlength>
-                <complexity>2</complexity>
-            </application>
-            <application state="1">
-                <description>SoftEtherVPN SG服务器管理密码</description>
-                <appname>SoftEther_VPN_Server_201701</appname>
-                <remark>188.166.181.154_Administrator</remark>
-                <pwdlength>12</pwdlength>
-                <complexity>2</complexity>
-            </application>
-            <application state="1">
-                <description>SoftEtherVPN SG服务器IPsec预共享密钥</description>
-                <appname>SoftEther_VPN_Server_IPsec_Pre-shared_Key_201701</appname>
-                <remark>188.166.181.154</remark>
-                <pwdlength>8</pwdlength>
-                <complexity>2</complexity>
-            </application>
-            <application state="1">
-                <description>SoftEtherVPN SG服务器登录</description>
-                <appname>SoftEther_VPN_Server_Password_201701</appname>
-                <remark>188.166.181.154_peknight</remark>
-                <pwdlength>8</pwdlength>
-                <complexity>2</complexity>
-            </application>
-            <application state="0">
-                <description>SG服务器MySQL登录</description>
-                <appname>MySQL_Login_201701</appname>
-                <remark>188.166.181.154_root</remark>
-                <pwdlength>12</pwdlength>
-                <complexity>4</complexity>
-            </application>
-            <application state="1">
-                <description>DigitalOcean 2GB服务器 节点1</description>
-                <appname>DigitalOcean_Server_201704</appname>
-                <remark>PekServer01_root</remark>
-                <pwdlength>20</pwdlength>
-                <complexity>4</complexity>
-            </application>
-            <application state="0">
-                <description>2GB服务器节点1MySQL登录</description>
-                <appname>MySQL_Login_201704</appname>
-                <remark>PekServer01_root</remark>
-                <pwdlength>10</pwdlength>
-                <complexity>4</complexity>
-            </application>
-            <application state="1">
-                <description>DigitalOcean 1GB服务器 节点2</description>
-                <appname>DigitalOcean_Server_201704</appname>
-                <remark>PekServer02_root</remark>
-                <pwdlength>20</pwdlength>
-                <complexity>4</complexity>
-            </application>
-            <application state="1">
-                <description>DigitalOcean 1GB服务器 节点3</description>
-                <appname>DigitalOcean_Server_201704</appname>
-                <remark>PekServer03_root</remark>
-                <pwdlength>20</pwdlength>
-                <complexity>4</complexity>
-            </application>
-            <application state="1">
-                <description>DigitalOcean 1GB服务器 节点4</description>
-                <appname>DigitalOcean_Server_201704</appname>
-                <remark>PekServer04_root</remark>
-                <pwdlength>20</pwdlength>
-                <complexity>4</complexity>
-            </application>
-            <application state="1">
-                <description>DigitalOcean 1GB服务器 节点5</description>
-                <appname>DigitalOcean_Server_201704</appname>
-                <remark>PekServer05_root</remark>
-                <pwdlength>20</pwdlength>
-                <complexity>4</complexity>
-            </application>
-            <application state="1">
-                <description>DigitalOcean 1GB服务器 节点6</description>
-                <appname>DigitalOcean_Server_201704</appname>
-                <remark>PekServer06_root</remark>
-                <pwdlength>20</pwdlength>
-                <complexity>4</complexity>
             </application>
 
             <application state="1">
