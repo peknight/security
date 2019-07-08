@@ -28,12 +28,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.peknight</groupId>
-			<artifactId>common</artifactId>
-			<version>${pek.common.version}</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>1.3.0</version>

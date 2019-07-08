@@ -23,10 +23,8 @@
  */
 package com.peknight.security;
 
-import com.peknight.common.config.PekApplication;
 import org.springframework.boot.SpringApplication;
 
-@PekApplication
 public class SecurityApplication {
 
 	public static void main(String[] args) {
