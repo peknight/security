@@ -282,6 +282,6 @@ public class Generator {
 	}
 	
 	public static void main(String[] args) {
-		generator4XML("security/src/main/resources/com/peknight/security/crypto/charshift/applications.xml");
+		generator4XML("src/main/resources/com/peknight/security/crypto/charshift/applications.xml");
 	}
 }
