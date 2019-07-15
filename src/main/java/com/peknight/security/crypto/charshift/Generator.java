@@ -248,9 +248,7 @@ public class Generator {
 	
 	@SuppressWarnings("unchecked")
 	public static void generator4XML(String xmlPath) {
-		Console console = System.console();
-		System.out.println(console);
-		char[] readPassword = console.readPassword("请输入基础密码：");
+		char[] readPassword = System.console().readPassword("请输入基础密码：");
 		String basicPwd = new String(readPassword);
 		System.out.println();
 		try {
