@@ -27,6 +27,7 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import java.io.Console;
 import java.io.File;
 import java.util.List;
 import java.util.Scanner;
@@ -247,10 +248,11 @@ public class Generator {
 	
 	@SuppressWarnings("unchecked")
 	public static void generator4XML(String xmlPath) {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("请输入基础密码");
-		String basicPwd = scanner.nextLine();
-		scanner.close();
+		Console console = System.console();
+		System.out.println(console);
+		char[] readPassword = console.readPassword("请输入基础密码：");
+		String basicPwd = new String(readPassword);
+		System.out.println();
 		try {
 			SAXReader reader = new SAXReader();
 			File properties = new File(xmlPath);
