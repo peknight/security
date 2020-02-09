@@ -1475,6 +1475,13 @@
                 <pwdlength>10</pwdlength>
                 <complexity>4</complexity>
             </application>
+            <application state="0">
+                <description>个人所得税</description>
+                <appname>Personal_Income_Tax_202002</appname>
+                <remark>peknight</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>4</complexity>
+            </application>
         </applications>
     </user>
 </key>
