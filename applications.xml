@@ -1484,14 +1484,14 @@
             </application>
             <application state="1">
                 <description>腾讯企业邮箱-Snowball登录</description>
-                <appname>Tencent_Exmail_Snowball_Login_202002</appname>
+                <appname>Tencent_Exmail_Snowball_Login_20200210</appname>
                 <remark>rengang@xueqiu.com</remark>
                 <pwdlength>16</pwdlength>
                 <complexity>2</complexity>
             </application>
             <application state="0">
                 <description>腾讯企业邮箱-Snowball文件夹密码</description>
-                <appname>Tencent_Exmail_Snowball_Folder_201708</appname>
+                <appname>Tencent_Exmail_Snowball_Folder_20200210</appname>
                 <remark>rengang@xueqiu.com</remark>
                 <pwdlength>16</pwdlength>
                 <complexity>2</complexity>
