@@ -1524,6 +1524,13 @@
                 <pwdlength>8</pwdlength>
                 <complexity>2</complexity>
             </application>
+            <application state="1">
+                <description>雪球MacbookPro登录xueqiu</description>
+                <appname>Snowball_MacBook_Pro_Password_202002</appname>
+                <remark>xueqiu</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
         </applications>
     </user>
 </key>
