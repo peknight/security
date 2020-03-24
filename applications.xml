@@ -1538,6 +1538,13 @@
                 <pwdlength>12</pwdlength>
                 <complexity>4</complexity>
             </application>
+            <application state="1">
+                <description>Alibaba_MacbookPro登录pek</description>
+                <appname>Alibaba_MacBook_Pro_Password_20200324</appname>
+                <remark>pek</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>4</complexity>
+            </application>
         </applications>
     </user>
 </key>
