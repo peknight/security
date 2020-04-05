@@ -24,6 +24,20 @@
                 <complexity>0</complexity>
             </application>
             <application state="1">
+                <description>华硕路由器登录</description>
+                <appname>ASUS_RT-AC86U_Login_202004</appname>
+                <remark>peknight</remark>
+                <pwdlength>12</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
+                <description>华硕路由器WiFi登录</description>
+                <appname>ASUS_RT-AC86U_PSK_202004</appname>
+                <remark>PEKNIGHT-HOME</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
                 <description>路由器登录</description>
                 <appname>TP-Link_TL-WR720N_Login_201702</appname>
                 <remark>peknight</remark>
