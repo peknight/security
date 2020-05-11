@@ -1559,6 +1559,13 @@
                 <pwdlength>8</pwdlength>
                 <complexity>4</complexity>
             </application>
+            <application state="1">
+                <description>淘宝测试子账号商家测试帐号14:水根</description>
+                <appname>Taobao_Test_Zizhanghao_Password_202005</appname>
+                <remark>263662065</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
         </applications>
     </user>
 </key>
