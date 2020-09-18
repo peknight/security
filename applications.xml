@@ -1190,7 +1190,7 @@
             </application>
             <application state="1">
                 <description>12306登录</description>
-                <appname>12306_Login_201806</appname>
+                <appname>12306_Login_20200918</appname>
                 <remark>peknight</remark>
                 <pwdlength>16</pwdlength>
                 <complexity>2</complexity>
