@@ -171,6 +171,13 @@
                 <complexity>4</complexity>
             </application>
             <application state="1">
+                <description>iPhone12锁屏</description>
+                <appname>Apple_iPhone_Passcode_20201115</appname>
+                <remark>iPhone12_Pro_Max_MGC33CH/A_F2LDMFFY0D5H</remark>
+                <pwdlength>6</pwdlength>
+                <complexity>0</complexity>
+            </application>
+            <application state="1">
                 <description>iPhone7锁屏</description>
                 <appname>Apple_iPhone_Passcode_201704</appname>
                 <remark>iPhone7_MNGX2CH/A_DNPT3B4GHG71</remark>
