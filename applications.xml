@@ -3,21 +3,21 @@
     <user>
         <applications>
             <application state="0">
-                <description>自如登录</description>
+                <description>自如登录(7727)</description>
                 <appname>Lianjia_Ziroom_Login_201706</appname>
                 <remark>18612977614</remark>
                 <pwdlength>14</pwdlength>
                 <complexity>2</complexity>
             </application>
             <application state="0">
-                <description>自如手势密码</description>
+                <description>自如手势密码(7727)</description>
                 <appname>Lianjia_Ziroom_Gesture_201707</appname>
                 <remark>18612977614_peknight</remark>
                 <pwdlength>5</pwdlength>
                 <complexity>0</complexity>
             </application>
             <application state="0">
-                <description>远洋自然房间门</description>
+                <description>远洋自然房间门(7727)</description>
                 <appname>Lianjia_Ziroom_Yuanyangziran_2_1_1301_01_201706</appname>
                 <remark>18612977614</remark>
                 <pwdlength>6</pwdlength>
@@ -942,7 +942,7 @@
                 <complexity>0</complexity>
             </application>
             <application state="1">
-                <description>会分期登录</description>
+                <description>会分期登录(7727)</description>
                 <appname>Huifenqi_Login_201703</appname>
                 <remark>18612977614</remark>
                 <pwdlength>12</pwdlength>
@@ -999,21 +999,21 @@
             </application>
 
             <application state="0">
-                <description>中国招商银行</description>
+                <description>中国招商银行(7727)</description>
                 <appname>ChinaMerchantsBank_201704</appname>
                 <remark>18612977614</remark>
                 <pwdlength>6</pwdlength>
                 <complexity>0</complexity>
             </application>
             <application state="1">
-                <description>中国招商银行一网通登录</description>
+                <description>中国招商银行一网通登录(7727)</description>
                 <appname>ChinaMerchantsBank_Login_201704</appname>
                 <remark>18612977614</remark>
                 <pwdlength>8</pwdlength>
                 <complexity>2</complexity>
             </application>
             <application state="1">
-                <description>中国招商银行一网通支付</description>
+                <description>中国招商银行一网通支付(7727)</description>
                 <appname>ChinaMerchantsBank_Payment_Password_201704</appname>
                 <remark>18612977614</remark>
                 <pwdlength>6</pwdlength>
@@ -1273,21 +1273,21 @@
                 <complexity>2</complexity>
             </application>
             <application state="1">
-                <description>猎聘登录</description>
+                <description>猎聘登录(7727)</description>
                 <appname>Liepin_Login_201704</appname>
                 <remark>18612977614</remark>
                 <pwdlength>16</pwdlength>
                 <complexity>2</complexity>
             </application>
             <application state="1">
-                <description>拉钩登录</description>
+                <description>拉钩登录(7727)</description>
                 <appname>Lagou_Login_201704</appname>
                 <remark>18612977614</remark>
                 <pwdlength>16</pwdlength>
                 <complexity>2</complexity>
             </application>
             <application state="1">
-                <description>Boss直聘登录</description>
+                <description>Boss直聘登录(7727)</description>
                 <appname>Boss Zhipin_Login_201704</appname>
                 <remark>18612977614</remark>
                 <pwdlength>16</pwdlength>
