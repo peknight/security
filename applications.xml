@@ -115,25 +115,18 @@
                 <complexity>0</complexity>
             </application>
             <application state="1">
-                <description>Ubuntu_pek登录</description>
-                <appname>Personal_Computer_Ubuntu_Login_201806</appname>
+                <description>archlinux_pek登录</description>
+                <appname>Personal_Computer_Archlinux_Login_202101</appname>
                 <remark>pek</remark>
-                <pwdlength>8</pwdlength>
-                <complexity>1</complexity>
-            </application>
-            <application state="1">
-                <description>Ubuntu_root登录</description>
-                <appname>Personal_Computer_Ubuntu_Login_201806</appname>
-                <remark>root</remark>
                 <pwdlength>8</pwdlength>
                 <complexity>2</complexity>
             </application>
             <application state="1">
-                <description>Ubuntu_rengang登录</description>
-                <appname>Personal_Computer_Ubuntu_Login_201806</appname>
-                <remark>rengang</remark>
-                <pwdlength>4</pwdlength>
-                <complexity>0</complexity>
+                <description>archlinux_root登录</description>
+                <appname>Personal_Computer_Archlinux_Login_202101</appname>
+                <remark>root</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
             </application>
             <application state="1">
                 <description>Microsoft QQ登录</description>
