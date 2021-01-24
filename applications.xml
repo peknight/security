@@ -318,6 +318,13 @@
                 <complexity>2</complexity>
             </application>
             <application state="1">
+                <description>Docker Postgres gitea密码</description>
+                <appname>Docker_Postgres_Password_202101</appname>
+                <remark>gitea</remark>
+                <pwdlength>16</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
                 <description>Docker Redis密码</description>
                 <appname>Docker_Redis_Password_201711</appname>
                 <remark>docker-pek-redis</remark>
