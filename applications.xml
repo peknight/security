@@ -16,13 +16,6 @@
                 <pwdlength>5</pwdlength>
                 <complexity>0</complexity>
             </application>
-            <application state="0">
-                <description>远洋自然房间门(7727)</description>
-                <appname>Lianjia_Ziroom_Yuanyangziran_2_1_1301_01_201706</appname>
-                <remark>18612977614</remark>
-                <pwdlength>6</pwdlength>
-                <complexity>0</complexity>
-            </application>
             <application state="1">
                 <description>华硕路由器登录</description>
                 <appname>ASUS_RT-AC86U_Login_202004</appname>
@@ -88,42 +81,28 @@
             </application>
             <application state="1">
                 <description>笔记本电脑登录</description>
-                <appname>Personal_Computer_Login_201701</appname>
-                <remark>Lenovo_Ideapad_Y570_CB09442853_Peknight</remark>
+                <appname>Personal_Computer_Login_202102</appname>
+                <remark>pek</remark>
                 <pwdlength>12</pwdlength>
                 <complexity>2</complexity>
             </application>
             <application state="1">
                 <description>笔记本电脑PIN</description>
-                <appname>Microsoft_Windows_PIN_201701</appname>
-                <remark>Lenovo_Ideapad_Y570_CB09442853_peknight@qq.com</remark>
+                <appname>Microsoft_Windows_PIN_202102</appname>
+                <remark>pek</remark>
                 <pwdlength>6</pwdlength>
                 <complexity>0</complexity>
             </application>
             <application state="1">
-                <description>笔记本电脑WIFI</description>
-                <appname>Microsoft_Windows_WIFI_201703</appname>
-                <remark>Lenovo_Ideapad_Y570_CB09442853_Peknight-PC</remark>
-                <pwdlength>8</pwdlength>
-                <complexity>2</complexity>
-            </application>
-            <application state="1">
-                <description>工作笔记本电脑登录</description>
-                <appname>Personal_Computer_JoinQuant_Login_201704</appname>
-                <remark>Peknight-Work</remark>
-                <pwdlength>4</pwdlength>
-                <complexity>0</complexity>
-            </application>
-            <application state="1">
                 <description>archlinux_pek登录</description>
-                <appname>Personal_Computer_Archlinux_Login_202101</appname>
+                <appname>Personal_Computer_Archlinux_Login_202102</appname>
                 <remark>pek</remark>
                 <pwdlength>8</pwdlength>
                 <complexity>2</complexity>
             </application>
             <application state="1">
                 <description>archlinux_root登录</description>
-                <appname>Personal_Computer_Archlinux_Login_202101</appname>
+                <appname>Personal_Computer_Archlinux_Login_202102</appname>
                 <remark>root</remark>
                 <pwdlength>8</pwdlength>
                 <complexity>2</complexity>
