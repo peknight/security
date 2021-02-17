@@ -94,6 +94,13 @@
                 <complexity>0</complexity>
             </application>
             <application state="1">
+                <description>ubuntu_pek登录</description>
+                <appname>Personal_Computer_Ubuntu_Login_202102</appname>
+                <remark>pek</remark>
+                <pwdlength>8</pwdlength>
+                <complexity>2</complexity>
+            </application>
+            <application state="1">
                 <description>archlinux_pek登录</description>
                 <appname>Personal_Computer_Archlinux_Login_202102</appname>
                 <remark>pek</remark>
