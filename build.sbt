@@ -19,8 +19,6 @@ lazy val security = (project in file("."))
   .aggregate(
     securityCore.jvm,
     securityCore.js,
-    securityApp.jvm,
-    securityApp.js,
   )
   .settings(commonSettings)
   .settings(
@@ -32,14 +30,8 @@ lazy val securityCore = (crossProject(JSPlatform, JVMPlatform) in file("security
   .settings(
     name := "security-core",
     libraryDependencies ++= Seq(
+      "org.typelevel" %%% "cats-effect" % catsEffectVersion,
     ),
   )
 
-lazy val securityApp = (crossProject(JSPlatform, JVMPlatform) in file("security-app"))
-  .dependsOn(securityCore)
-  .settings(commonSettings)
-  .settings(
-    name := "security-app",
-    libraryDependencies ++= Seq(
-    ),
-  )
+val catsEffectVersion = "3.5.4"
