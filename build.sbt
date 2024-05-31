@@ -30,8 +30,19 @@ lazy val securityCore = (crossProject(JSPlatform, JVMPlatform) in file("security
   .settings(
     name := "security-core",
     libraryDependencies ++= Seq(
+    ),
+  )
+
+lazy val securityEffect = (crossProject(JSPlatform, JVMPlatform) in file("security-effect"))
+  .dependsOn(securityCore)
+  .settings(commonSettings)
+  .settings(
+    name := "security-core",
+    libraryDependencies ++= Seq(
       "org.typelevel" %%% "cats-effect" % catsEffectVersion,
+      "org.scodec" %% "scodec-bits" % scodecVersion,
     ),
   )
 
 val catsEffectVersion = "3.5.4"
+val scodecVersion = "1.2.0"
