@@ -17,7 +17,7 @@ trait AEAD extends CipherAlgorithm:
   def algorithm: String = s"${encryption.algorithm}-${mac.algorithm}"
 end AEAD
 object AEAD:
-  private[this] case class AEAD(encryption: CipherAlgorithm, mac: MAC)
+  private case class AEAD(encryption: CipherAlgorithm, mac: MAC)
     extends com.peknight.security.cipher.AEAD:
     type This = com.peknight.security.cipher.AEAD
     def /(mode: CipherAlgorithmMode): This = AEAD(encryption / mode, mac)

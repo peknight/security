@@ -15,7 +15,7 @@ trait `ChaCha20-Poly1305` extends AEAD with AlgorithmParametersAlgorithm with Sy
   override def -(mac: MAC): AEAD = encryption - mac
 end `ChaCha20-Poly1305`
 object `ChaCha20-Poly1305` extends `ChaCha20-Poly1305`:
-  private[this] case class `ChaCha20-Poly1305`(override val encryption: ChaCha20)
+  private case class `ChaCha20-Poly1305`(override val encryption: ChaCha20)
     extends com.peknight.security.cipher.`ChaCha20-Poly1305`
   def apply(encryption: ChaCha20 = ChaCha20): com.peknight.security.cipher.`ChaCha20-Poly1305` =
     encryption match

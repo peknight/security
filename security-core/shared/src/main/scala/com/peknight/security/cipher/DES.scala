@@ -18,7 +18,7 @@ object DES extends DES with AlgorithmParametersAlgorithm with KeyGeneratorAlgori
   type This = com.peknight.security.cipher.DES
   def /(mode: CipherAlgorithmMode): This = apply(mode, padding)
   def /(padding: CipherAlgorithmPadding): This = apply(mode, padding)
-  private[this] case class DES(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
+  private case class DES(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
     extends com.peknight.security.cipher.DES:
     type This = com.peknight.security.cipher.DES
     def /(mode: CipherAlgorithmMode): This = apply(mode, padding)

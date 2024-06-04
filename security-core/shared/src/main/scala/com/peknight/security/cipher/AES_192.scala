@@ -10,7 +10,7 @@ trait AES_192 extends AES_N:
   override def /(padding: CipherAlgorithmPadding): This = AES_192(mode, padding)
 end AES_192
 object AES_192 extends AES_192:
-  private[this] case class AES_192(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
+  private case class AES_192(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
     extends com.peknight.security.cipher.AES_192
   def apply(mode: CipherAlgorithmMode = NONE, padding: CipherAlgorithmPadding = NoPadding)
   : com.peknight.security.cipher.AES_192 =

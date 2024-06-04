@@ -12,7 +12,7 @@ trait RC5 extends CipherAlgorithm with RC:
   val algorithm: String = "RC5"
 end RC5
 object RC5 extends RC5:
-  private[this] case class RC5(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
+  private case class RC5(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
     extends com.peknight.security.cipher.RC5
   def apply(mode: CipherAlgorithmMode = NONE, padding: CipherAlgorithmPadding = NoPadding)
   : com.peknight.security.cipher.RC5 =

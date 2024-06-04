@@ -18,7 +18,7 @@ trait ChaCha20 extends CipherAlgorithm with KeyGeneratorAlgorithm with SecretKey
       case _ => super.-(mac)
 end ChaCha20
 object ChaCha20 extends ChaCha20:
-  private[this] case class ChaCha20(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
+  private case class ChaCha20(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
     extends com.peknight.security.cipher.ChaCha20
   def apply(mode: CipherAlgorithmMode = NONE, padding: CipherAlgorithmPadding = NoPadding)
   : com.peknight.security.cipher.ChaCha20 =

@@ -13,7 +13,7 @@ trait RC2 extends CipherAlgorithm with AlgorithmParametersAlgorithm with KeyGene
   val algorithm: String = "RC2"
 end RC2
 object RC2 extends RC2:
-  private[this] case class RC2(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
+  private case class RC2(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
     extends com.peknight.security.cipher.RC2
   def apply(mode: CipherAlgorithmMode = NONE, padding: CipherAlgorithmPadding = NoPadding)
   : com.peknight.security.cipher.RC2 =

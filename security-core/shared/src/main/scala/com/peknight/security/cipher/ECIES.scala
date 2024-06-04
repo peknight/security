@@ -15,7 +15,7 @@ trait ECIES extends CipherAlgorithm with Asymmetric:
   def /(padding: CipherAlgorithmPadding): This = ECIES(mode, padding)
 end ECIES
 object ECIES extends ECIES:
-  private[this] case class ECIES(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
+  private case class ECIES(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
     extends com.peknight.security.cipher.ECIES
   def apply(mode: CipherAlgorithmMode = NONE, padding: CipherAlgorithmPadding = NoPadding)
   : com.peknight.security.cipher.ECIES =

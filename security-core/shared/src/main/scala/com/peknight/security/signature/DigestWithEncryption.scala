@@ -18,8 +18,8 @@ trait DigestWithEncryption extends SignatureAlgorithm:
   def format(format: Option[Format]): DigestWithEncryption = DigestWithEncryption(digest, encryption, mgf, format)
 end DigestWithEncryption
 object DigestWithEncryption:
-  private[this] case class DigestWithEncryption(digest: MessageDigestAlgorithm, encryption: Algorithm, mgf: Option[MGF],
-                                                format: Option[Format])
+  private case class DigestWithEncryption(digest: MessageDigestAlgorithm, encryption: Algorithm, mgf: Option[MGF],
+                                          format: Option[Format])
     extends com.peknight.security.signature.DigestWithEncryption
   def apply(digest: MessageDigestAlgorithm, encryption: Algorithm, mgf: Option[MGF] = None,
             format: Option[Format] = None)

@@ -11,7 +11,7 @@ trait PBES1WithDigestAndEncryption extends PBEWithDigestAndEncryption:
   def encryption: DES
 end PBES1WithDigestAndEncryption
 object PBES1WithDigestAndEncryption:
-  private[this] case class PBES1WithDigestAndEncryption(digest: MD, encryption: DES)
+  private case class PBES1WithDigestAndEncryption(digest: MD, encryption: DES)
     extends com.peknight.security.pbe.PBES1WithDigestAndEncryption
   def apply(digest: MD, encryption: DES): com.peknight.security.pbe.PBES1WithDigestAndEncryption =
     PBES1WithDigestAndEncryption(digest, encryption)

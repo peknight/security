@@ -15,7 +15,7 @@ trait RC4 extends ARCFOUR:
   override val algorithm: String = "RC4"
 end RC4
 object RC4 extends RC4:
-  private[this] case class RC4(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
+  private case class RC4(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
     extends com.peknight.security.cipher.RC4
   def apply(mode: CipherAlgorithmMode = NONE, padding: CipherAlgorithmPadding = NoPadding)
   : com.peknight.security.cipher.RC4 =

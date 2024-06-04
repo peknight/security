@@ -16,7 +16,7 @@ object ARCFOUR extends ARCFOUR with KeyGeneratorAlgorithm with SecretKeyFactoryA
   type This = com.peknight.security.cipher.ARCFOUR
   def /(mode: CipherAlgorithmMode): This = apply(mode, padding)
   def /(padding: CipherAlgorithmPadding): This = apply(mode, padding)
-  private[this] case class ARCFOUR(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
+  private case class ARCFOUR(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
     extends com.peknight.security.cipher.ARCFOUR:
     type This = com.peknight.security.cipher.ARCFOUR
     def /(mode: CipherAlgorithmMode): This = apply(mode, padding)

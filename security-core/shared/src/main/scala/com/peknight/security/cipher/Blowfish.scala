@@ -13,7 +13,7 @@ trait Blowfish extends CipherAlgorithm with AlgorithmParametersAlgorithm with Ke
   def /(padding: CipherAlgorithmPadding): This = Blowfish(mode, padding)
 end Blowfish
 object Blowfish extends Blowfish:
-  private[this] case class Blowfish(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
+  private case class Blowfish(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
     extends com.peknight.security.cipher.Blowfish
   def apply(mode: CipherAlgorithmMode = NONE, padding: CipherAlgorithmPadding = NoPadding)
   : com.peknight.security.cipher.Blowfish =

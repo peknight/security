@@ -18,7 +18,7 @@ trait AES extends CipherAlgorithm with Symmetric:
   def algorithm: String = "AES"
 end AES
 object AES extends AES with AlgorithmParametersAlgorithm with KeyGeneratorAlgorithm with SecretKeyFactoryAlgorithm:
-  private[this] case class AES(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
+  private case class AES(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
     extends com.peknight.security.cipher.AES
   def apply(mode: CipherAlgorithmMode = NONE, padding: CipherAlgorithmPadding = NoPadding)
   : com.peknight.security.cipher.AES =

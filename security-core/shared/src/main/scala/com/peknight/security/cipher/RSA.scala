@@ -16,7 +16,7 @@ trait RSA extends CipherAlgorithm with KeyFactoryAlgorithm with KeyPairGenerator
   def /(padding: CipherAlgorithmPadding): This = RSA(mode, padding)
 end RSA
 object RSA extends RSA:
-  private[this] case class RSA(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
+  private case class RSA(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
     extends com.peknight.security.cipher.RSA
   def apply(mode: CipherAlgorithmMode = NONE, padding: CipherAlgorithmPadding = NoPadding)
   : com.peknight.security.cipher.RSA =

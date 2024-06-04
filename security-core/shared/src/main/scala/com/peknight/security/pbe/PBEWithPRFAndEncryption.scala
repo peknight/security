@@ -18,7 +18,7 @@ trait PBEWithPRFAndEncryption extends CipherAlgorithm with AlgorithmParametersAl
   def algorithm: String = s"PBEWith${prf.prf}And${encryption.abbreviation}"
 end PBEWithPRFAndEncryption
 object PBEWithPRFAndEncryption:
-  private[this] case class PBEWithPRFAndEncryption(prf: PRF, encryption: CipherAlgorithm)
+  private case class PBEWithPRFAndEncryption(prf: PRF, encryption: CipherAlgorithm)
     extends com.peknight.security.pbe.PBEWithPRFAndEncryption
   def apply(prf: PRF, encryption: CipherAlgorithm): com.peknight.security.pbe.PBEWithPRFAndEncryption =
     PBEWithPRFAndEncryption(prf, encryption)

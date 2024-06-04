@@ -17,7 +17,7 @@ trait DESede extends DES:
   override def algorithm: String = "DESede"
 end DESede
 object DESede extends DESede with AlgorithmParametersAlgorithm with KeyGeneratorAlgorithm with SecretKeyFactoryAlgorithm:
-  private[this] case class DESede(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
+  private case class DESede(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
     extends com.peknight.security.cipher.DESede
   def apply(mode: CipherAlgorithmMode = NONE, padding: CipherAlgorithmPadding = NoPadding)
   : com.peknight.security.cipher.DESede =

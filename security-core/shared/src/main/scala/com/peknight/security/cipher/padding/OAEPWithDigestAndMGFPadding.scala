@@ -9,7 +9,7 @@ trait OAEPWithDigestAndMGFPadding extends CipherAlgorithmPadding with OAEP:
   def padding: String = s"OAEPWith${digest.abbreviation}And${mgf.mgf}Padding"
 end OAEPWithDigestAndMGFPadding
 object OAEPWithDigestAndMGFPadding:
-  private[this] case class OAEPWithDigestAndMGFPadding(digest: Digest, mgf: MGF)
+  private case class OAEPWithDigestAndMGFPadding(digest: Digest, mgf: MGF)
     extends com.peknight.security.cipher.padding.OAEPWithDigestAndMGFPadding
   def apply(digest: Digest, mgf: MGF): com.peknight.security.cipher.padding.OAEPWithDigestAndMGFPadding =
     OAEPWithDigestAndMGFPadding(digest, mgf)
