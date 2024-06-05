@@ -10,11 +10,17 @@ import com.peknight.security.parameter.AlgorithmParametersAlgorithm
 /**
  * The Digital Encryption Standard as described in FIPS PUB 46-3.
  */
-trait DES extends CipherAlgorithm with Symmetric:
+trait DES extends CipherAlgorithm
+  with AlgorithmParametersAlgorithm
+  with KeyGeneratorAlgorithm
+  with SecretKeyFactoryAlgorithm
+  with BlockCipher
+  with Symmetric:
   type This <: DES
+  def blockSize: Int = 8
   def algorithm: String = "DES"
 end DES
-object DES extends DES with AlgorithmParametersAlgorithm with KeyGeneratorAlgorithm with SecretKeyFactoryAlgorithm:
+object DES extends DES:
   type This = com.peknight.security.cipher.DES
   def /(mode: CipherAlgorithmMode): This = apply(mode, padding)
   def /(padding: CipherAlgorithmPadding): This = apply(mode, padding)

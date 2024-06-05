@@ -7,7 +7,8 @@ import com.peknight.security.key.generator.KeyGeneratorAlgorithm
 import com.peknight.security.key.secret.SecretKeyFactoryAlgorithm
 import com.peknight.security.mac.{MAC, Poly1305}
 
-trait ChaCha20 extends CipherAlgorithm with KeyGeneratorAlgorithm with SecretKeyFactoryAlgorithm with Symmetric:
+trait ChaCha20 extends CipherAlgorithm with KeyGeneratorAlgorithm with SecretKeyFactoryAlgorithm with StreamCipher
+  with Symmetric:
   type This = ChaCha20
   val algorithm: String = "ChaCha20"
   def /(mode: CipherAlgorithmMode): This = ChaCha20(mode, padding)

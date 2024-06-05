@@ -6,8 +6,9 @@ import com.peknight.security.cipher.padding.{CipherAlgorithmPadding, NoPadding}
 import com.peknight.security.key.generator.KeyGeneratorAlgorithm
 import com.peknight.security.parameter.AlgorithmParametersAlgorithm
 
-trait RC2 extends CipherAlgorithm with AlgorithmParametersAlgorithm with KeyGeneratorAlgorithm with RC:
+trait RC2 extends CipherAlgorithm with AlgorithmParametersAlgorithm with KeyGeneratorAlgorithm with BlockCipher with RC:
   type This = RC2
+  val blockSize: Int = 8
   def /(mode: CipherAlgorithmMode): This = RC2(mode, padding)
   def /(padding: CipherAlgorithmPadding): This = RC2(mode, padding)
   val algorithm: String = "RC2"

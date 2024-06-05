@@ -10,14 +10,19 @@ import com.peknight.security.parameter.AlgorithmParametersAlgorithm
 /**
  * Advanced Encryption Standard
  */
-trait AES extends CipherAlgorithm with Symmetric:
+trait AES extends CipherAlgorithm
+  with AlgorithmParametersAlgorithm
+  with KeyGeneratorAlgorithm
+  with SecretKeyFactoryAlgorithm
+  with BlockCipher
+  with Symmetric:
   type This = AES
-  def keySize: Int = 128
+  def blockSize: Int = 128 / 8
   def /(mode: CipherAlgorithmMode): This = AES(mode, padding)
   def /(padding: CipherAlgorithmPadding): This = AES(mode, padding)
   def algorithm: String = "AES"
 end AES
-object AES extends AES with AlgorithmParametersAlgorithm with KeyGeneratorAlgorithm with SecretKeyFactoryAlgorithm:
+object AES extends AES:
   private case class AES(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)
     extends com.peknight.security.cipher.AES
   def apply(mode: CipherAlgorithmMode = NONE, padding: CipherAlgorithmPadding = NoPadding)

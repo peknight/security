@@ -5,7 +5,7 @@ import com.peknight.security.cipher.mode.CipherAlgorithmMode
 import com.peknight.security.cipher.padding.{CipherAlgorithmPadding, NoPadding}
 
 trait AES_192 extends AES_N:
-  override val keySize: Int = 192
+  override val blockSize: Int = 192 / 8
   override def /(mode: CipherAlgorithmMode): This = AES_192(mode, padding)
   override def /(padding: CipherAlgorithmPadding): This = AES_192(mode, padding)
 end AES_192

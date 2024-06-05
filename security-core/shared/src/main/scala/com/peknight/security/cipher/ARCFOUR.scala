@@ -9,10 +9,14 @@ import com.peknight.security.key.secret.SecretKeyFactoryAlgorithm
 /**
  * RC4 not recommend
  */
-trait ARCFOUR extends CipherAlgorithm with RC:
+trait ARCFOUR extends CipherAlgorithm
+  with KeyGeneratorAlgorithm
+  with SecretKeyFactoryAlgorithm
+  with StreamCipher
+  with RC:
   def algorithm: String = "ARCFOUR"
 end ARCFOUR
-object ARCFOUR extends ARCFOUR with KeyGeneratorAlgorithm with SecretKeyFactoryAlgorithm:
+object ARCFOUR extends ARCFOUR:
   type This = com.peknight.security.cipher.ARCFOUR
   def /(mode: CipherAlgorithmMode): This = apply(mode, padding)
   def /(padding: CipherAlgorithmPadding): This = apply(mode, padding)

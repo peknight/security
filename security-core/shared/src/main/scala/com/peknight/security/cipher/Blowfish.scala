@@ -6,8 +6,10 @@ import com.peknight.security.cipher.padding.{CipherAlgorithmPadding, NoPadding}
 import com.peknight.security.key.generator.KeyGeneratorAlgorithm
 import com.peknight.security.parameter.AlgorithmParametersAlgorithm
 
-trait Blowfish extends CipherAlgorithm with AlgorithmParametersAlgorithm with KeyGeneratorAlgorithm with Symmetric:
+trait Blowfish extends CipherAlgorithm with AlgorithmParametersAlgorithm with KeyGeneratorAlgorithm with BlockCipher
+  with Symmetric:
   type This = Blowfish
+  val blockSize: Int = 8
   val algorithm: String = "Blowfish"
   def /(mode: CipherAlgorithmMode): This = Blowfish(mode, padding)
   def /(padding: CipherAlgorithmPadding): This = Blowfish(mode, padding)
