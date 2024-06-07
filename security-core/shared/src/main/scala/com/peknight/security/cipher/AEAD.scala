@@ -1,6 +1,5 @@
 package com.peknight.security.cipher
 
-import com.peknight.security.cipher.CipherAlgorithm
 import com.peknight.security.cipher.mode.CipherAlgorithmMode
 import com.peknight.security.cipher.padding.CipherAlgorithmPadding
 import com.peknight.security.mac.MAC

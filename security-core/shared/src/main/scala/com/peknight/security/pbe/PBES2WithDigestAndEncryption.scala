@@ -1,9 +1,7 @@
 package com.peknight.security.pbe
 
-import com.peknight.security.cipher.mode.CipherAlgorithmMode
-import com.peknight.security.cipher.padding.CipherAlgorithmPadding
-import com.peknight.security.cipher.{CipherAlgorithm, DES}
-import com.peknight.security.digest.{Digest, MD}
+import com.peknight.security.cipher.CipherAlgorithm
+import com.peknight.security.digest.Digest
 
 trait PBES2WithDigestAndEncryption extends PBEWithDigestAndEncryption:
   def pbe: PBES2 = PBES2

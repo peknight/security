@@ -1,9 +1,9 @@
-package com.peknight.security.signature.padding
+package com.peknight.security.padding
 
 /**
  * Probabilistic Signature Scheme
  */
-trait PSS extends SignaturePadding:
+trait PSS extends Padding:
   val padding: String = "PSS"
 end PSS
 object PSS extends PSS

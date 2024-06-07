@@ -1,5 +1,5 @@
 package com.peknight.security.cipher.padding
 
-trait CipherAlgorithmPadding derives CanEqual:
-  def padding: String
-end CipherAlgorithmPadding
+import com.peknight.security.padding.Padding
+
+trait CipherAlgorithmPadding extends Padding derives CanEqual
