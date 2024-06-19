@@ -45,7 +45,7 @@ lazy val securityEffect = (crossProject(JSPlatform, JVMPlatform) in file("securi
   .dependsOn(securityCore)
   .settings(commonSettings)
   .settings(
-    name := "security-core",
+    name := "security-effect",
     libraryDependencies ++= Seq(
       "org.typelevel" %%% "cats-effect" % catsEffectVersion,
       "org.scodec" %%% "scodec-bits" % scodecVersion,
