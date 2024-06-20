@@ -10,6 +10,9 @@ trait KeyPairGeneratorSyntax:
     def initializeF[F[_]: Sync](params: AlgorithmParameterSpec, random: SecureRandom): F[Unit] =
       Sync[F].blocking(generator.initialize(params, random))
 
+    def initializeF[F[_]: Sync](keySize: Int): F[Unit] =
+      Sync[F].blocking(generator.initialize(keySize))
+
     def generateKeyPairF[F[_]: Sync]: F[KeyPair] =
       Sync[F].blocking(generator.generateKeyPair())
   end extension

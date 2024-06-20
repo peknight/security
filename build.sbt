@@ -21,6 +21,8 @@ lazy val security = (project in file("."))
     securityCore.js,
     securityEffect.jvm,
     securityEffect.js,
+    securityFs2.jvm,
+    securityFs2.js,
     securityBouncyCastleProvider.jvm,
     securityBouncyCastleProvider.js,
     securityBouncyCastlePkix.jvm,
@@ -51,6 +53,16 @@ lazy val securityEffect = (crossProject(JSPlatform, JVMPlatform) in file("securi
       "org.scodec" %%% "scodec-bits" % scodecVersion,
       "com.peknight" %%% "cats-ext" % pekExtVersion % Test,
       "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
+    ),
+  )
+
+lazy val securityFs2 = (crossProject(JSPlatform, JVMPlatform) in file("security-fs2"))
+  .dependsOn(securityEffect)
+  .settings(commonSettings)
+  .settings(
+    name := "security-fs2",
+    libraryDependencies ++= Seq(
+      "com.peknight" %%% "fs2-ext" % pekExtVersion,
     ),
   )
 
