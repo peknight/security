@@ -51,7 +51,6 @@ lazy val securityEffect = (crossProject(JSPlatform, JVMPlatform) in file("securi
     libraryDependencies ++= Seq(
       "org.typelevel" %%% "cats-effect" % catsEffectVersion,
       "org.scodec" %%% "scodec-bits" % scodecVersion,
-      "com.peknight" %%% "cats-ext" % pekExtVersion % Test,
       "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     ),
   )
@@ -63,6 +62,7 @@ lazy val securityFs2 = (crossProject(JSPlatform, JVMPlatform) in file("security-
     name := "security-fs2",
     libraryDependencies ++= Seq(
       "com.peknight" %%% "fs2-ext" % pekExtVersion,
+      "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     ),
   )
 
