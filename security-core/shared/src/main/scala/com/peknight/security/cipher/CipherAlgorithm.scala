@@ -1,7 +1,6 @@
 package com.peknight.security.cipher
 
 import com.peknight.security.algorithm.{Algorithm, NONE}
-import com.peknight.security.cipher.AEAD
 import com.peknight.security.cipher.mode.CipherAlgorithmMode
 import com.peknight.security.cipher.padding.{CipherAlgorithmPadding, NoPadding}
 import com.peknight.security.mac.MAC

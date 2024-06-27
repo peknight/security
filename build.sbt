@@ -67,12 +67,16 @@ lazy val securityFs2 = (crossProject(JSPlatform, JVMPlatform) in file("security-
   )
 
 lazy val securityBouncyCastleProvider = (crossProject(JSPlatform, JVMPlatform) in file("security-bcprov"))
-  .dependsOn(securityCore)
+  .dependsOn(
+    securityCore,
+    securityEffect % Test,
+  )
   .settings(commonSettings)
   .settings(
     name := "security-bcprov",
     libraryDependencies ++= Seq(
       "org.typelevel" %%% "cats-effect" % catsEffectVersion,
+      "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     ),
   )
   .jvmSettings(
