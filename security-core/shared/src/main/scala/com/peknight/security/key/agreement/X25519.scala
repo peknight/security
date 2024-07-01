@@ -8,5 +8,6 @@ import com.peknight.security.spec.NamedParameterSpecName
 trait X25519 extends XDH with NamedParameterSpecName:
   override val algorithm: String = "X25519"
   def parameterSpecName: String = algorithm
+  val prime: BigInt = BigInt("57896044618658097711785492504343953926634992332820282019728792003956564819949")
 end X25519
 object X25519 extends X25519
