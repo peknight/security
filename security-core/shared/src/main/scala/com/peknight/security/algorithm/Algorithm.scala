@@ -9,4 +9,5 @@ trait Algorithm derives CanEqual:
   def algorithm: String
   def abbreviation: String = algorithm
   def oid: Option[ObjectIdentifier] = None
+  override def toString: String = algorithm
 end Algorithm
