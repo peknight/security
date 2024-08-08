@@ -16,6 +16,9 @@ object KeyPairGenerator:
   def getInstance[F[_]: Sync](algorithm: KeyPairGeneratorAlgorithm, provider: Provider): F[JKeyPairGenerator] =
     Sync[F].delay(JKeyPairGenerator.getInstance(algorithm.algorithm, provider.name))
 
+  def getInstance[F[_]: Sync](algorithm: KeyPairGeneratorAlgorithm, provider: Option[Provider]): F[JKeyPairGenerator] =
+    provider.fold(getInstance[F](algorithm))(getInstance[F](algorithm, _))
+
   def getInstance[F[_]: Sync](algorithm: KeyPairGeneratorAlgorithm, provider: JProvider): F[JKeyPairGenerator] =
     Sync[F].delay(JKeyPairGenerator.getInstance(algorithm.algorithm, provider))
 
