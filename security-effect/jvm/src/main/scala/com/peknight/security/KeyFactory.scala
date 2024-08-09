@@ -1,19 +1,35 @@
 package com.peknight.security
 
 import cats.effect.Sync
+import cats.syntax.flatMap.*
+import cats.syntax.functor.*
 import com.peknight.security.key.factory.KeyFactoryAlgorithm
 import com.peknight.security.provider.Provider
+import com.peknight.security.syntax.keyFactory.{generatePrivateF, generatePublicF}
 
-import java.security.KeyFactory as JKeyFactory
+import java.security.spec.KeySpec
+import java.security.{PrivateKey, PublicKey, KeyFactory as JKeyFactory, Provider as JProvider}
 
 object KeyFactory:
-  def getInstance[F[_]: Sync](algorithm: KeyFactoryAlgorithm): F[JKeyFactory] =
-    Sync[F].blocking(JKeyFactory.getInstance(algorithm.algorithm))
+  def getInstance[F[_]: Sync](algorithm: KeyFactoryAlgorithm, provider: Option[Provider | JProvider]): F[JKeyFactory] =
+    Sync[F].blocking {
+      provider match
+        case Some(provider: Provider) => JKeyFactory.getInstance(algorithm.algorithm, provider.name)
+        case Some(provider: JProvider) => JKeyFactory.getInstance(algorithm.algorithm, provider)
+        case _ => JKeyFactory.getInstance(algorithm.algorithm)
+    }
 
-  def getInstance[F[_]: Sync](algorithm: KeyFactoryAlgorithm, provider: Provider): F[JKeyFactory] =
-    Sync[F].blocking(JKeyFactory.getInstance(algorithm.algorithm, provider.name))
+  def generatePublic[F[_]: Sync](algorithm: KeyFactoryAlgorithm, keySpec: KeySpec,
+                                 provider: Option[Provider | JProvider]): F[PublicKey] =
+    for
+      keyFactory <- getInstance[F](algorithm, provider)
+      publicKey <- keyFactory.generatePublicF[F](keySpec)
+    yield publicKey
 
-  def getInstance[F[_]: Sync](algorithm: KeyFactoryAlgorithm, provider: Option[Provider]): F[JKeyFactory] =
-    provider.fold(getInstance(algorithm))(getInstance(algorithm, _))
-
+  def generatePrivate[F[_]: Sync](algorithm: KeyFactoryAlgorithm, keySpec: KeySpec,
+                                 provider: Option[Provider | JProvider]): F[PrivateKey] =
+    for
+      keyFactory <- getInstance[F](algorithm, provider)
+      privateKey <- keyFactory.generatePrivateF[F](keySpec)
+    yield privateKey
 end KeyFactory

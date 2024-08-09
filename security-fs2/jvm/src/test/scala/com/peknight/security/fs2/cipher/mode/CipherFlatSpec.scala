@@ -22,9 +22,9 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         input <- secureRandom.nextBytesF[IO](1600)
         _ <- IO.println(s"input=$input")
         algorithm = AES / mode.ECB / PKCS5Padding
-        encrypted <- Cipher.encrypt[IO](algorithm, key)(input)
+        encrypted <- Cipher.rawKeyEncrypt[IO](algorithm, key, input = Some(input))
         _ <- IO.println(s"encrypted=$encrypted")
-        decrypted <- Cipher.decrypt[IO](algorithm, key)(encrypted)
+        decrypted <- Cipher.rawKeyDecrypt[IO](algorithm, key, input = Some(encrypted))
         _ <- IO.println(s"decrypted=$decrypted")
         streamEncrypted <- Stream.emits(input.toSeq).covary[IO].through(ECB.encrypt[IO](algorithm, key))
           .compile.toVector.map(ByteVector.apply)
@@ -47,9 +47,9 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         iv <- secureRandom.nextBytesF[IO](16)
         _ <- IO.println(s"iv=$iv")
         algorithm = AES / mode.CBC / PKCS5Padding
-        encrypted <- Cipher.encrypt[IO](algorithm, key, iv)(input)
+        encrypted <- Cipher.rawKeyEncrypt[IO](algorithm, key, iv = Some(iv), input = Some(input))
         _ <- IO.println(s"encrypted=$encrypted")
-        decrypted <- Cipher.decrypt[IO](algorithm, key, iv)(encrypted)
+        decrypted <- Cipher.rawKeyDecrypt[IO](algorithm, key, iv = Some(iv), input = Some(encrypted))
         _ <- IO.println(s"decrypted=$decrypted")
         streamEncrypted <- Stream.emits(input.toSeq).covary[IO].through(CBC.encrypt[IO](algorithm, key, iv))
           .compile.toVector.map(ByteVector.apply)

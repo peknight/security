@@ -5,7 +5,6 @@ import cats.effect.testing.scalatest.AsyncIOSpec
 import com.peknight.security.cipher.mode.CBC
 import com.peknight.security.cipher.padding.PKCS5Padding
 import com.peknight.security.cipher.{AES, RSA}
-import com.peknight.security.syntax.keyPairGenerator.{generateKeyPairF, initializeF}
 import com.peknight.security.syntax.secureRandom.nextBytesF
 import com.peknight.security.{KeyPairGenerator, SecureRandom}
 import org.scalatest.flatspec.AsyncFlatSpec
@@ -21,9 +20,9 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         _ <- IO.println(s"key=$key")
         input <- secureRandom.nextBytesF[IO](32)
         _ <- IO.println(s"input=$input")
-        encrypted <- Cipher.encrypt[IO](AES, key)(input)
+        encrypted <- Cipher.rawKeyEncrypt[IO](AES, key, input = Some(input))
         _ <- IO.println(s"encrypted=$encrypted")
-        decrypted <- Cipher.decrypt[IO](AES, key)(encrypted)
+        decrypted <- Cipher.rawKeyDecrypt[IO](AES, key, input = Some(encrypted))
         _ <- IO.println(s"decrypted=$decrypted")
       yield input == decrypted
     run.asserting(assert)
@@ -39,9 +38,9 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         _ <- IO.println(s"input=$input")
         iv <- secureRandom.nextBytesF[IO](16)
         _ <- IO.println(s"iv=$iv")
-        encrypted <- Cipher.encrypt[IO](AES / CBC / PKCS5Padding, key, iv)(input)
+        encrypted <- Cipher.rawKeyEncrypt[IO](AES / CBC / PKCS5Padding, key, iv = Some(iv), input = Some(input))
         _ <- IO.println(s"encrypted=$encrypted")
-        decrypted <- Cipher.decrypt[IO](AES / CBC / PKCS5Padding, key, iv)(encrypted)
+        decrypted <- Cipher.rawKeyDecrypt[IO](AES / CBC / PKCS5Padding, key, iv = Some(iv), input = Some(encrypted))
         _ <- IO.println(s"decrypted=$decrypted")
       yield input == decrypted
     run.asserting(assert)
@@ -50,13 +49,13 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
   "RSA" should "succeed" in {
     val run =
       for
-        keyPair <- KeyPairGenerator.generateKeyPair[IO](RSA, 1024)
+        keyPair <- KeyPairGenerator.keySizeGenerateKeyPair[IO](RSA, 1024)
         secureRandom <- SecureRandom.getInstanceStrong[IO]
         input <- secureRandom.nextBytesF[IO](32)
         _ <- IO.println(s"input=$input")
-        encrypted <- Cipher.encrypt[IO](RSA, keyPair.getPublic)(input)
+        encrypted <- Cipher.keyEncrypt[IO](RSA, keyPair.getPublic, input = Some(input))
         _ <- IO.println(s"encrypted=$encrypted")
-        decrypted <- Cipher.decrypt[IO](RSA, keyPair.getPrivate)(encrypted)
+        decrypted <- Cipher.keyDecrypt[IO](RSA, keyPair.getPrivate, input = Some(encrypted))
         _ <- IO.println(s"decrypted=$decrypted")
       yield input == decrypted
     run.asserting(assert)

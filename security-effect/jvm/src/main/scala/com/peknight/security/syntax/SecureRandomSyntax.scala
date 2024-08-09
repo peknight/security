@@ -11,7 +11,7 @@ trait SecureRandomSyntax:
       Sync[F].blocking(ByteVector(secureRandom.generateSeed(numBytes)))
 
     def nextBytesF[F[_]: Sync](n: Int): F[ByteVector] =
-      Sync[F].delay {
+      Sync[F].blocking {
         val bytes = new Array[Byte](0 max n)
         secureRandom.nextBytes(bytes)
         ByteVector(bytes)

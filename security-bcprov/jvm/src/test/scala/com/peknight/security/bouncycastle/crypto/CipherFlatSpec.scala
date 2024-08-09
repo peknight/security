@@ -33,9 +33,9 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         secretKeyFactory <- SecretKeyFactory.getInstance[IO](algorithm)
         secretKey <- secretKeyFactory.generateSecretF[IO](PBEKeySpec(password))
         pbeParameterSpec = PBEParameterSpec(salt, 1000)
-        encrypted <- Cipher.encrypt[IO](algorithm, secretKey, pbeParameterSpec)(input)
+        encrypted <- Cipher.keyEncrypt[IO](algorithm, secretKey, params = Some(pbeParameterSpec), input = Some(input))
         _ <- IO.println(s"encrypted=$encrypted")
-        decrypted <- Cipher.decrypt[IO](algorithm, secretKey, pbeParameterSpec)(encrypted)
+        decrypted <- Cipher.keyDecrypt[IO](algorithm, secretKey, params = Some(pbeParameterSpec), input = Some(encrypted))
         _ <- IO.println(s"decrypted=$decrypted")
       yield input == decrypted
     run.asserting(assert)

@@ -6,5 +6,5 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider as JBouncyCastleProvid
 
 object BouncyCastleProvider extends Provider:
   def name: String = "BC"
-  def apply[F[_]: Sync]: F[JBouncyCastleProvider] = Sync[F].delay(new JBouncyCastleProvider())
+  def apply[F[_]: Sync]: F[JBouncyCastleProvider] = Sync[F].blocking(new JBouncyCastleProvider())
 end BouncyCastleProvider

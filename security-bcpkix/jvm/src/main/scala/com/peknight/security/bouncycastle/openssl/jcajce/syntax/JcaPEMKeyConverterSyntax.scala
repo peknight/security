@@ -8,7 +8,7 @@ import java.security.KeyPair
 
 trait JcaPEMKeyConverterSyntax:
   extension (converter: JcaPEMKeyConverter)
-    def getKeyPairF[F[_]: Sync](pemKeyPair: PEMKeyPair): F[KeyPair] = Sync[F].delay(converter.getKeyPair(pemKeyPair))
+    def getKeyPairF[F[_]: Sync](pemKeyPair: PEMKeyPair): F[KeyPair] = Sync[F].blocking(converter.getKeyPair(pemKeyPair))
   end extension
 end JcaPEMKeyConverterSyntax
 object JcaPEMKeyConverterSyntax extends JcaPEMKeyConverterSyntax

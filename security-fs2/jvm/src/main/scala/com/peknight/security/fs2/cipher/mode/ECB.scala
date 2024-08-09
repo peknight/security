@@ -16,28 +16,30 @@ import java.security.Key
 
 object ECB:
 
-  def crypto[F[_]: Sync](algorithm: CipherAlgorithm & BlockCipher, key: Key, opmode: Opmode): Pipe[F, Byte, Byte] =
+  def crypto[F[_]: Sync](algorithm: CipherAlgorithm & BlockCipher, opmode: Opmode, key: Key): Pipe[F, Byte, Byte] =
     _.chunkTimesN(algorithm.blockSize).evalMapChunksInitLast {
-      input => Cipher.crypto(algorithm / mode.ECB / NoPadding, key, opmode)(input.toByteVector).map(Chunk.byteVector)
+      input => Cipher.keyCrypto[F](algorithm / mode.ECB / NoPadding, opmode, key, input = Some(input.toByteVector))
+        .map(Chunk.byteVector)
     } {
-      input => Cipher.crypto(algorithm / mode.ECB, key, opmode)(input.toByteVector).map(Chunk.byteVector)
+      input => Cipher.keyCrypto[F](algorithm / mode.ECB, opmode, key, input = Some(input.toByteVector))
+        .map(Chunk.byteVector)
     }
 
   def encrypt[F[_]: Sync](algorithm: CipherAlgorithm & BlockCipher, key: Key): Pipe[F, Byte, Byte] =
-    crypto[F](algorithm, key, Encrypt)
+    crypto[F](algorithm, Encrypt, key)
 
   def decrypt[F[_]: Sync](algorithm: CipherAlgorithm & BlockCipher, key: Key): Pipe[F, Byte, Byte] =
-    crypto[F](algorithm, key, Decrypt)
+    crypto[F](algorithm, Decrypt, key)
 
-  def crypto[F[_]: Sync](algorithm: CipherAlgorithm & SecretKeyFactoryAlgorithm & BlockCipher, key: ByteVector,
-                         opmode: Opmode): Pipe[F, Byte, Byte] =
-    crypto[F](algorithm, SecretKeySpec(key, algorithm), opmode)
+  def crypto[F[_]: Sync](algorithm: CipherAlgorithm & SecretKeyFactoryAlgorithm & BlockCipher, opmode: Opmode,
+                         key: ByteVector): Pipe[F, Byte, Byte] =
+    crypto[F](algorithm, opmode, SecretKeySpec(key, algorithm))
 
   def encrypt[F[_]: Sync](algorithm: CipherAlgorithm & SecretKeyFactoryAlgorithm & BlockCipher, key: ByteVector)
   : Pipe[F, Byte, Byte] =
-    crypto[F](algorithm, key, Encrypt)
+    crypto[F](algorithm, Encrypt, key)
 
   def decrypt[F[_]: Sync](algorithm: CipherAlgorithm & SecretKeyFactoryAlgorithm & BlockCipher, key: ByteVector)
   : Pipe[F, Byte, Byte] =
-    crypto[F](algorithm, key, Decrypt)
+    crypto[F](algorithm, Decrypt, key)
 end ECB
