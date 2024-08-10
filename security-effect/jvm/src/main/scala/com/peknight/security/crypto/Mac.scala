@@ -21,8 +21,9 @@ object Mac:
        case _ => JMac.getInstance(algorithm.algorithm)
    }
 
-  def mac[F[_]: Sync](algorithm: MACAlgorithm, key: Key, provider: Option[Provider | JProvider] = None,
-                      params: Option[AlgorithmParameterSpec] = None, input: Option[ByteVector] = None): F[ByteVector] =
+  def mac[F[_]: Sync](algorithm: MACAlgorithm, key: Key, input: ByteVector,
+                      provider: Option[Provider | JProvider] = None,
+                      params: Option[AlgorithmParameterSpec] = None): F[ByteVector] =
     for
       m <- getInstance[F](algorithm, provider)
       _ <- m.initF(key, params)
