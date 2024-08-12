@@ -1,11 +1,11 @@
 package com.peknight.security.cipher
 
-import com.peknight.security.algorithm.{Algorithm, NONE}
+import com.peknight.security.algorithm.NONE
 import com.peknight.security.cipher.mode.CipherAlgorithmMode
 import com.peknight.security.cipher.padding.{CipherAlgorithmPadding, NoPadding}
 import com.peknight.security.mac.MAC
 
-trait CipherAlgorithm extends Algorithm:
+trait CipherAlgorithm extends Cipher:
   type This <: CipherAlgorithm
   def mode: CipherAlgorithmMode = NONE
   def padding: CipherAlgorithmPadding = NoPadding
