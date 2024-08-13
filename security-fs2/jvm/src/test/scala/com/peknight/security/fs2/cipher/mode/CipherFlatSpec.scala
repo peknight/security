@@ -1,13 +1,12 @@
 package com.peknight.security.fs2.cipher.mode
 
 import cats.effect.IO
-import fs2.Stream
 import cats.effect.testing.scalatest.AsyncIOSpec
-import com.peknight.security.SecureRandom
-import com.peknight.security.cipher.{AES, mode}
 import com.peknight.security.cipher.padding.PKCS5Padding
-import com.peknight.security.crypto.Cipher
+import com.peknight.security.cipher.{AES, Cipher, mode}
+import com.peknight.security.random.SecureRandom
 import com.peknight.security.syntax.secureRandom.nextBytesF
+import fs2.Stream
 import org.scalatest.flatspec.AsyncFlatSpec
 import scodec.bits.ByteVector
 

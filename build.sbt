@@ -19,8 +19,6 @@ lazy val security = (project in file("."))
   .aggregate(
     securityCore.jvm,
     securityCore.js,
-    securityEffect.jvm,
-    securityEffect.js,
     securityFs2.jvm,
     securityFs2.js,
     securityBouncyCastleProvider.jvm,
@@ -38,25 +36,16 @@ lazy val securityCore = (crossProject(JSPlatform, JVMPlatform) in file("security
   .settings(
     name := "security-core",
     libraryDependencies ++= Seq(
+      "org.typelevel" %%% "cats-effect" % catsEffectVersion,
       "org.typelevel" %%% "cats-parse" % catsParseVersion,
       "org.scodec" %%% "scodec-bits" % scodecVersion,
       "com.peknight" %%% "error-core" % pekErrorVersion,
-    ),
-  )
-
-lazy val securityEffect = (crossProject(JSPlatform, JVMPlatform) in file("security-effect"))
-  .dependsOn(securityCore)
-  .settings(commonSettings)
-  .settings(
-    name := "security-effect",
-    libraryDependencies ++= Seq(
-      "org.typelevel" %%% "cats-effect" % catsEffectVersion,
       "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     ),
   )
 
 lazy val securityFs2 = (crossProject(JSPlatform, JVMPlatform) in file("security-fs2"))
-  .dependsOn(securityEffect)
+  .dependsOn(securityCore)
   .settings(commonSettings)
   .settings(
     name := "security-fs2",
@@ -69,13 +58,11 @@ lazy val securityFs2 = (crossProject(JSPlatform, JVMPlatform) in file("security-
 lazy val securityBouncyCastleProvider = (crossProject(JSPlatform, JVMPlatform) in file("security-bcprov"))
   .dependsOn(
     securityCore,
-    securityEffect % Test,
   )
   .settings(commonSettings)
   .settings(
     name := "security-bcprov",
     libraryDependencies ++= Seq(
-      "org.typelevel" %%% "cats-effect" % catsEffectVersion,
       "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     ),
   )

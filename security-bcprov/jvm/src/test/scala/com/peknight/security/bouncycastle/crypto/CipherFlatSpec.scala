@@ -2,16 +2,17 @@ package com.peknight.security.bouncycastle.crypto
 
 import cats.effect.IO
 import cats.effect.testing.scalatest.AsyncIOSpec
+import com.peknight.security.Security
 import com.peknight.security.bouncycastle.jce.provider.BouncyCastleProvider
 import com.peknight.security.bouncycastle.pbe.PBE
-import com.peknight.security.cipher.AES_128
+import com.peknight.security.cipher.{AES_128, Cipher}
 import com.peknight.security.cipher.mode.CBC
-import com.peknight.security.crypto.spec.{PBEKeySpec, PBEParameterSpec}
-import com.peknight.security.crypto.syntax.secretKeyFactory.generateSecretF
-import com.peknight.security.crypto.{Cipher, SecretKeyFactory}
 import com.peknight.security.digest.`SHA-1`
+import com.peknight.security.key.secret.SecretKeyFactory
+import com.peknight.security.random.SecureRandom
+import com.peknight.security.spec.{PBEKeySpec, PBEParameterSpec}
+import com.peknight.security.syntax.secretKeyFactory.generateSecretF
 import com.peknight.security.syntax.secureRandom.nextBytesF
-import com.peknight.security.{SecureRandom, Security}
 import org.scalatest.flatspec.AsyncFlatSpec
 import scodec.bits.ByteVector
 

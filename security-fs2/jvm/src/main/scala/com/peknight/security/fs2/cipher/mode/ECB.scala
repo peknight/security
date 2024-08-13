@@ -3,12 +3,12 @@ package com.peknight.security.fs2.cipher.mode
 import cats.effect.Sync
 import cats.syntax.functor.*
 import com.peknight.fs2.ext.syntax.stream.{chunkTimesN, evalMapChunksInitLast}
+import com.peknight.security.cipher.Cipher
 import com.peknight.security.cipher.Opmode.{Decrypt, Encrypt}
 import com.peknight.security.cipher.padding.NoPadding
 import com.peknight.security.cipher.{BlockCipher, CipherAlgorithm, Opmode, mode}
-import com.peknight.security.crypto.Cipher
-import com.peknight.security.crypto.spec.SecretKeySpec
 import com.peknight.security.key.secret.SecretKeyFactoryAlgorithm
+import com.peknight.security.spec.SecretKeySpec
 import fs2.{Chunk, Pipe}
 import scodec.bits.ByteVector
 
