@@ -2,4 +2,4 @@ package com.peknight.security.key.secret
 
 import com.peknight.security.algorithm.Algorithm
 
-trait SecretKeyFactoryAlgorithm extends Algorithm
+trait SecretKeyFactoryAlgorithm extends Algorithm with SecretKeyFactoryAlgorithmPlatform
