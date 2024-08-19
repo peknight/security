@@ -18,13 +18,9 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
       for
         secureRandom <- SecureRandom.getInstanceStrong[IO]
         key <- secureRandom.nextBytesF[IO](32)
-        _ <- IO.println(s"key=$key")
         input <- secureRandom.nextBytesF[IO](32)
-        _ <- IO.println(s"input=$input")
         encrypted <- Cipher.rawKeyEncrypt[IO](AES, key, input = Some(input))
-        _ <- IO.println(s"encrypted=$encrypted")
         decrypted <- Cipher.rawKeyDecrypt[IO](AES, key, input = Some(encrypted))
-        _ <- IO.println(s"decrypted=$decrypted")
       yield input == decrypted
     run.asserting(assert)
   }
@@ -34,15 +30,10 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
       for
         secureRandom <- SecureRandom.getInstanceStrong[IO]
         key <- secureRandom.nextBytesF[IO](32)
-        _ <- IO.println(s"key=$key")
         input <- secureRandom.nextBytesF[IO](32)
-        _ <- IO.println(s"input=$input")
         iv <- secureRandom.nextBytesF[IO](16)
-        _ <- IO.println(s"iv=$iv")
         encrypted <- Cipher.rawKeyEncrypt[IO](AES / CBC / PKCS5Padding, key, iv = Some(iv), input = Some(input))
-        _ <- IO.println(s"encrypted=$encrypted")
         decrypted <- Cipher.rawKeyDecrypt[IO](AES / CBC / PKCS5Padding, key, iv = Some(iv), input = Some(encrypted))
-        _ <- IO.println(s"decrypted=$decrypted")
       yield input == decrypted
     run.asserting(assert)
   }
@@ -53,11 +44,8 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         keyPair <- KeyPairGenerator.keySizeGenerateKeyPair[IO](RSA, 1024)
         secureRandom <- SecureRandom.getInstanceStrong[IO]
         input <- secureRandom.nextBytesF[IO](32)
-        _ <- IO.println(s"input=$input")
         encrypted <- Cipher.keyEncrypt[IO](RSA, keyPair.getPublic, input = Some(input))
-        _ <- IO.println(s"encrypted=$encrypted")
         decrypted <- Cipher.keyDecrypt[IO](RSA, keyPair.getPrivate, input = Some(encrypted))
-        _ <- IO.println(s"decrypted=$decrypted")
       yield input == decrypted
     run.asserting(assert)
   }

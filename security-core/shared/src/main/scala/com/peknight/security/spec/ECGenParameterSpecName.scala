@@ -2,7 +2,7 @@ package com.peknight.security.spec
 
 import com.peknight.security.oid.ObjectIdentifier
 
-trait ECGenParameterSpecName extends ParameterSpecName:
+trait ECGenParameterSpecName extends ParameterSpecName with ECParameterSpecPlatform:
   def bitLength: Int
   def curveOrder: Int
   def oid: Option[ObjectIdentifier] = None

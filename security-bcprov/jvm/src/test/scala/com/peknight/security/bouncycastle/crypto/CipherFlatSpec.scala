@@ -25,19 +25,14 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         _ <- Security.addProvider[IO](bouncyCastleProvider)
         secureRandom <- SecureRandom.getInstanceStrong[IO]
         password <- secureRandom.nextBytesF[IO](16).map(_.toHex)
-        _ <- IO.println(s"password=$password")
         salt <- secureRandom.nextBytesF[IO](16)
-        _ <- IO.println(s"salt=$salt")
         input <- secureRandom.nextBytesF[IO](32)
-        _ <- IO.println(s"input=$input")
         algorithm = PBE.withDigestAndAES(`SHA-1`, AES_128 / CBC)
         secretKeyFactory <- SecretKeyFactory.getInstance[IO](algorithm)
         secretKey <- secretKeyFactory.generateSecretF[IO](PBEKeySpec(password))
         pbeParameterSpec = PBEParameterSpec(salt, 1000)
         encrypted <- Cipher.keyEncrypt[IO](algorithm, secretKey, params = Some(pbeParameterSpec), input = Some(input))
-        _ <- IO.println(s"encrypted=$encrypted")
         decrypted <- Cipher.keyDecrypt[IO](algorithm, secretKey, params = Some(pbeParameterSpec), input = Some(encrypted))
-        _ <- IO.println(s"decrypted=$decrypted")
       yield input == decrypted
     run.asserting(assert)
   }

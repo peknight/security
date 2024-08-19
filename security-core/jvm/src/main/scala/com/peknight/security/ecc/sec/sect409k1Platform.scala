@@ -1,0 +1,24 @@
+package com.peknight.security.ecc.sec
+
+import com.peknight.security.spec.ECParameterSpecPlatform
+
+import java.math.BigInteger
+import java.security.spec.{ECFieldF2m, ECParameterSpec, ECPoint, EllipticCurve}
+
+trait sect409k1Platform extends ECParameterSpecPlatform:
+  def ecParameterSpec: ECParameterSpec =
+    new ECParameterSpec(
+      new EllipticCurve(
+        new ECFieldF2m(409, new BigInteger("1322111937580497197903830616065542079656809365928562438569297590548811582472622691650378420879430724437687334722581078999041")),
+        new BigInteger("0"),
+        new BigInteger("1")
+      ),
+      new ECPoint(
+        new BigInteger("250320606379109783324043328573944955992891736106680352671677389786222910027088291741834878773922859231376787355260678190918"),
+        new BigInteger("1248286015820357801871250692732381479576954307085883348044850800154576601694946857655762823838587314348501053191643883120747")
+      ),
+      new BigInteger("330527984395124299475957654016385519914202341482140609642324395022880711289249191050673258457777458014096366590617731358671"),
+      4
+    )
+end sect409k1Platform
+

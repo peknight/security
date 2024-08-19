@@ -3,7 +3,7 @@ package com.peknight.security.ecc.sec
 import com.peknight.security.ecc.curve.Random
 import com.peknight.security.ecc.field.Binary
 
-trait sect163r1 extends StandardsForEfficientCryptography with Binary with Random:
+trait sect163r1 extends StandardsForEfficientCryptography with sect163r1Platform with Binary with Random:
   def bitLength: Int = 163
   def curveOrder: Int = 1
 end sect163r1

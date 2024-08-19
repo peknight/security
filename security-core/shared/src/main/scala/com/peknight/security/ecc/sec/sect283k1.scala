@@ -3,7 +3,7 @@ package com.peknight.security.ecc.sec
 import com.peknight.security.ecc.curve.Koblitz
 import com.peknight.security.ecc.field.Binary
 
-trait sect283k1 extends StandardsForEfficientCryptography with Binary with Koblitz:
+trait sect283k1 extends StandardsForEfficientCryptography with sect283k1Platform with Binary with Koblitz:
   def bitLength: Int = 283
   def curveOrder: Int = 1
 end sect283k1
