@@ -6,13 +6,13 @@ import scodec.bits.ByteVector
 
 import java.security.Provider as JProvider
 import java.security.interfaces.{EdECPrivateKey, EdECPublicKey}
-import java.security.spec.{EdECPublicKeySpec, EdECPrivateKeySpec as JEdECPrivateKeySpec}
+import java.security.spec.{EdECPrivateKeySpec, EdECPublicKeySpec}
 
 trait EdDSAPlatform { self: EdDSA =>
   def publicKeySpec(publicKeyBytes: ByteVector): EdECPublicKeySpec =
     EdDSA.publicKeySpec(self, publicKeyBytes)
 
-  def privateKeySpec(privateKeyBytes: ByteVector): JEdECPrivateKeySpec =
+  def privateKeySpec(privateKeyBytes: ByteVector): EdECPrivateKeySpec =
     EdDSA.privateKeySpec(self, privateKeyBytes)
 
   def publicKey[F[_]: Sync](publicKeyBytes: ByteVector, provider: Option[Provider | JProvider] = None)

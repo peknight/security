@@ -38,9 +38,8 @@ lazy val securityCore = (crossProject(JSPlatform, JVMPlatform) in file("security
     libraryDependencies ++= Seq(
       "org.typelevel" %%% "cats-effect" % catsEffectVersion,
       "org.typelevel" %%% "cats-parse" % catsParseVersion,
-      "org.scodec" %%% "scodec-bits" % scodecVersion,
+      "com.peknight" %%% "scodec-bits-ext" % pekExtVersion,
       "com.peknight" %%% "error-core" % pekErrorVersion,
-      "com.peknight" %%% "commons-bigint" % pekCommonsVersion,
       "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     ),
   )
@@ -89,13 +88,11 @@ lazy val securityBouncyCastlePkix = (crossProject(JSPlatform, JVMPlatform) in fi
 
 val catsParseVersion = "0.3.10"
 val catsEffectVersion = "3.5.4"
-val scodecVersion = "1.2.0"
 val fs2Version = "3.10.2"
 val bouncyCastleVersion = "1.78.1"
 val pekVersion = "0.1.0-SNAPSHOT"
-val pekErrorVersion = pekVersion
-val pekCommonsVersion = pekVersion
 val pekExtVersion = pekVersion
+val pekErrorVersion = pekVersion
 val catsEffectTestingScalaTestVersion = "1.5.0"
 
 val bouncyCastleProvider = "org.bouncycastle" % "bcprov-jdk18on" % bouncyCastleVersion

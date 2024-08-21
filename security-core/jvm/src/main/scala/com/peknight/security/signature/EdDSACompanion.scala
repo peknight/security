@@ -3,6 +3,7 @@ package com.peknight.security.signature
 import cats.effect.Sync
 import cats.syntax.either.*
 import cats.syntax.functor.*
+import com.peknight.scodec.bits.ext.syntax.byteVector.adjustLength
 import com.peknight.security.error.{SecurityError, UnknownParameterSpecName}
 import com.peknight.security.key.factory.KeyFactory
 import com.peknight.security.provider.Provider
@@ -13,6 +14,7 @@ import scodec.bits.ByteVector
 import java.security.Provider as JProvider
 import java.security.interfaces.{EdECPrivateKey, EdECPublicKey}
 import java.security.spec.{EdECPublicKeySpec, EdECPoint as JEdECPoint, EdECPrivateKeySpec as JEdECPrivateKeySpec}
+import scala.jdk.OptionConverters.*
 
 trait EdDSACompanion:
   def point(publicKeyBytes: ByteVector): JEdECPoint =
@@ -38,11 +40,14 @@ trait EdDSACompanion:
       case Ed448.algorithm => Ed448.asRight
       case algorithm => UnknownParameterSpecName(algorithm).asLeft
 
-  // def rawPublicKey(publicKey: EdECPublicKey): Either[SecurityError, ByteVector] =
-  //   getParameterSpecName(publicKey).map { edDSA =>
-  //     val edECPoint = publicKey.getPoint
-  //     val yReversedBytes = adjustByteVectorLength(ByteVector(edECPoint.getY.toByteArray).reverse, byteLength)
-  //     val byteToOrWith = if edECPoint.isXOdd then -128.toByte else 0.toByte
-  //     yReversedBytes.lastOption.fold(yReversedBytes)(last => yReversedBytes.init :+ (last | byteToOrWith).toByte)
-  //   }
+  def rawPublicKey(publicKey: EdECPublicKey): Either[SecurityError, ByteVector] =
+    getParameterSpecName(publicKey).map { edDSA =>
+      val edECPoint = publicKey.getPoint
+      val yReversedBytes = ByteVector(edECPoint.getY.toByteArray).reverse.adjustLength(edDSA.keyByteLength)
+      val byteToOrWith = if edECPoint.isXOdd then -128.toByte else 0.toByte
+      yReversedBytes.lastOption.fold(yReversedBytes)(last => yReversedBytes.init :+ (last | byteToOrWith).toByte)
+    }
+
+  def rawPrivateKey(privateKey: EdECPrivateKey): ByteVector =
+    privateKey.getBytes.toScala.fold(ByteVector.empty)(ByteVector.apply)
 end EdDSACompanion
