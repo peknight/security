@@ -70,4 +70,6 @@ package object signature:
   val `SHA3-512withECDSAinP1363Format`: DigestWithEncryption = `SHA3-512withECDSA`.format(P1363)
 
   val MD5withRSAandMGF1: DigestWithEncryption = MD5withRSA.mgf(MGF1)
+
+  def calculateSignatureByteLength(bitLength: Int): Int = (bitLength + 7) >> 3 << 1
 end signature

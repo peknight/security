@@ -17,7 +17,7 @@ trait EdDSA extends DSA
   with EdDSAPlatform:
   override def algorithm: String = "EdDSA"
   def keyByteLength: Int = 32
-  def signatureByteLength: Int = 64
+  def signatureByteLength: Int = calculateSignatureByteLength(keyByteLength * 8)
   def parameterSpecName: String = algorithm
 end EdDSA
 object EdDSA extends EdDSA with EdDSACompanion:
