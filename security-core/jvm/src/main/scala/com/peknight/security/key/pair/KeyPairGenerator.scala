@@ -20,8 +20,8 @@ object KeyPairGenerator:
     }
 
   def keySizeGenerateKeyPair[F[_]: Sync](algorithm: KeyPairGeneratorAlgorithm, keySize: Int,
-                                         provider: Option[Provider | JProvider] = None,
-                                         random: Option[SecureRandom] = None): F[KeyPair] =
+                                         random: Option[SecureRandom] = None,
+                                         provider: Option[Provider | JProvider] = None): F[KeyPair] =
     for
       keyPairGenerator <- getInstance[F](algorithm, provider)
       _ <- keyPairGenerator.keySizeInitialize[F](keySize, random)
@@ -29,8 +29,8 @@ object KeyPairGenerator:
     yield keyPair
 
   def paramsGenerateKeyPair[F[_]: Sync](algorithm: KeyPairGeneratorAlgorithm, params: AlgorithmParameterSpec,
-                                        provider: Option[Provider | JProvider] = None,
-                                        random: Option[SecureRandom] = None): F[KeyPair] =
+                                        random: Option[SecureRandom] = None,
+                                        provider: Option[Provider | JProvider] = None): F[KeyPair] =
     for
       keyPairGenerator <- getInstance[F](algorithm, provider)
       _ <- keyPairGenerator.paramsInitialize[F](params, random)

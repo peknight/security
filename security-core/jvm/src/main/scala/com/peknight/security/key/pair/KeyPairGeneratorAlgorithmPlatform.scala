@@ -4,14 +4,16 @@ import cats.effect.Sync
 import com.peknight.security.provider.Provider
 
 import java.security.spec.AlgorithmParameterSpec
-import java.security.{KeyPair, SecureRandom, Provider as JProvider}
+import java.security.{KeyPair, SecureRandom, KeyPairGenerator as JKeyPairGenerator, Provider as JProvider}
 
 trait KeyPairGeneratorAlgorithmPlatform { self: KeyPairGeneratorAlgorithm =>
-  def keySizeGenerateKeyPair[F[_]: Sync](keySize: Int, provider: Option[Provider | JProvider] = None,
-                                         random: Option[SecureRandom] = None): F[KeyPair] =
-    KeyPairGenerator.keySizeGenerateKeyPair[F](self, keySize, provider, random)
+  def getKeyPairGenerator[F[_]: Sync](provider: Option[Provider | JProvider] = None): F[JKeyPairGenerator] =
+    KeyPairGenerator.getInstance[F](self, provider)
+  def keySizeGenerateKeyPair[F[_]: Sync](keySize: Int, random: Option[SecureRandom] = None,
+                                         provider: Option[Provider | JProvider] = None): F[KeyPair] =
+    KeyPairGenerator.keySizeGenerateKeyPair[F](self, keySize, random, provider)
 
-  def paramsGenerateKeyPair[F[_]: Sync](params: AlgorithmParameterSpec, provider: Option[Provider | JProvider] = None,
-                                        random: Option[SecureRandom] = None): F[KeyPair] =
-    KeyPairGenerator.paramsGenerateKeyPair[F](self, params, provider, random)
+  def paramsGenerateKeyPair[F[_]: Sync](params: AlgorithmParameterSpec, random: Option[SecureRandom] = None,
+                                        provider: Option[Provider | JProvider] = None): F[KeyPair] =
+    KeyPairGenerator.paramsGenerateKeyPair[F](self, params, random, provider)
 }

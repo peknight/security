@@ -23,28 +23,30 @@ trait CipherCompanion:
         case _ => JCipher.getInstance(transformation.transformation)
     }
 
-  def keyCrypto[F[_]: Sync](transformation: CipherAlgorithm, opmode: Opmode, key: Key,
-                            provider: Option[Provider | JProvider] = None,
+  def keyCrypto[F[_]: Sync](transformation: CipherAlgorithm, opmode: Opmode, key: Key, input: Option[ByteVector] = None,
                             params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
-                            random: Option[SecureRandom] = None, input: Option[ByteVector] = None): F[ByteVector] =
+                            random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
+  : F[ByteVector] =
     for
       cipher <- getInstance[F](transformation, provider)
       _ <- cipher.keyInit[F](opmode, key, params, random)
       output <- cipher.doFinalF[F](input)
     yield output
 
-  def keyEncrypt[F[_]: Sync](transformation: CipherAlgorithm, key: Key, provider: Option[Provider | JProvider] = None,
+  def keyEncrypt[F[_]: Sync](transformation: CipherAlgorithm, key: Key, input: Option[ByteVector] = None,
                              params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
-                             random: Option[SecureRandom] = None, input: Option[ByteVector] = None): F[ByteVector] =
+                             random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
+  : F[ByteVector] =
     for
       cipher <- getInstance[F](transformation, provider)
       _ <- cipher.keyInitEncrypt[F](key, params, random)
       output <- cipher.doFinalF[F](input)
     yield output
 
-  def keyDecrypt[F[_]: Sync](transformation: CipherAlgorithm, key: Key, provider: Option[Provider | JProvider] = None,
+  def keyDecrypt[F[_]: Sync](transformation: CipherAlgorithm, key: Key, input: Option[ByteVector] = None,
                              params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
-                             random: Option[SecureRandom] = None, input: Option[ByteVector] = None): F[ByteVector] =
+                             random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
+  : F[ByteVector] =
     for
       cipher <- getInstance[F](transformation, provider)
       _ <- cipher.keyInitDecrypt[F](key, params, random)
@@ -52,9 +54,9 @@ trait CipherCompanion:
     yield output
 
   def rawKeyCrypto[F[_]: Sync](transformation: CipherAlgorithm & SecretKeyFactoryAlgorithm, opmode: Opmode,
-                               key: ByteVector, provider: Option[Provider | JProvider] = None,
-                               iv: Option[ByteVector] = None, random: Option[SecureRandom] = None,
-                               input: Option[ByteVector] = None): F[ByteVector] =
+                               key: ByteVector, input: Option[ByteVector] = None, iv: Option[ByteVector] = None,
+                               random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
+  : F[ByteVector] =
     for
       cipher <- getInstance[F](transformation, provider)
       _ <- cipher.rawKeyInit[F](transformation, opmode, key, iv, random)
@@ -62,8 +64,9 @@ trait CipherCompanion:
     yield output
 
   def rawKeyEncrypt[F[_]: Sync](transformation: CipherAlgorithm & SecretKeyFactoryAlgorithm, key: ByteVector,
-                                provider: Option[Provider | JProvider] = None, iv: Option[ByteVector] = None,
-                                random: Option[SecureRandom] = None, input: Option[ByteVector] = None): F[ByteVector] =
+                                input: Option[ByteVector] = None, iv: Option[ByteVector] = None,
+                                random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
+  : F[ByteVector] =
     for
       cipher <- getInstance[F](transformation, provider)
       _ <- cipher.rawKeyInitEncrypt[F](transformation, key, iv, random)
@@ -71,8 +74,9 @@ trait CipherCompanion:
     yield output
 
   def rawKeyDecrypt[F[_]: Sync](transformation: CipherAlgorithm & SecretKeyFactoryAlgorithm, key: ByteVector,
-                                provider: Option[Provider | JProvider] = None, iv: Option[ByteVector] = None,
-                                random: Option[SecureRandom] = None, input: Option[ByteVector] = None): F[ByteVector] =
+                                input: Option[ByteVector] = None, iv: Option[ByteVector] = None,
+                                random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
+  : F[ByteVector] =
     for
       cipher <- getInstance[F](transformation, provider)
       _ <- cipher.rawKeyInitDecrypt[F](transformation, key, iv, random)
@@ -80,8 +84,8 @@ trait CipherCompanion:
     yield output
 
   def certificateCrypto[F[_]: Sync](transformation: CipherAlgorithm, opmode: Opmode, certificate: Certificate,
-                                    provider: Option[Provider | JProvider] = None, random: Option[SecureRandom] = None,
-                                    input: Option[ByteVector] = None): F[ByteVector] =
+                                    input: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                                    provider: Option[Provider | JProvider] = None): F[ByteVector] =
     for
       cipher <- getInstance[F](transformation, provider)
       _ <- cipher.certificateInit[F](opmode, certificate, random)
@@ -89,8 +93,8 @@ trait CipherCompanion:
     yield output
 
   def certificateEncrypt[F[_]: Sync](transformation: CipherAlgorithm, certificate: Certificate,
-                                     provider: Option[Provider | JProvider] = None, random: Option[SecureRandom] = None,
-                                     input: Option[ByteVector] = None): F[ByteVector] =
+                                     input: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                                     provider: Option[Provider | JProvider] = None): F[ByteVector] =
     for
       cipher <- getInstance[F](transformation, provider)
       _ <- cipher.certificateInitEncrypt[F](certificate, random)
@@ -98,8 +102,8 @@ trait CipherCompanion:
     yield output
 
   def certificateDecrypt[F[_]: Sync](transformation: CipherAlgorithm, certificate: Certificate,
-                                     provider: Option[Provider | JProvider] = None, random: Option[SecureRandom] = None,
-                                     input: Option[ByteVector] = None): F[ByteVector] =
+                                     input: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                                     provider: Option[Provider | JProvider] = None): F[ByteVector] =
     for
       cipher <- getInstance[F](transformation, provider)
       _ <- cipher.certificateInitDecrypt[F](certificate, random)

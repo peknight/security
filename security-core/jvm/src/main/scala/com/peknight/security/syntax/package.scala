@@ -9,4 +9,7 @@ package object syntax:
   object mac extends MACSyntax
   object secretKeyFactory extends SecretKeyFactorySyntax
   object certificateFactory extends CertificateFactorySyntax
+  object ecKey extends ECKeySyntax
+  object edECKey extends EdECKeySyntax
+  object xecKey extends XECKeySyntax
 end syntax

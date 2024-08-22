@@ -17,13 +17,12 @@ object CBC:
   def encrypt[F[_]: Sync](algorithm: CipherAlgorithm & BlockCipher, key: Key, ivps: JIvParameterSpec)
   : Pipe[F, Byte, Byte] =
     _.chunkTimesN(algorithm.blockSize).evalScanChunksInitLast[F, Byte, Byte, JIvParameterSpec](ivps) {
-      (ivps, input) => Cipher.keyEncrypt[F](
-        algorithm / mode.CBC / NoPadding, key, params = Some(ivps), input = Some(input.toByteVector)
-      ).map(output => (IvParameterSpec(output.takeRight(algorithm.blockSize)), Chunk.byteVector(output)))
+      (ivps, input) =>
+        (algorithm / mode.CBC / NoPadding).keyEncrypt[F](key, Some(input.toByteVector), params = Some(ivps))
+          .map(output => (IvParameterSpec(output.takeRight(algorithm.blockSize)), Chunk.byteVector(output)))
     } {
-      (ivps, input) => Cipher.keyEncrypt[F](
-        algorithm / mode.CBC, key, params = Some(ivps), input = Some(input.toByteVector)
-      ).map(Chunk.byteVector)
+      (ivps, input) => (algorithm / mode.CBC).keyEncrypt[F](key, input = Some(input.toByteVector), params = Some(ivps))
+        .map(Chunk.byteVector)
     }
 
   def decrypt[F[_]: Sync](algorithm: CipherAlgorithm & BlockCipher, key: Key, ivps: JIvParameterSpec)

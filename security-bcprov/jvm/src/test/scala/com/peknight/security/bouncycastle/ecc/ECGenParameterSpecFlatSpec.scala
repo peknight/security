@@ -9,7 +9,6 @@ import com.peknight.security.bouncycastle.jce.provider.BouncyCastleProvider
 import com.peknight.security.ecc.EC
 import com.peknight.security.ecc.brainpool.{Brainpool, brainpoolP256r1, brainpoolP384r1, brainpoolP512r1}
 import com.peknight.security.ecc.sec.*
-import com.peknight.security.key.pair.KeyPairGenerator
 import com.peknight.security.spec.ECGenParameterSpecName
 import org.scalatest.flatspec.AsyncFlatSpec
 import scodec.bits.ByteVector
@@ -33,7 +32,7 @@ class ECGenParameterSpecFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         bcs <- curves.map { curve =>
           for
             spec <- ECNamedCurveTable.getParameterSpec[IO](curve)
-            keyPair <- KeyPairGenerator.paramsGenerateKeyPair[IO](EC, spec, Some(BouncyCastleProvider))
+            keyPair <- EC.paramsGenerateKeyPair[IO](spec, provider = Some(BouncyCastleProvider))
             params = keyPair.getPublic.asInstanceOf[ECPublicKey].getParams
           yield
             params.getCurve.equals(curve.ecParameterSpec.getCurve) &&
@@ -43,7 +42,7 @@ class ECGenParameterSpecFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         }.sequence.map(_.forall(identity))
         peks <- curves.map { curve =>
           for
-            keyPair <- KeyPairGenerator.paramsGenerateKeyPair[IO](EC, curve.ecParameterSpec, Some(BouncyCastleProvider))
+            keyPair <- curve.generateKeyPair[IO](provider = Some(BouncyCastleProvider))
             params = keyPair.getPublic.asInstanceOf[ECPublicKey].getParams
           yield
             params.getCurve.equals(curve.ecParameterSpec.getCurve) &&

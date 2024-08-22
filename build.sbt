@@ -40,6 +40,7 @@ lazy val securityCore = (crossProject(JSPlatform, JVMPlatform) in file("security
       "org.typelevel" %%% "cats-parse" % catsParseVersion,
       "com.peknight" %%% "scodec-bits-ext" % pekExtVersion,
       "com.peknight" %%% "error-core" % pekErrorVersion,
+      "com.peknight" %%% "io-core" % pekIoVersion,
       "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     ),
   )
@@ -93,6 +94,7 @@ val bouncyCastleVersion = "1.78.1"
 val pekVersion = "0.1.0-SNAPSHOT"
 val pekExtVersion = pekVersion
 val pekErrorVersion = pekVersion
+val pekIoVersion = pekVersion
 val catsEffectTestingScalaTestVersion = "1.5.0"
 
 val bouncyCastleProvider = "org.bouncycastle" % "bcprov-jdk18on" % bouncyCastleVersion

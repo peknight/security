@@ -22,8 +22,8 @@ trait SignatureCompanion:
     }
 
   def sign[F[_]: Sync](algorithm: SignatureAlgorithm, privateKey: PrivateKey, data: ByteVector,
-                       provider: Option[Provider | JProvider] = None, params: Option[AlgorithmParameterSpec] = None,
-                       random: Option[SecureRandom] = None): F[ByteVector] =
+                       params: Option[AlgorithmParameterSpec] = None, random: Option[SecureRandom] = None,
+                       provider: Option[Provider | JProvider] = None): F[ByteVector] =
     for
       signature <- getInstance[F](algorithm, provider)
       _ <- params.fold(().pure[F])(signature.setParameterF[F])
@@ -33,8 +33,8 @@ trait SignatureCompanion:
     yield res
 
   def publicKeyVerify[F[_]: Sync](algorithm: SignatureAlgorithm, publicKey: PublicKey, data: ByteVector,
-                                  signed: ByteVector, provider: Option[Provider | JProvider] = None,
-                                  params: Option[AlgorithmParameterSpec] = None): F[Boolean] =
+                                  signed: ByteVector, params: Option[AlgorithmParameterSpec] = None,
+                                  provider: Option[Provider | JProvider] = None): F[Boolean] =
     for
       signature <- getInstance[F](algorithm, provider)
       _ <- params.fold(().pure[F])(signature.setParameterF[F])
@@ -44,8 +44,8 @@ trait SignatureCompanion:
     yield res
 
   def certificateVerify[F[_]: Sync](algorithm: SignatureAlgorithm, certificate: Certificate, data: ByteVector,
-                                    signed: ByteVector, provider: Option[Provider | JProvider] = None,
-                                    params: Option[AlgorithmParameterSpec] = None): F[Boolean] =
+                                    signed: ByteVector, params: Option[AlgorithmParameterSpec] = None,
+                                    provider: Option[Provider | JProvider] = None): F[Boolean] =
     for
       signature <- getInstance[F](algorithm, provider)
       _ <- params.fold(().pure[F])(signature.setParameterF[F])

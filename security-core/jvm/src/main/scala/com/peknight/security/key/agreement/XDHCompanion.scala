@@ -6,13 +6,12 @@ import cats.syntax.functor.*
 import com.peknight.scodec.bits.ext.syntax.bigInt.toByteVector
 import com.peknight.scodec.bits.ext.syntax.byteVector.{adjustLength, toUnsignedBigInt}
 import com.peknight.security.error.{SecurityError, UncheckedParameterSpec, UnknownParameterSpecName}
-import com.peknight.security.key.factory.KeyFactory
 import com.peknight.security.provider.Provider
 import com.peknight.security.spec.{NamedParameterSpec, XECPrivateKeySpec, XECPublicKeySpec}
 import scodec.bits.ByteVector
 
 import java.security.Provider as JProvider
-import java.security.interfaces.{XECPrivateKey, XECPublicKey}
+import java.security.interfaces.{XECKey, XECPrivateKey, XECPublicKey}
 import java.security.spec.{NamedParameterSpec as JNamedParameterSpec, XECPrivateKeySpec as JXECPrivateKeySpec, XECPublicKeySpec as JXECPublicKeySpec}
 import scala.jdk.OptionConverters.*
 
@@ -34,14 +33,14 @@ trait XDHCompanion:
 
   def publicKey[F[_]: Sync](xdh: XDH, publicKeyBytes: ByteVector, provider: Option[Provider | JProvider])
   : F[XECPublicKey] =
-    KeyFactory.generatePublic[F](XDH, publicKeySpec(xdh, publicKeyBytes), provider).map(_.asInstanceOf[XECPublicKey])
+    XDH.generatePublic[F](publicKeySpec(xdh, publicKeyBytes), provider).map(_.asInstanceOf[XECPublicKey])
 
   def privateKey[F[_]: Sync](xdh: XDH, privateKeyBytes: ByteVector, provider: Option[Provider | JProvider])
   : F[XECPrivateKey] =
-    KeyFactory.generatePrivate[F](XDH, privateKeySpec(xdh, privateKeyBytes), provider).map(_.asInstanceOf[XECPrivateKey])
+    XDH.generatePrivate[F](privateKeySpec(xdh, privateKeyBytes), provider).map(_.asInstanceOf[XECPrivateKey])
 
-  def getParameterSpecName(publicKey: XECPublicKey): Either[SecurityError, XDH] =
-    publicKey.getParams match
+  def getParameterSpecName(key: XECKey): Either[SecurityError, XDH] =
+    key.getParams match
       case namedParameterSpec: JNamedParameterSpec =>
         namedParameterSpec.getName match
           case X25519.algorithm => X25519.asRight

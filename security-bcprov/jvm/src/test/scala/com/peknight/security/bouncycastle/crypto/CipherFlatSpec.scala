@@ -5,8 +5,8 @@ import cats.effect.testing.scalatest.AsyncIOSpec
 import com.peknight.security.Security
 import com.peknight.security.bouncycastle.jce.provider.BouncyCastleProvider
 import com.peknight.security.bouncycastle.pbe.PBE
-import com.peknight.security.cipher.{AES_128, Cipher}
 import com.peknight.security.cipher.mode.CBC
+import com.peknight.security.cipher.{AES_128, Cipher}
 import com.peknight.security.digest.`SHA-1`
 import com.peknight.security.key.secret.SecretKeyFactory
 import com.peknight.security.random.SecureRandom
@@ -31,8 +31,8 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         secretKeyFactory <- SecretKeyFactory.getInstance[IO](algorithm)
         secretKey <- secretKeyFactory.generateSecretF[IO](PBEKeySpec(password))
         pbeParameterSpec = PBEParameterSpec(salt, 1000)
-        encrypted <- Cipher.keyEncrypt[IO](algorithm, secretKey, params = Some(pbeParameterSpec), input = Some(input))
-        decrypted <- Cipher.keyDecrypt[IO](algorithm, secretKey, params = Some(pbeParameterSpec), input = Some(encrypted))
+        encrypted <- Cipher.keyEncrypt[IO](algorithm, secretKey, input = Some(input), params = Some(pbeParameterSpec))
+        decrypted <- Cipher.keyDecrypt[IO](algorithm, secretKey, input = Some(encrypted), params = Some(pbeParameterSpec))
       yield input == decrypted
     run.asserting(assert)
   }

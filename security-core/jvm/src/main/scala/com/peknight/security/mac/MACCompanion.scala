@@ -9,20 +9,20 @@ import scodec.bits.ByteVector
 
 import java.security.spec.AlgorithmParameterSpec
 import java.security.{Key, Provider as JProvider}
-import javax.crypto.Mac as JMac
+import javax.crypto.Mac
 
 trait MACCompanion:
-  def getInstance[F[_]: Sync](algorithm: MACAlgorithm, provider: Option[Provider | JProvider] = None): F[JMac] =
+  def getInstance[F[_]: Sync](algorithm: MACAlgorithm, provider: Option[Provider | JProvider] = None): F[Mac] =
    Sync[F].blocking {
      provider match
-       case Some(provider: Provider) => JMac.getInstance(algorithm.algorithm, provider.name)
-       case Some(provider: JProvider) => JMac.getInstance(algorithm.algorithm, provider)
-       case _ => JMac.getInstance(algorithm.algorithm)
+       case Some(provider: Provider) => Mac.getInstance(algorithm.algorithm, provider.name)
+       case Some(provider: JProvider) => Mac.getInstance(algorithm.algorithm, provider)
+       case _ => Mac.getInstance(algorithm.algorithm)
    }
 
   def mac[F[_]: Sync](algorithm: MACAlgorithm, key: Key, input: ByteVector,
-                      provider: Option[Provider | JProvider] = None,
-                      params: Option[AlgorithmParameterSpec] = None): F[ByteVector] =
+                      params: Option[AlgorithmParameterSpec] = None,
+                      provider: Option[Provider | JProvider] = None): F[ByteVector] =
     for
       m <- getInstance[F](algorithm, provider)
       _ <- m.initF(key, params)

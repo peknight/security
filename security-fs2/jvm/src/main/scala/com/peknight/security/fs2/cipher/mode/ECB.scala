@@ -3,7 +3,6 @@ package com.peknight.security.fs2.cipher.mode
 import cats.effect.Sync
 import cats.syntax.functor.*
 import com.peknight.fs2.ext.syntax.stream.{chunkTimesN, evalMapChunksInitLast}
-import com.peknight.security.cipher.Cipher
 import com.peknight.security.cipher.Opmode.{Decrypt, Encrypt}
 import com.peknight.security.cipher.padding.NoPadding
 import com.peknight.security.cipher.{BlockCipher, CipherAlgorithm, Opmode, mode}
@@ -18,11 +17,10 @@ object ECB:
 
   def crypto[F[_]: Sync](algorithm: CipherAlgorithm & BlockCipher, opmode: Opmode, key: Key): Pipe[F, Byte, Byte] =
     _.chunkTimesN(algorithm.blockSize).evalMapChunksInitLast {
-      input => Cipher.keyCrypto[F](algorithm / mode.ECB / NoPadding, opmode, key, input = Some(input.toByteVector))
+      input => (algorithm / mode.ECB / NoPadding).keyCrypto[F](opmode, key, input = Some(input.toByteVector))
         .map(Chunk.byteVector)
     } {
-      input => Cipher.keyCrypto[F](algorithm / mode.ECB, opmode, key, input = Some(input.toByteVector))
-        .map(Chunk.byteVector)
+      input => (algorithm / mode.ECB).keyCrypto[F](opmode, key, input = Some(input.toByteVector)).map(Chunk.byteVector)
     }
 
   def encrypt[F[_]: Sync](algorithm: CipherAlgorithm & BlockCipher, key: Key): Pipe[F, Byte, Byte] =

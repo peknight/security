@@ -5,19 +5,18 @@ import cats.syntax.either.*
 import cats.syntax.functor.*
 import com.peknight.scodec.bits.ext.syntax.byteVector.adjustLength
 import com.peknight.security.error.{SecurityError, UnknownParameterSpecName}
-import com.peknight.security.key.factory.KeyFactory
 import com.peknight.security.provider.Provider
 import com.peknight.security.signature.EdDSA.{xCoordinateOdd, yCoordinate}
 import com.peknight.security.spec.{EdECPoint, EdECPrivateKeySpec, NamedParameterSpec}
 import scodec.bits.ByteVector
 
 import java.security.Provider as JProvider
-import java.security.interfaces.{EdECPrivateKey, EdECPublicKey}
+import java.security.interfaces.{EdECKey, EdECPrivateKey, EdECPublicKey}
 import java.security.spec.{EdECPublicKeySpec, EdECPoint as JEdECPoint, EdECPrivateKeySpec as JEdECPrivateKeySpec}
 import scala.jdk.OptionConverters.*
 
 trait EdDSACompanion:
-  def point(publicKeyBytes: ByteVector): JEdECPoint =
+  private def point(publicKeyBytes: ByteVector): JEdECPoint =
     EdECPoint(xCoordinateOdd(publicKeyBytes), yCoordinate(publicKeyBytes))
 
   def publicKeySpec(edDSA: EdDSA, publicKeyBytes: ByteVector): EdECPublicKeySpec =
@@ -28,14 +27,14 @@ trait EdDSACompanion:
 
   def publicKey[F[_]: Sync](edDSA: EdDSA, publicKeyBytes: ByteVector, provider: Option[Provider | JProvider])
   : F[EdECPublicKey] =
-    KeyFactory.generatePublic[F](EdDSA, publicKeySpec(edDSA, publicKeyBytes), provider).map(_.asInstanceOf[EdECPublicKey])
+    EdDSA.generatePublic[F](publicKeySpec(edDSA, publicKeyBytes), provider).map(_.asInstanceOf[EdECPublicKey])
 
   def privateKey[F[_]: Sync](edDSA: EdDSA, privateKeyBytes: ByteVector, provider: Option[Provider | JProvider])
   : F[EdECPrivateKey] =
-    KeyFactory.generatePrivate[F](EdDSA, privateKeySpec(edDSA, privateKeyBytes), provider).map(_.asInstanceOf[EdECPrivateKey])
+    EdDSA.generatePrivate[F](privateKeySpec(edDSA, privateKeyBytes), provider).map(_.asInstanceOf[EdECPrivateKey])
 
-  def getParameterSpecName(publicKey: EdECPublicKey): Either[SecurityError, EdDSA] =
-    publicKey.getParams.getName match
+  def getParameterSpecName(key: EdECKey): Either[SecurityError, EdDSA] =
+    key.getParams.getName match
       case Ed25519.algorithm => Ed25519.asRight
       case Ed448.algorithm => Ed448.asRight
       case algorithm => UnknownParameterSpecName(algorithm).asLeft

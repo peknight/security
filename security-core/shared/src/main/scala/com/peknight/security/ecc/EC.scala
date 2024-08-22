@@ -11,4 +11,4 @@ import com.peknight.security.parameter.AlgorithmParametersAlgorithm
 trait EC extends AlgorithmParametersAlgorithm with KeyFactoryAlgorithm with KeyPairGeneratorAlgorithm with Asymmetric:
   def algorithm: String = "EC"
 end EC
-object EC extends EC
+object EC extends EC with ECCompanion

@@ -1,6 +1,5 @@
 package com.peknight.security.spec
 
-import java.math.BigInteger
 import java.security.spec.{AlgorithmParameterSpec, XECPublicKeySpec as JXECPublicKeySpec}
 
 object XECPublicKeySpec:

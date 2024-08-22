@@ -8,6 +8,7 @@ trait UncheckedParameterSpec[A] extends SecurityError:
   def parameterSpecType: ClassTag[A]
   override protected def lowPriorityMessage: Option[String] =
     Some(s"Unchecked parameter spec: ${Error.errorClassTag(using parameterSpecType)}")
+end UncheckedParameterSpec
 object UncheckedParameterSpec:
   private case class UncheckedParameterSpec[A](parameterSpecType: ClassTag[A])
     extends com.peknight.security.error.UncheckedParameterSpec[A]

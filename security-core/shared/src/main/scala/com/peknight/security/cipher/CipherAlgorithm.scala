@@ -5,7 +5,7 @@ import com.peknight.security.cipher.mode.CipherAlgorithmMode
 import com.peknight.security.cipher.padding.{CipherAlgorithmPadding, NoPadding}
 import com.peknight.security.mac.MAC
 
-trait CipherAlgorithm extends Cipher:
+trait CipherAlgorithm extends Cipher with CipherAlgorithmPlatform:
   type This <: CipherAlgorithm
   def mode: CipherAlgorithmMode = NONE
   def padding: CipherAlgorithmPadding = NoPadding
