@@ -1,11 +1,14 @@
 package com.peknight.security.signature
 
 import cats.effect.Sync
+import cats.syntax.applicativeError.*
 import cats.syntax.functor.*
-import com.peknight.security.error.{SecurityError, UncheckedPrivateKey}
+import com.peknight.error.Error
+import com.peknight.error.syntax.either.asError
 import com.peknight.security.provider.Provider
 import com.peknight.security.signature.ECDSA.convertDERToConcatenated
 import com.peknight.security.syntax.ecParameterSpec.signatureByteLength
+import com.peknight.validation.std.either.typed
 import scodec.bits.ByteVector
 
 import java.security.cert.Certificate
@@ -17,12 +20,14 @@ trait ECDSAPlatform { self: ECDSA =>
 
   def signES[F[_]: Sync](privateKey: PrivateKey, data: ByteVector, params: Option[AlgorithmParameterSpec] = None,
                          random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
-  : F[Either[SecurityError, ByteVector]] =
-    self.signature.sign[F](privateKey, data, params, random, provider)
-      .map { derEncodedBytes =>
-          privateKey match
-            case pk: ECPrivateKey => ECDSA.convertDERToConcatenated(derEncodedBytes, pk.getParams.signatureByteLength)
-            case pk => Left(UncheckedPrivateKey[ECPrivateKey](pk))
+  : F[Either[Error, ByteVector]] =
+    self.signature.sign[F](privateKey, data, params, random, provider).attempt
+      .map { either =>
+          for
+            derEncodedBytes <- either.asError
+            privateKey <- typed[ECPrivateKey](privateKey)
+            res <- ECDSA.convertDERToConcatenated(derEncodedBytes, privateKey.getParams.signatureByteLength)
+          yield res
       }
 
   // def handleVerifyES[F[_]: Sync](): F[Either[SecurityError, Boolean]] =
