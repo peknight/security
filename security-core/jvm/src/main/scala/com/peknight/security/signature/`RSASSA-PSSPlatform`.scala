@@ -56,20 +56,20 @@ trait `RSASSA-PSSPlatform` { self: `RSASSA-PSS` =>
     else (self.signature, None)
 
   override def getSignature[F[_]: Sync](provider: Option[Provider | JProvider] = None): F[JSignature] =
-    getSignaturePS[F](false, provider)
+    self.signature.getSignature[F](provider)
 
   override def sign[F[_]: Sync](privateKey: PrivateKey, data: ByteVector, params: Option[AlgorithmParameterSpec] = None,
                                 random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
   : F[ByteVector] =
-    signPS[F](privateKey, data, random, false, provider)
+    self.signature.sign[F](privateKey, data, params, random, provider)
 
   override def publicKeyVerify[F[_]: Sync](publicKey: PublicKey, data: ByteVector, signed: ByteVector,
                                            params: Option[AlgorithmParameterSpec] = None,
                                            provider: Option[Provider | JProvider] = None): F[Boolean] =
-    publicKeyVerifyPS[F](publicKey, data, signed, false, provider)
+    self.signature.publicKeyVerify[F](publicKey, data, signed, params, provider)
 
   override def certificateVerify[F[_]: Sync](certificate: Certificate, data: ByteVector, signed: ByteVector,
                                              params: Option[AlgorithmParameterSpec] = None,
                                              provider: Option[Provider | JProvider] = None): F[Boolean] =
-    certificateVerifyPS[F](certificate, data, signed, false, provider)
+    self.signature.certificateVerify[F](certificate, data, signed, params, provider)
 }

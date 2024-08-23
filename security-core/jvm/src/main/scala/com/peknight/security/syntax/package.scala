@@ -12,4 +12,5 @@ package object syntax:
   object ecKey extends ECKeySyntax
   object edECKey extends EdECKeySyntax
   object xecKey extends XECKeySyntax
+  object ecParameterSpec extends ECParameterSpecSyntax
 end syntax

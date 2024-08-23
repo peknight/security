@@ -46,7 +46,7 @@ trait XDHCompanion:
           case X25519.algorithm => X25519.asRight
           case X448.algorithm => X448.asRight
           case algorithm => UnknownParameterSpecName(algorithm).asLeft
-      case params => UncheckedParameterSpec(using scala.reflect.ClassTag(params.getClass)).asLeft
+      case params => UncheckedParameterSpec[JNamedParameterSpec](params).asLeft
 
   def rawPublicKey(publicKey: XECPublicKey): Either[SecurityError, ByteVector] =
     getParameterSpecName(publicKey).map(xdh =>

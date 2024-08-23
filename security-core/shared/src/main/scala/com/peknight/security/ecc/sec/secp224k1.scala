@@ -6,5 +6,6 @@ import com.peknight.security.ecc.field.Prime
 trait secp224k1 extends StandardsForEfficientCryptography with secp224k1Platform with Prime with Koblitz:
   def bitLength: Int = 224
   def curveOrder: Int = 1
+  override def paramsBitLength: Int = 225
 end secp224k1
 object secp224k1 extends secp224k1

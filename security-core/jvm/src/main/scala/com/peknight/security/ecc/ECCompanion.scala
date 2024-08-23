@@ -3,6 +3,7 @@ package com.peknight.security.ecc
 import cats.effect.Sync
 import cats.syntax.either.*
 import cats.syntax.functor.*
+import com.peknight.error.syntax.either.toEither
 import com.peknight.scodec.bits.ext.syntax.bigInt.toUnsignedBytes
 import com.peknight.security.error.{PointNotOnCurve, SecurityError, UnsupportedECField}
 import com.peknight.security.provider.Provider
@@ -48,11 +49,8 @@ trait ECCompanion:
         val leftSide = y.pow(2).mod(p)
         val rightSide = (x.pow(3) + (a * x) + b).mod(p)
         (leftSide == rightSide).asRight
-      case field => UnsupportedECField(using ClassTag(field.getClass)).asLeft
+      case field => UnsupportedECField[ECFieldFp](field).asLeft
 
   def checkPointOnCurve(x: BigInt, y: BigInt, params: ECParameterSpec): Either[SecurityError, Unit] =
-    isPointOnCurve(x, y, params).flatMap {
-      case true => ().asRight
-      case false => PointNotOnCurve(x, y, params).asLeft
-    }
+    isPointOnCurve(x, y, params).flatMap(_.toEither(PointNotOnCurve(x, y, params)))
 end ECCompanion

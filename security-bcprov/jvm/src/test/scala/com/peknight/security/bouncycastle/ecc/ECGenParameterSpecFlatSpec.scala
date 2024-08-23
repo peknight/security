@@ -10,6 +10,7 @@ import com.peknight.security.ecc.EC
 import com.peknight.security.ecc.brainpool.{Brainpool, brainpoolP256r1, brainpoolP384r1, brainpoolP512r1}
 import com.peknight.security.ecc.sec.*
 import com.peknight.security.spec.ECGenParameterSpecName
+import com.peknight.security.syntax.ecParameterSpec.{bitLength, signatureByteLength}
 import org.scalatest.flatspec.AsyncFlatSpec
 import scodec.bits.ByteVector
 
@@ -48,7 +49,9 @@ class ECGenParameterSpecFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
             params.getCurve.equals(curve.ecParameterSpec.getCurve) &&
               params.getGenerator.equals(curve.ecParameterSpec.getGenerator) &&
               params.getOrder.equals(curve.ecParameterSpec.getOrder) &&
-              params.getCofactor.equals(curve.ecParameterSpec.getCofactor)
+              params.getCofactor.equals(curve.ecParameterSpec.getCofactor) &&
+              params.bitLength == curve.paramsBitLength &&
+              params.signatureByteLength == curve.paramsSignatureByteLength
         }.sequence.map(_.forall(identity))
       yield bcs && peks
     run.asserting(assert)
