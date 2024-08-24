@@ -19,10 +19,10 @@ trait `RSASSA-PSS` extends SignatureAlgorithm
   def saltLength: Int = digest.outputLength / 8
   def signature: DigestWithEncryption = digest.withEncryption(RSA, Some(mgf))
   val padding: Padding = PSS
+  override def oid: Option[ObjectIdentifier] = Some(ObjectIdentifier.unsafeFromString("1.2.840.113549.1.1.10"))
 end `RSASSA-PSS`
 object `RSASSA-PSS` extends `RSASSA-PSS`:
   def digest: MessageDigestAlgorithm = `SHA-256`
-  override def oid: Option[ObjectIdentifier] = Some(ObjectIdentifier.unsafeFromString("1.2.840.113549.1.1.10"))
   private case class `RSASSA-PSS`(digest: MessageDigestAlgorithm, override val mgf: MGF, override val saltLength: Int)
     extends com.peknight.security.signature.`RSASSA-PSS`
   def apply(digest: MessageDigestAlgorithm, mgf: MGF = MGF1, saltLength: Int = digest.outputLength / 8)
