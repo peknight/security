@@ -28,4 +28,8 @@ trait MACCompanion:
       _ <- m.initF(key, params)
       res <- m.doFinalF[F](input)
     yield res
+  def verify[F[_]: Sync](algorithm: MACAlgorithm, key: Key, input: ByteVector, signed: ByteVector,
+                         params: Option[AlgorithmParameterSpec] = None,
+                         provider: Option[Provider | JProvider] = None): F[Boolean] =
+    mac[F](algorithm, key, input, params, provider).map(_ === signed)
 end MACCompanion
