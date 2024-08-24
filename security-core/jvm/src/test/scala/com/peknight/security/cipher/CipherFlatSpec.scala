@@ -12,7 +12,6 @@ import org.scalatest.flatspec.AsyncFlatSpec
 import scodec.bits.ByteVector
 
 class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
-  given CanEqual[ByteVector, ByteVector] = CanEqual.derived
   "AES" should "succeed" in {
     val run =
       for
@@ -21,7 +20,7 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         input <- secureRandom.nextBytesF[IO](32)
         encrypted <- Cipher.rawKeyEncrypt[IO](AES, key, input = Some(input))
         decrypted <- Cipher.rawKeyDecrypt[IO](AES, key, input = Some(encrypted))
-      yield input == decrypted
+      yield input === decrypted
     run.asserting(assert)
   }
 
@@ -34,7 +33,7 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         iv <- secureRandom.nextBytesF[IO](16)
         encrypted <- Cipher.rawKeyEncrypt[IO](AES / CBC / PKCS5Padding, key, iv = Some(iv), input = Some(input))
         decrypted <- Cipher.rawKeyDecrypt[IO](AES / CBC / PKCS5Padding, key, iv = Some(iv), input = Some(encrypted))
-      yield input == decrypted
+      yield input === decrypted
     run.asserting(assert)
   }
 
@@ -46,7 +45,7 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         input <- secureRandom.nextBytesF[IO](32)
         encrypted <- Cipher.keyEncrypt[IO](RSA, keyPair.getPublic, input = Some(input))
         decrypted <- Cipher.keyDecrypt[IO](RSA, keyPair.getPrivate, input = Some(encrypted))
-      yield input == decrypted
+      yield input === decrypted
     run.asserting(assert)
   }
 end CipherFlatSpec

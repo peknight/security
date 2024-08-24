@@ -11,7 +11,6 @@ import org.scalatest.flatspec.AsyncFlatSpec
 import scodec.bits.ByteVector
 
 class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
-  given CanEqual[ByteVector, ByteVector] = CanEqual.derived
   "AES/ECB/PKCS5Padding" should "succeed" in {
     val run =
       for
@@ -25,7 +24,7 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
           .compile.toVector.map(ByteVector.apply)
         streamDecrypted <- Stream.emits(streamEncrypted.toSeq).covary[IO].through(ECB.decrypt[IO](algorithm, key))
           .compile.toVector.map(ByteVector.apply)
-      yield input == decrypted && input == streamDecrypted && encrypted == streamEncrypted
+      yield input === decrypted && input === streamDecrypted && encrypted === streamEncrypted
     run.asserting(assert)
   }
 
@@ -43,7 +42,7 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
           .compile.toVector.map(ByteVector.apply)
         streamDecrypted <- Stream.emits(streamEncrypted.toSeq).covary[IO].through(CBC.decrypt[IO](algorithm, key, iv))
           .compile.toVector.map(ByteVector.apply)
-      yield input == decrypted && input == streamDecrypted && encrypted == streamEncrypted
+      yield input === decrypted && input === streamDecrypted && encrypted === streamEncrypted
     run.asserting(assert)
   }
 end CipherFlatSpec

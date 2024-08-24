@@ -18,7 +18,6 @@ import java.security.interfaces.ECPublicKey
 import java.security.spec.{ECFieldF2m, ECFieldFp, ECParameterSpec}
 
 class ECGenParameterSpecFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
-  given CanEqual[ByteVector, ByteVector] = CanEqual.derived
   private val curves =
     List(secp160k1, secp160r1, secp160r2, secp192k1, secp192r1, secp224k1, secp224r1, secp256k1, secp256r1, secp384r1,
       secp521r1, sect163k1, sect163r1, sect163r2, sect193r1, sect193r2, sect233k1, sect233r1, sect239k1, sect283k1,

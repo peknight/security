@@ -17,7 +17,6 @@ import org.scalatest.flatspec.AsyncFlatSpec
 import scodec.bits.ByteVector
 
 class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
-  given CanEqual[ByteVector, ByteVector] = CanEqual.derived
   "PBEwithSHA1and128bitAES-CBC-BC" should "succeed" in {
     val run =
       for
@@ -33,7 +32,7 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         pbeParameterSpec = PBEParameterSpec(salt, 1000)
         encrypted <- Cipher.keyEncrypt[IO](algorithm, secretKey, input = Some(input), params = Some(pbeParameterSpec))
         decrypted <- Cipher.keyDecrypt[IO](algorithm, secretKey, input = Some(encrypted), params = Some(pbeParameterSpec))
-      yield input == decrypted
+      yield input === decrypted
     run.asserting(assert)
   }
 end CipherFlatSpec
