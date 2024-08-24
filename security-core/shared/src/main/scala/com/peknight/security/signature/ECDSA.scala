@@ -67,8 +67,8 @@ object ECDSA extends ECDSA:
         (2.byteValue +: sLength.byteValue +: (ByteVector.fill(sLength - sBytes.length)(0) ++ sBytes)))
         )))
 
-  private def leftHalf(bytes: ByteVector): ByteVector = bytes.take(bytes.length / 2)
-  private def rightHalf(bytes: ByteVector): ByteVector =
+  private[security] def leftHalf(bytes: ByteVector): ByteVector = bytes.take(bytes.length / 2)
+  private[security] def rightHalf(bytes: ByteVector): ByteVector =
     val half = bytes.length / 2
     bytes.drop(half).take(half)
 
