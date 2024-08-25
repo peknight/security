@@ -28,3 +28,4 @@ trait RSAKeySyntax:
     def rawCrtCoefficient: ByteVector = RSA.rawCrtCoefficient(privateKey)
   end extension
 end RSAKeySyntax
+object RSAKeySyntax extends RSAKeySyntax

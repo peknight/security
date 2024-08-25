@@ -8,7 +8,7 @@ import scodec.bits.ByteVector
 /**
  * Elliptic Curve Digital Signature Algorithm
  */
-trait ECDSA extends SignatureAlgorithm with DSA:
+trait ECDSA extends SignatureAlgorithm with DSA with ECDSAPlatform:
   def digest: MessageDigestAlgorithm
   def format: Option[Format] = None
   def signature: DigestWithEncryption = digest.withEncryption(ECDSA, format = format)

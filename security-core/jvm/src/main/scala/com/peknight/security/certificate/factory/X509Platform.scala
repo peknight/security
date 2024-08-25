@@ -10,9 +10,11 @@ import java.security.Provider as JProvider
 import java.security.cert.X509Certificate
 
 trait X509Platform extends CertificateFactoryTypePlatform { self: CertificateFactoryType =>
-  override def generateCertificateFromBytes[F[+_]: Sync](bytes: ByteVector, provider: Option[Provider | JProvider] = None): F[X509Certificate] =
-    super.generateCertificateFromBytes[F](bytes, provider).map(_.asInstanceOf[X509Certificate])
+  def generateX509CertificateFromBytes[F[_]: Sync](bytes: ByteVector, provider: Option[Provider | JProvider] = None)
+  : F[X509Certificate] =
+    generateCertificateFromBytes[F](bytes, provider).map(_.asInstanceOf[X509Certificate])
 
-  override def generateCertificate[F[+_]: Sync](inStream: InputStream, provider: Option[Provider | JProvider] = None): F[X509Certificate] =
-    super.generateCertificate[F](inStream, provider).map(_.asInstanceOf[X509Certificate])
+  def generateX509Certificate[F[_]: Sync](inStream: InputStream, provider: Option[Provider | JProvider] = None)
+  : F[X509Certificate] =
+    generateCertificate[F](inStream, provider).map(_.asInstanceOf[X509Certificate])
 }

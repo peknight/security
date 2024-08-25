@@ -20,8 +20,8 @@ trait `RSASSA-PSSPlatform` { self: `RSASSA-PSS` =>
   : F[JSignature] =
     handleSignature[F, JSignature](useLegacyName)((signature, _) => signature.getSignature[F](provider))
 
-  def signPS[F[_]: Sync](privateKey: PrivateKey, data: ByteVector, random: Option[SecureRandom] = None,
-                         useLegacyName: Boolean = false, provider: Option[Provider | JProvider] = None): F[ByteVector] =
+  def signPS[F[_]: Sync](privateKey: PrivateKey, data: ByteVector, useLegacyName: Boolean = false,
+                         random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None): F[ByteVector] =
     handleSignature[F, ByteVector](useLegacyName)((signature, params) =>
       signature.sign[F](privateKey, data, params, random, provider)
     )

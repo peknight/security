@@ -1,16 +1,17 @@
 package com.peknight.security
 
 package object syntax:
+  object certificateFactory extends CertificateFactorySyntax
+  object cipher extends CipherSyntax
+  object ecKey extends ECKeySyntax
+  object ecParameterSpec extends ECParameterSpecSyntax
+  object edECKey extends EdECKeySyntax
   object keyFactory extends KeyFactorySyntax
   object keyPairGenerator extends KeyPairGeneratorSyntax
+  object mac extends MACSyntax
+  object rsaKey extends RSAKeySyntax
+  object secretKeyFactory extends SecretKeyFactorySyntax
   object secureRandom extends SecureRandomSyntax
   object signature extends SignatureSyntax
-  object cipher extends CipherSyntax
-  object mac extends MACSyntax
-  object secretKeyFactory extends SecretKeyFactorySyntax
-  object certificateFactory extends CertificateFactorySyntax
-  object ecKey extends ECKeySyntax
-  object edECKey extends EdECKeySyntax
   object xecKey extends XECKeySyntax
-  object ecParameterSpec extends ECParameterSpecSyntax
 end syntax
