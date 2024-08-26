@@ -18,10 +18,10 @@ object CBC:
   : Pipe[F, Byte, Byte] =
     _.chunkTimesN(algorithm.blockSize).evalScanChunksInitLast[F, Byte, Byte, JIvParameterSpec](ivps) {
       (ivps, input) =>
-        (algorithm / mode.CBC / NoPadding).keyEncrypt[F](key, Some(input.toByteVector), params = Some(ivps))
+        (algorithm / mode.CBC / NoPadding).keyEncrypt[F](key, input.toByteVector, params = Some(ivps))
           .map(output => (IvParameterSpec(output.takeRight(algorithm.blockSize)), Chunk.byteVector(output)))
     } {
-      (ivps, input) => (algorithm / mode.CBC).keyEncrypt[F](key, input = Some(input.toByteVector), params = Some(ivps))
+      (ivps, input) => (algorithm / mode.CBC).keyEncrypt[F](key, input.toByteVector, params = Some(ivps))
         .map(Chunk.byteVector)
     }
 
@@ -29,11 +29,11 @@ object CBC:
   : Pipe[F, Byte, Byte] =
     _.chunkTimesN(algorithm.blockSize).evalScanChunksInitLast[F, Byte, Byte, JIvParameterSpec](ivps) {
       (ivps, input) => Cipher.keyDecrypt[F](
-          algorithm / mode.CBC / NoPadding, key, params = Some(ivps), input = Some(input.toByteVector)
+          algorithm / mode.CBC / NoPadding, key, input.toByteVector, params = Some(ivps)
         ).map(output => (IvParameterSpec(input.takeRight(algorithm.blockSize).toByteVector), Chunk.byteVector(output)))
     } {
       (ivps, input) => Cipher.keyDecrypt[F](
-        algorithm / mode.CBC, key, params = Some(ivps), input = Some(input.toByteVector)
+        algorithm / mode.CBC, key, input.toByteVector, params = Some(ivps)
       ).map(Chunk.byteVector)
     }
 

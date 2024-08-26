@@ -18,8 +18,8 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         secureRandom <- SecureRandom.getInstanceStrong[IO]
         key <- secureRandom.nextBytesF[IO](32)
         input <- secureRandom.nextBytesF[IO](32)
-        encrypted <- Cipher.rawKeyEncrypt[IO](AES, key, input = Some(input))
-        decrypted <- Cipher.rawKeyDecrypt[IO](AES, key, input = Some(encrypted))
+        encrypted <- Cipher.rawKeyEncrypt[IO](AES, key, input)
+        decrypted <- Cipher.rawKeyDecrypt[IO](AES, key, encrypted)
       yield input === decrypted
     run.asserting(assert)
   }
@@ -31,8 +31,8 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         key <- secureRandom.nextBytesF[IO](32)
         input <- secureRandom.nextBytesF[IO](32)
         iv <- secureRandom.nextBytesF[IO](16)
-        encrypted <- Cipher.rawKeyEncrypt[IO](AES / CBC / PKCS5Padding, key, iv = Some(iv), input = Some(input))
-        decrypted <- Cipher.rawKeyDecrypt[IO](AES / CBC / PKCS5Padding, key, iv = Some(iv), input = Some(encrypted))
+        encrypted <- Cipher.rawKeyEncrypt[IO](AES / CBC / PKCS5Padding, key, input, iv = Some(iv))
+        decrypted <- Cipher.rawKeyDecrypt[IO](AES / CBC / PKCS5Padding, key, encrypted, iv = Some(iv))
       yield input === decrypted
     run.asserting(assert)
   }
@@ -43,8 +43,8 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         keyPair <- KeyPairGenerator.keySizeGenerateKeyPair[IO](RSA, 1024)
         secureRandom <- SecureRandom.getInstanceStrong[IO]
         input <- secureRandom.nextBytesF[IO](32)
-        encrypted <- Cipher.keyEncrypt[IO](RSA, keyPair.getPublic, input = Some(input))
-        decrypted <- Cipher.keyDecrypt[IO](RSA, keyPair.getPrivate, input = Some(encrypted))
+        encrypted <- Cipher.keyEncrypt[IO](RSA, keyPair.getPublic, input)
+        decrypted <- Cipher.keyDecrypt[IO](RSA, keyPair.getPrivate, encrypted)
       yield input === decrypted
     run.asserting(assert)
   }

@@ -17,10 +17,10 @@ object ECB:
 
   def crypto[F[_]: Sync](algorithm: CipherAlgorithm & BlockCipher, opmode: Opmode, key: Key): Pipe[F, Byte, Byte] =
     _.chunkTimesN(algorithm.blockSize).evalMapChunksInitLast {
-      input => (algorithm / mode.ECB / NoPadding).keyCrypto[F](opmode, key, input = Some(input.toByteVector))
+      input => (algorithm / mode.ECB / NoPadding).keyCrypto[F](opmode, key, input.toByteVector)
         .map(Chunk.byteVector)
     } {
-      input => (algorithm / mode.ECB).keyCrypto[F](opmode, key, input = Some(input.toByteVector)).map(Chunk.byteVector)
+      input => (algorithm / mode.ECB).keyCrypto[F](opmode, key, input.toByteVector).map(Chunk.byteVector)
     }
 
   def encrypt[F[_]: Sync](algorithm: CipherAlgorithm & BlockCipher, key: Key): Pipe[F, Byte, Byte] =
