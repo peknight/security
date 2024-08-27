@@ -8,6 +8,7 @@ package object syntax:
   object edECKey extends EdECKeySyntax
   object keyFactory extends KeyFactorySyntax
   object keyPairGenerator extends KeyPairGeneratorSyntax
+  object keyStore extends KeyStoreSyntax
   object mac extends MACSyntax
   object rsaKey extends RSAKeySyntax
   object secretKeyFactory extends SecretKeyFactorySyntax
