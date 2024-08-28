@@ -25,6 +25,8 @@ lazy val security = (project in file("."))
     securityBouncyCastleProvider.js,
     securityBouncyCastlePkix.jvm,
     securityBouncyCastlePkix.js,
+    securityOtp.jvm,
+    securityOtp.js,
   )
   .settings(commonSettings)
   .settings(
@@ -87,9 +89,20 @@ lazy val securityBouncyCastlePkix = (crossProject(JSPlatform, JVMPlatform) in fi
     ),
   )
 
+lazy val securityOtp = (crossProject(JSPlatform, JVMPlatform) in file("security-otp"))
+  .settings(commonSettings)
+  .settings(
+    name := "security-otp",
+    libraryDependencies ++= Seq(
+      "org.scodec" %%% "scodec-bits" % scodecVersion,
+      "com.peknight" %%% "validation-spire" % pekValidationVersion,
+    )
+  )
+
 val catsParseVersion = "0.3.10"
 val catsEffectVersion = "3.5.4"
 val fs2Version = "3.10.2"
+val scodecVersion = "1.2.0"
 val bouncyCastleVersion = "1.78.1"
 val pekVersion = "0.1.0-SNAPSHOT"
 val pekExtVersion = pekVersion

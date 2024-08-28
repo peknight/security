@@ -7,6 +7,7 @@ package object syntax:
   object ecKey extends ECKeySyntax
   object ecParameterSpec extends ECParameterSpecSyntax
   object edECKey extends EdECKeySyntax
+  object keyAgreement extends KeyAgreementSyntax
   object keyFactory extends KeyFactorySyntax
   object keyPairGenerator extends KeyPairGeneratorSyntax
   object keyStore extends KeyStoreSyntax
@@ -16,5 +17,6 @@ package object syntax:
   object secretKeyFactory extends SecretKeyFactorySyntax
   object secureRandom extends SecureRandomSyntax
   object signature extends SignatureSyntax
+  object x509Certificate extends X509CertificateSyntax
   object xecKey extends XECKeySyntax
 end syntax

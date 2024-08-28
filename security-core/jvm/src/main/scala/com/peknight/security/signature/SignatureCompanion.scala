@@ -14,11 +14,14 @@ import java.security.{PrivateKey, PublicKey, SecureRandom, Provider as JProvider
 
 trait SignatureCompanion:
   def getInstance[F[_]: Sync](algorithm: SignatureAlgorithm, provider: Option[Provider | JProvider] = None): F[JSignature] =
+    getInstanceRaw[F](algorithm.algorithm, provider)
+
+  private[security] def getInstanceRaw[F[_]: Sync](algorithm: String, provider: Option[Provider | JProvider] = None): F[JSignature] =
     Sync[F].blocking {
       provider match
-        case Some(provider: Provider) => JSignature.getInstance(algorithm.algorithm, provider.name)
-        case Some(provider: JProvider) => JSignature.getInstance(algorithm.algorithm, provider)
-        case _ => JSignature.getInstance(algorithm.algorithm)
+        case Some(provider: Provider) => JSignature.getInstance(algorithm, provider.name)
+        case Some(provider: JProvider) => JSignature.getInstance(algorithm, provider)
+        case _ => JSignature.getInstance(algorithm)
     }
 
   def sign[F[_]: Sync](algorithm: SignatureAlgorithm, privateKey: PrivateKey, data: ByteVector,

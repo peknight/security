@@ -10,6 +10,7 @@ import com.peknight.security.cipher.{AES_128, Cipher}
 import com.peknight.security.digest.`SHA-1`
 import com.peknight.security.random.SecureRandom
 import com.peknight.security.spec.{PBEKeySpec, PBEParameterSpec}
+import com.peknight.security.syntax.key.{decrypt, encrypt}
 import com.peknight.security.syntax.secureRandom.nextBytesF
 import org.scalatest.flatspec.AsyncFlatSpec
 import scodec.bits.ByteVector
@@ -27,10 +28,9 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
         algorithm = PBE.withDigestAndAES(`SHA-1`, AES_128 / CBC)
         secretKey <- algorithm.generateSecret[IO](PBEKeySpec(password))
         pbeParameterSpec = PBEParameterSpec(salt, 1000)
-        encrypted <- Cipher.keyEncrypt[IO](algorithm, secretKey, input, params = Some(pbeParameterSpec))
-        decrypted <- Cipher.keyDecrypt[IO](algorithm, secretKey, encrypted, params = Some(pbeParameterSpec))
+        encrypted <- secretKey.encrypt[IO](input, params = Some(pbeParameterSpec))
+        decrypted <- secretKey.decrypt[IO](encrypted, params = Some(pbeParameterSpec))
       yield input === decrypted
     run.asserting(assert)
   }
 end CipherFlatSpec
-
