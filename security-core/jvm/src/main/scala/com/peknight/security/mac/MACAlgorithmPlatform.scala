@@ -16,6 +16,10 @@ trait MACAlgorithmPlatform { self: MACAlgorithm =>
                       provider: Option[Provider | JProvider] = None): F[ByteVector] =
     MAC.mac[F](self, key, input, params, provider)
 
+  def rawMAC[F[_]: Sync](key: ByteVector, input: ByteVector, params: Option[AlgorithmParameterSpec] = None,
+                         provider: Option[Provider | JProvider] = None): F[ByteVector] =
+    MAC.rawMAC[F](self, key, input, params, provider)
+
   def verify[F[_]: Sync](key: Key, input: ByteVector, signed: ByteVector,
                          params: Option[AlgorithmParameterSpec] = None,
                          provider: Option[Provider | JProvider] = None): F[Boolean] =

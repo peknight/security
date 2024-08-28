@@ -1,6 +1,7 @@
 package com.peknight.security.syntax
 
 import cats.effect.Sync
+import com.peknight.security.spec.SecretKeySpec
 import scodec.bits.ByteVector
 
 import java.security.Key
@@ -11,6 +12,9 @@ trait MACSyntax:
   extension (mac: Mac)
     def initF[F[_]: Sync](key: Key, params: Option[AlgorithmParameterSpec] = None): F[Unit] =
       Sync[F].blocking(params.fold(mac.init(key))(mac.init(key, _)))
+    def rawInitF[F[_]: Sync](key: ByteVector, params: Option[AlgorithmParameterSpec] = None): F[Unit] =
+      val keySpec = SecretKeySpec(key, mac.getAlgorithm)
+      Sync[F].blocking(params.fold(mac.init(keySpec))(mac.init(keySpec, _)))
     def updateF[F[_]: Sync](input: ByteVector): F[Unit] =
       Sync[F].blocking(mac.update(input.toArray))
     def doFinalF[F[_]: Sync]: F[ByteVector] =

@@ -7,5 +7,7 @@ import javax.crypto.spec.SecretKeySpec as JSecretKeySpec
 
 object SecretKeySpec:
   def apply(key: ByteVector, algorithm: SecretKeyFactoryAlgorithm): JSecretKeySpec =
-    new JSecretKeySpec(key.toArray, algorithm.algorithm)
+    apply(key, algorithm.algorithm)
+  private[security] def apply(key: ByteVector, algorithm: String): JSecretKeySpec =
+    new JSecretKeySpec(key.toArray, algorithm)
 end SecretKeySpec

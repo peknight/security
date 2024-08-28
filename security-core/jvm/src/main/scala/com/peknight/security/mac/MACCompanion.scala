@@ -4,7 +4,7 @@ import cats.effect.Sync
 import cats.syntax.flatMap.*
 import cats.syntax.functor.*
 import com.peknight.security.provider.Provider
-import com.peknight.security.syntax.mac.{doFinalF, initF}
+import com.peknight.security.syntax.mac.{doFinalF, initF, rawInitF}
 import scodec.bits.ByteVector
 
 import java.security.spec.AlgorithmParameterSpec
@@ -28,6 +28,16 @@ trait MACCompanion:
       _ <- m.initF(key, params)
       res <- m.doFinalF[F](input)
     yield res
+
+  def rawMAC[F[_]: Sync](algorithm: MACAlgorithm, key: ByteVector, input: ByteVector,
+                         params: Option[AlgorithmParameterSpec] = None,
+                         provider: Option[Provider | JProvider] = None): F[ByteVector] =
+    for
+      m <- getInstance[F](algorithm, provider)
+      _ <- m.rawInitF(key, params)
+      res <- m.doFinalF[F](input)
+    yield res
+
   def verify[F[_]: Sync](algorithm: MACAlgorithm, key: Key, input: ByteVector, signed: ByteVector,
                          params: Option[AlgorithmParameterSpec] = None,
                          provider: Option[Provider | JProvider] = None): F[Boolean] =
