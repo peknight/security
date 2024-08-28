@@ -16,11 +16,14 @@ import javax.crypto.Cipher as JCipher
 trait CipherCompanion:
 
   def getInstance[F[_]: Sync](transformation: CipherAlgorithm, provider: Option[Provider | JProvider] = None): F[JCipher] =
+    getInstanceRaw[F](transformation.transformation, provider)
+
+  private def getInstanceRaw[F[_]: Sync](transformation: String, provider: Option[Provider | JProvider] = None): F[JCipher] =
     Sync[F].blocking {
       provider match
-        case Some(provider: Provider) => JCipher.getInstance(transformation.transformation, provider.name)
-        case Some(provider: JProvider) => JCipher.getInstance(transformation.transformation, provider)
-        case _ => JCipher.getInstance(transformation.transformation)
+        case Some(provider: Provider) => JCipher.getInstance(transformation, provider.name)
+        case Some(provider: JProvider) => JCipher.getInstance(transformation, provider)
+        case _ => JCipher.getInstance(transformation)
     }
 
   def keyCrypto[F[_]: Sync](transformation: CipherAlgorithm, opmode: Opmode, key: Key, input: ByteVector,
@@ -49,6 +52,36 @@ trait CipherCompanion:
   : F[ByteVector] =
     for
       cipher <- getInstance[F](transformation, provider)
+      _ <- cipher.keyInitDecrypt[F](key, params, random)
+      output <- cipher.doFinalF[F](input)
+    yield output
+
+  def keyAlgorithmCrypto[F[_]: Sync](opmode: Opmode, key: Key, input: ByteVector,
+                                     params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
+                                     random: Option[SecureRandom] = None,
+                                     provider: Option[Provider | JProvider] = None): F[ByteVector] =
+    for
+      cipher <- getInstanceRaw[F](key.getAlgorithm, provider)
+      _ <- cipher.keyInit[F](opmode, key, params, random)
+      output <- cipher.doFinalF[F](input)
+    yield output
+
+  def keyAlgorithmEncrypt[F[_]: Sync](key: Key, input: ByteVector,
+                                      params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
+                                      random: Option[SecureRandom] = None,
+                                      provider: Option[Provider | JProvider] = None): F[ByteVector] =
+    for
+      cipher <- getInstanceRaw[F](key.getAlgorithm, provider)
+      _ <- cipher.keyInitEncrypt[F](key, params, random)
+      output <- cipher.doFinalF[F](input)
+    yield output
+
+  def keyAlgorithmDecrypt[F[_]: Sync](key: Key, input: ByteVector,
+                                      params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
+                                      random: Option[SecureRandom] = None,
+                                      provider: Option[Provider | JProvider] = None): F[ByteVector] =
+    for
+      cipher <- getInstanceRaw[F](key.getAlgorithm, provider)
       _ <- cipher.keyInitDecrypt[F](key, params, random)
       output <- cipher.doFinalF[F](input)
     yield output
@@ -106,6 +139,33 @@ trait CipherCompanion:
                                      provider: Option[Provider | JProvider] = None): F[ByteVector] =
     for
       cipher <- getInstance[F](transformation, provider)
+      _ <- cipher.certificateInitDecrypt[F](certificate, random)
+      output <- cipher.doFinalF[F](input)
+    yield output
+
+  def certificateAlgorithmCrypto[F[_]: Sync](opmode: Opmode, certificate: Certificate, input: ByteVector,
+                                             random: Option[SecureRandom] = None,
+                                             provider: Option[Provider | JProvider] = None): F[ByteVector] =
+    for
+      cipher <- getInstanceRaw[F](certificate.getPublicKey.getAlgorithm, provider)
+      _ <- cipher.certificateInit[F](opmode, certificate, random)
+      output <- cipher.doFinalF[F](input)
+    yield output
+
+  def certificateAlgorithmEncrypt[F[_]: Sync](certificate: Certificate, input: ByteVector,
+                                              random: Option[SecureRandom] = None,
+                                              provider: Option[Provider | JProvider] = None): F[ByteVector] =
+    for
+      cipher <- getInstanceRaw[F](certificate.getPublicKey.getAlgorithm, provider)
+      _ <- cipher.certificateInitEncrypt[F](certificate, random)
+      output <- cipher.doFinalF[F](input)
+    yield output
+
+  def certificateAlgorithmDecrypt[F[_]: Sync](certificate: Certificate, input: ByteVector,
+                                              random: Option[SecureRandom] = None,
+                                              provider: Option[Provider | JProvider] = None): F[ByteVector] =
+    for
+      cipher <- getInstanceRaw[F](certificate.getPublicKey.getAlgorithm, provider)
       _ <- cipher.certificateInitDecrypt[F](certificate, random)
       output <- cipher.doFinalF[F](input)
     yield output
