@@ -41,7 +41,7 @@ lazy val securityCore = (crossProject(JSPlatform, JVMPlatform) in file("security
       "org.typelevel" %%% "cats-effect" % catsEffectVersion,
       "org.typelevel" %%% "cats-parse" % catsParseVersion,
       "com.peknight" %%% "scodec-bits-ext" % pekExtVersion,
-      "com.peknight" %%% "validation-spire" % pekValidationVersion,
+      "com.peknight" %%% "validation-core" % pekValidationVersion,
       "com.peknight" %%% "io-core" % pekIoVersion,
       "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     ),
@@ -96,8 +96,8 @@ lazy val securityOtp = (crossProject(JSPlatform, JVMPlatform) in file("security-
     name := "security-otp",
     libraryDependencies ++= Seq(
       "com.peknight" %%% "cats-ext" % pekExtVersion,
-      "com.peknight" %%% "cats-effect-ext" % pekExtVersion,
       "com.peknight" %%% "codec-base" % pekCodecVersion,
+      "com.peknight" %%% "validation-spire" % pekValidationVersion,
       "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     )
   )

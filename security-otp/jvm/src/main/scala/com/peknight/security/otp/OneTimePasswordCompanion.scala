@@ -1,13 +1,12 @@
 package com.peknight.security.otp
 
 import cats.Id
-import cats.effect.Sync
+import cats.effect.{Clock, Sync}
 import cats.syntax.applicative.*
 import cats.syntax.applicativeError.*
 import cats.syntax.either.*
 import cats.syntax.flatMap.*
 import cats.syntax.functor.*
-import com.peknight.cats.effect.ext.Clock.realTimeInstant
 import com.peknight.codec.base.Base32
 import com.peknight.error.Error
 import com.peknight.security.mac.{HmacSHA1, MACAlgorithm}
@@ -24,7 +23,7 @@ trait OneTimePasswordCompanion { self: OneTimePassword =>
     base32.decode[Id] match
       case Right(key) =>
         for
-          instant <- realTimeInstant[F]
+          instant <- Clock[F].realTimeInstant
           res <- stateGenerate[F, Throwable](instant.toEpochMilli / interval.toMillis, challenge, codeLength)(
             mac.rawMAC[F](key, _).attempt
           )
@@ -37,7 +36,7 @@ trait OneTimePasswordCompanion { self: OneTimePassword =>
     base32.decode[Id] match
       case Right(key) =>
         for
-          instant <- realTimeInstant[F]
+          instant <- Clock[F].realTimeInstant
           res <- verifyTimeoutCode[F, Throwable](oneTimePassword, instant.toEpochMilli / interval.toMillis,
             pastIntervals, futureIntervals, challenge, codeLength)(mac.rawMAC[F](key, _).attempt)
         yield res
