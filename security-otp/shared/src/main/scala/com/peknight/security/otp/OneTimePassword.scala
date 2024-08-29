@@ -1,10 +1,10 @@
 package com.peknight.security.otp
 
-import cats.{Applicative, Monad}
 import cats.syntax.applicative.*
 import cats.syntax.either.*
 import cats.syntax.eq.*
 import cats.syntax.functor.*
+import cats.{Applicative, Monad}
 import com.peknight.cats.ext.instances.eitherT.given
 import com.peknight.error.Error
 import com.peknight.error.syntax.either.{asError, label}
@@ -24,45 +24,39 @@ import scala.annotation.tailrec
  *
  * @see https://github.com/google/google-authenticator-android/blob/master/java/com/google/android/apps/authenticator/otp/PasscodeGenerator.java
  */
-object OneTimePassword:
-
-  def generateOtp[F[_]: Applicative, E](challenge: ByteVector, codeLength: Int)
-                                       (signer: ByteVector => F[Either[E, ByteVector]])
-  : F[Either[Error, String]] =
+trait OneTimePassword:
+  def generate[F[_]: Applicative, E](challenge: ByteVector, codeLength: Int)
+                                    (signer: ByteVector => F[Either[E, ByteVector]]): F[Either[Error, String]] =
     contains(codeLength, Interval[Int](1, 9)).label("codeLength") match
       case Right(codeLength) => signer(challenge).map(_.map(hash => truncate(hash, codeLength)).asError)
       case Left(error) => error.asLeft.pure
 
-  def generateOtp[F[_]: Applicative, E](state: Long, challenge: ByteVector, codeLength: Int)
-                                       (signer: ByteVector => F[Either[E, ByteVector]])
+  def stateGenerate[F[_]: Applicative, E](state: Long, challenge: Option[ByteVector] = None, codeLength: Int = 6)
+                                         (signer: ByteVector => F[Either[E, ByteVector]])
   : F[Either[Error, String]] =
-    generateOtp[F, E](challengeToBytes(state, challenge), codeLength)(signer)
+    generate[F, E](challengeToBytes(state, challenge), codeLength)(signer)
 
-  def generateOtp[F[_]: Applicative, E](state: Long, codeLength: Int)
-                                       (signer: ByteVector => F[Either[E, ByteVector]])
-  : F[Either[Error, String]] =
-    generateOtp[F, E](challengeToBytes(state), codeLength)(signer)
+  def verify[F[_]: Applicative, E](oneTimePassword: String, challenge: ByteVector, codeLength: Int)
+                                  (signer: ByteVector => F[Either[E, ByteVector]]): F[Either[Error, Boolean]] =
+    generate[F, E](challenge, codeLength)(signer).map(_.map(_ === oneTimePassword))
 
-  def verifyOtp[F[_]: Applicative, E](oneTimePassword: String, challenge: ByteVector, codeLength: Int)
-                                     (signer: ByteVector => F[Either[E, ByteVector]]): F[Either[Error, Boolean]] =
-    generateOtp[F, E](challenge, codeLength)(signer).map(_.map(_ === oneTimePassword))
-
-  def verifyOtp[F[_]: Applicative, E](oneTimePassword: String, state: Long, challenge: ByteVector, codeLength: Int)
-                                     (signer: ByteVector => F[Either[E, ByteVector]]): F[Either[Error, Boolean]] =
-    verifyOtp[F, E](oneTimePassword, challengeToBytes(state, challenge), codeLength)(signer)
-
-  def verifyOtp[F[_]: Applicative, E](oneTimePassword: String, state: Long, codeLength: Int)
-                                     (signer: ByteVector => F[Either[E, ByteVector]]): F[Either[Error, Boolean]] =
-    verifyOtp[F, E](oneTimePassword, challengeToBytes(state), codeLength)(signer)
-
-  def verifyTimeoutCode[F[_]: Monad, E](timeoutCode: String, startInterval: Long, endInterval: Long, codeLength: Int)
+  def stateVerify[F[_]: Applicative, E](oneTimePassword: String, state: Long, challenge: Option[ByteVector] = None,
+                                        codeLength: Int = 6)
                                        (signer: ByteVector => F[Either[E, ByteVector]]): F[Either[Error, Boolean]] =
+    verify[F, E](oneTimePassword, challengeToBytes(state, challenge), codeLength)(signer)
+
+  def verifyTimeoutCode[F[_]: Monad, E](timeoutCode: String, currentInterval: Long, pastIntervals: Int = 1,
+                                        futureIntervals: Int = 1, challenge: Option[ByteVector] = None,
+                                        codeLength: Int = 6)
+                                       (signer: ByteVector => F[Either[E, ByteVector]]): F[Either[Error, Boolean]] =
+    val startInterval = currentInterval - pastIntervals.max(0)
+    val endInterval = currentInterval + futureIntervals.max(0)
     atOrBelow(startInterval, endInterval).label("startInterval") match
       case Right(startInterval) =>
         Monad[[X] =>> F[Either[Error, X]]].tailRecM[Long, Boolean](startInterval) { state =>
           // F[Either[Error, Either[Long, Boolean]]]
           if state <= endInterval then
-            verifyOtp[F, E](timeoutCode, state, codeLength)(signer).map {
+            stateVerify[F, E](timeoutCode, state, challenge, codeLength)(signer).map {
               case Right(true) => true.asRight.asRight
               case Right(false) => (state + 1).asLeft.asRight
               case Left(error) => error.asLeft
@@ -72,12 +66,8 @@ object OneTimePassword:
       case Left(error) => error.asLeft.pure
   end verifyTimeoutCode
 
-  private def challengeToBytes(state: Long, challenge: ByteVector): ByteVector =
-    val stateBytes = challengeToBytes(state)
-    if challenge.isEmpty then stateBytes else stateBytes ++ challenge
-
-  private def challengeToBytes(state: Long): ByteVector =
-    ByteVector.fromLong(state)
+  private def challengeToBytes(state: Long, challenge: Option[ByteVector]): ByteVector =
+    challenge.filter(_.nonEmpty).fold(ByteVector.fromLong(state))(challenge => ByteVector.fromLong(state) ++ challenge)
 
   /*
    * Dynamically truncate the hash
@@ -100,5 +90,6 @@ object OneTimePassword:
     val str = value.toString
     val padLength = codeLength - str.length
     if padLength > 0 then s"${"0".repeat(padLength)}$str" else str
-
 end OneTimePassword
+object OneTimePassword extends OneTimePassword with OneTimePasswordCompanion
+

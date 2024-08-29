@@ -42,4 +42,9 @@ trait MACCompanion:
                          params: Option[AlgorithmParameterSpec] = None,
                          provider: Option[Provider | JProvider] = None): F[Boolean] =
     mac[F](algorithm, key, input, params, provider).map(_ === signed)
+
+  def rawVerify[F[_]: Sync](algorithm: MACAlgorithm, key: ByteVector, input: ByteVector, signed: ByteVector,
+                            params: Option[AlgorithmParameterSpec] = None,
+                            provider: Option[Provider | JProvider] = None): F[Boolean] =
+    rawMAC[F](algorithm, key, input, params, provider).map(_ === signed)
 end MACCompanion

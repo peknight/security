@@ -27,8 +27,6 @@ lazy val security = (project in file("."))
     securityBouncyCastlePkix.js,
     securityOtp.jvm,
     securityOtp.js,
-    securityAuthenticator.jvm,
-    securityAuthenticator.js,
   )
   .settings(commonSettings)
   .settings(
@@ -92,34 +90,21 @@ lazy val securityBouncyCastlePkix = (crossProject(JSPlatform, JVMPlatform) in fi
   )
 
 lazy val securityOtp = (crossProject(JSPlatform, JVMPlatform) in file("security-otp"))
+  .dependsOn(securityCore)
   .settings(commonSettings)
   .settings(
     name := "security-otp",
     libraryDependencies ++= Seq(
-      "org.scodec" %%% "scodec-bits" % scodecVersion,
       "com.peknight" %%% "cats-ext" % pekExtVersion,
-      "com.peknight" %%% "validation-spire" % pekValidationVersion,
-    )
-  )
-
-lazy val securityAuthenticator = (crossProject(JSPlatform, JVMPlatform) in file("security-authenticator"))
-  .dependsOn(
-    securityCore,
-    securityOtp
-  )
-  .settings(commonSettings)
-  .settings(
-    name := "security-authenticator",
-    libraryDependencies ++= Seq(
-      "com.peknight" %%% "codec-base" % pekCodecVersion,
       "com.peknight" %%% "cats-effect-ext" % pekExtVersion,
+      "com.peknight" %%% "codec-base" % pekCodecVersion,
+      "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     )
   )
 
 val catsParseVersion = "0.3.10"
 val catsEffectVersion = "3.5.4"
 val fs2Version = "3.10.2"
-val scodecVersion = "1.2.0"
 val bouncyCastleVersion = "1.78.1"
 val pekVersion = "0.1.0-SNAPSHOT"
 val pekExtVersion = pekVersion
