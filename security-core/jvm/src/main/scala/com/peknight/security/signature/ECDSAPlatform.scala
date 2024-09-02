@@ -7,7 +7,7 @@ import cats.syntax.either.*
 import cats.syntax.functor.*
 import com.peknight.error.Error
 import com.peknight.error.syntax.either.asError
-import com.peknight.scodec.bits.ext.syntax.byteVector.toUnsignedBigInt
+import com.peknight.scodec.bits.ext.syntax.byteVector.{leftHalf, rightHalf, toUnsignedBigInt}
 import com.peknight.security.error.InvalidSignature
 import com.peknight.security.provider.Provider
 import com.peknight.security.signature.ECDSA.{convertConcatenatedToDER, convertDERToConcatenated}
@@ -53,8 +53,8 @@ trait ECDSAPlatform { self: ECDSA =>
       case Right(publicKey) =>
         val params = publicKey.getParams
         if signed.length <= params.signatureByteLength then
-          val rBytes = ECDSA.leftHalf(signed)
-          val sBytes = ECDSA.rightHalf(signed)
+          val rBytes = signed.leftHalf
+          val sBytes = signed.rightHalf
           val r = rBytes.toUnsignedBigInt
           val s = sBytes.toUnsignedBigInt
           val orderN = BigInt(params.getOrder)

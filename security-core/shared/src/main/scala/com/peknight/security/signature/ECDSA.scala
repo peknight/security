@@ -1,5 +1,6 @@
 package com.peknight.security.signature
 
+import com.peknight.scodec.bits.ext.syntax.byteVector.{leftHalf, rightHalf}
 import com.peknight.security.digest.{MessageDigestAlgorithm, `SHA-1`}
 import com.peknight.security.error.{InvalidECDSASignatureFormat, SecurityError}
 import com.peknight.security.format.Format
@@ -55,8 +56,8 @@ object ECDSA extends ECDSA:
   def convertConcatenatedToDER(concatenatedSignatureBytes: ByteVector): Either[SecurityError, ByteVector] =
     def getBytes(rawBytes: ByteVector): ByteVector = rawBytes.init.dropWhile(_ == 0) :+ rawBytes.last
     def getLength(bytes: ByteVector): Long = if bytes.head < 0 then bytes.length + 1 else bytes.length
-    val rBytes = getBytes(leftHalf(concatenatedSignatureBytes))
-    val sBytes = getBytes(rightHalf(concatenatedSignatureBytes))
+    val rBytes = getBytes(concatenatedSignatureBytes.leftHalf)
+    val sBytes = getBytes(concatenatedSignatureBytes.rightHalf)
     val rLength = getLength(rBytes)
     val sLength = getLength(sBytes)
     val len = rLength + sLength + 4
@@ -66,10 +67,4 @@ object ECDSA extends ECDSA:
         2.byteValue +: rLength.byteValue +: (ByteVector.fill(rLength - rBytes.length)(0) ++ rBytes ++
         (2.byteValue +: sLength.byteValue +: (ByteVector.fill(sLength - sBytes.length)(0) ++ sBytes)))
         )))
-
-  private[security] def leftHalf(bytes: ByteVector): ByteVector = bytes.take(bytes.length / 2)
-  private[security] def rightHalf(bytes: ByteVector): ByteVector =
-    val half = bytes.length / 2
-    bytes.drop(half).take(half)
-
 end ECDSA
