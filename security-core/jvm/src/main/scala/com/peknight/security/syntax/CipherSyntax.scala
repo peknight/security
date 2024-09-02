@@ -3,8 +3,7 @@ package com.peknight.security.syntax
 import cats.effect.Sync
 import com.peknight.security.cipher.Opmode
 import com.peknight.security.cipher.Opmode.{Decrypt, Encrypt}
-import com.peknight.security.key.secret.SecretKeyFactoryAlgorithm
-import com.peknight.security.spec.{IvParameterSpec, SecretKeySpec}
+import com.peknight.security.spec.{IvParameterSpec, SecretKeySpec, SecretKeySpecAlgorithm}
 import scodec.bits.ByteVector
 
 import java.security.cert.Certificate
@@ -34,15 +33,15 @@ trait CipherSyntax:
                                    random: Option[SecureRandom] = None): F[Unit] =
       keyInit[F](Decrypt, key, params, random)
 
-    def rawKeyInit[F[_]: Sync](algorithm: SecretKeyFactoryAlgorithm, opmode: Opmode, key: ByteVector,
+    def rawKeyInit[F[_]: Sync](algorithm: SecretKeySpecAlgorithm, opmode: Opmode, key: ByteVector,
                                iv: Option[ByteVector] = None, random: Option[SecureRandom] = None): F[Unit] =
       keyInit[F](opmode, SecretKeySpec(key, algorithm), iv.map(IvParameterSpec.apply), random)
 
-    def rawKeyInitEncrypt[F[_]: Sync](algorithm: SecretKeyFactoryAlgorithm, key: ByteVector,
+    def rawKeyInitEncrypt[F[_]: Sync](algorithm: SecretKeySpecAlgorithm, key: ByteVector,
                                       iv: Option[ByteVector] = None, random: Option[SecureRandom] = None): F[Unit] =
       rawKeyInit[F](algorithm, Encrypt, key, iv, random)
 
-    def rawKeyInitDecrypt[F[_]: Sync](algorithm: SecretKeyFactoryAlgorithm, key: ByteVector,
+    def rawKeyInitDecrypt[F[_]: Sync](algorithm: SecretKeySpecAlgorithm, key: ByteVector,
                                       iv: Option[ByteVector] = None, random: Option[SecureRandom] = None): F[Unit] =
       rawKeyInit[F](algorithm, Decrypt, key, iv, random)
 
