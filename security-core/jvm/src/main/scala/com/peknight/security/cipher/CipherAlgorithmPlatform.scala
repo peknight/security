@@ -18,35 +18,35 @@ trait CipherAlgorithmPlatform { self: CipherAlgorithm =>
 
   def keyCrypto[F[_]: Sync](opmode: Opmode, key: Key, input: ByteVector,
                             params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
-                            random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
-  : F[ByteVector] =
-    Cipher.keyCrypto[F](self, opmode, key, input, params, random, provider)
+                            aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                            provider: Option[Provider | JProvider] = None): F[ByteVector] =
+    Cipher.keyCrypto[F](self, opmode, key, input, params, aad, random, provider)
 
   def keyEncrypt[F[_]: Sync](key: Key, input: ByteVector,
                              params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
-                             random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
-  : F[ByteVector] =
-    Cipher.keyEncrypt[F](self, key, input, params, random, provider)
+                             aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                             provider: Option[Provider | JProvider] = None): F[ByteVector] =
+    Cipher.keyEncrypt[F](self, key, input, params, aad, random, provider)
 
   def keyDecrypt[F[_]: Sync](key: Key, input: ByteVector,
                              params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
-                             random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
-  : F[ByteVector] =
-    Cipher.keyDecrypt[F](self, key, input, params, random, provider)
+                             aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                             provider: Option[Provider | JProvider] = None): F[ByteVector] =
+    Cipher.keyDecrypt[F](self, key, input, params, aad, random, provider)
 
 
   def certificateCrypto[F[_]: Sync](opmode: Opmode, certificate: Certificate, input: ByteVector,
-                                    random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
-  : F[ByteVector] =
-    Cipher.certificateCrypto[F](self, opmode, certificate, input, random, provider)
+                                    aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                                    provider: Option[Provider | JProvider] = None): F[ByteVector] =
+    Cipher.certificateCrypto[F](self, opmode, certificate, input, aad, random, provider)
 
-  def certificateEncrypt[F[_]: Sync](certificate: Certificate, input: ByteVector,
+  def certificateEncrypt[F[_]: Sync](certificate: Certificate, input: ByteVector, aad: Option[ByteVector] = None,
                                      random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
   : F[ByteVector] =
-    Cipher.certificateEncrypt[F](self, certificate, input, random, provider)
+    Cipher.certificateEncrypt[F](self, certificate, input, aad, random, provider)
 
-  def certificateDecrypt[F[_]: Sync](certificate: Certificate, input: ByteVector,
+  def certificateDecrypt[F[_]: Sync](certificate: Certificate, input: ByteVector, aad: Option[ByteVector] = None,
                                      random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
   : F[ByteVector] =
-    Cipher.certificateDecrypt[F](self, certificate, input, random, provider)
+    Cipher.certificateDecrypt[F](self, certificate, input, aad, random, provider)
 }

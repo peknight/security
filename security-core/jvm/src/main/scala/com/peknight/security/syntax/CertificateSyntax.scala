@@ -11,17 +11,18 @@ import java.security.{AlgorithmParameters, Key, SecureRandom, Provider as JProvi
 
 trait CertificateSyntax:
   extension (certificate: Certificate)
-    def crypto[F[_]: Sync](opmode: Opmode, input: ByteVector, random: Option[SecureRandom] = None,
-                           provider: Option[Provider | JProvider] = None): F[ByteVector] =
-      Cipher.certificateAlgorithmCrypto[F](opmode, certificate, input, random, provider)
+    def crypto[F[_]: Sync](opmode: Opmode, input: ByteVector, aad: Option[ByteVector] = None,
+                           random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
+    : F[ByteVector] =
+      Cipher.certificateAlgorithmCrypto[F](opmode, certificate, input, aad, random, provider)
 
-    def encrypt[F[_] : Sync](input: ByteVector, random: Option[SecureRandom] = None,
+    def encrypt[F[_] : Sync](input: ByteVector, aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
                              provider: Option[Provider | JProvider] = None): F[ByteVector] =
-      Cipher.certificateAlgorithmEncrypt[F](certificate, input, random, provider)
+      Cipher.certificateAlgorithmEncrypt[F](certificate, input, aad, random, provider)
 
-    def decrypt[F[_] : Sync](input: ByteVector, random: Option[SecureRandom] = None,
+    def decrypt[F[_] : Sync](input: ByteVector, aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
                              provider: Option[Provider | JProvider] = None): F[ByteVector] =
-      Cipher.certificateAlgorithmDecrypt[F](certificate, input, random, provider)
+      Cipher.certificateAlgorithmDecrypt[F](certificate, input, aad, random, provider)
   end extension
 end CertificateSyntax
 object CertificateSyntax extends CertificateSyntax

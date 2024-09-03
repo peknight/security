@@ -58,6 +58,8 @@ trait CipherSyntax:
     def certificateInitDecrypt[F[_]: Sync](certificate: Certificate, random: Option[SecureRandom] = None): F[Unit] =
       certificateInit[F](Decrypt, certificate, random)
 
+    def updateAADF[F[_]: Sync](src: ByteVector): F[Unit] = Sync[F].blocking(cipher.updateAAD(src.toArray))
+
     def doFinalF[F[_]: Sync]: F[ByteVector] = Sync[F].blocking(ByteVector(cipher.doFinal()))
     def doFinalF[F[_]: Sync](input: ByteVector): F[ByteVector] = Sync[F].blocking(ByteVector(cipher.doFinal(input.toArray)))
     def doFinalF[F[_]: Sync](input: Option[ByteVector] = None): F[ByteVector] = input.fold(doFinalF[F])(doFinalF[F])
