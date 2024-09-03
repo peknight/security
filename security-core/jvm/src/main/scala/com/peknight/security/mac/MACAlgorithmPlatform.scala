@@ -1,6 +1,7 @@
 package com.peknight.security.mac
 
 import cats.effect.Sync
+import com.peknight.error.Error
 import com.peknight.security.provider.Provider
 import scodec.bits.ByteVector
 
@@ -29,4 +30,14 @@ trait MACAlgorithmPlatform { self: MACAlgorithm =>
                             params: Option[AlgorithmParameterSpec] = None,
                             provider: Option[Provider | JProvider] = None): F[Boolean] =
     MAC.rawVerify[F](self, key, input, signed, params, provider)
+
+  def check[F[_]: Sync](key: Key, input: ByteVector, signed: ByteVector,
+                        params: Option[AlgorithmParameterSpec] = None,
+                        provider: Option[Provider | JProvider] = None): F[Either[Error, Unit]] =
+    MAC.check[F](self, key, input, signed, params, provider)
+
+  def rawCheck[F[_]: Sync](key: ByteVector, input: ByteVector, signed: ByteVector,
+                           params: Option[AlgorithmParameterSpec] = None,
+                           provider: Option[Provider | JProvider] = None): F[Either[Error, Unit]] =
+    MAC.rawCheck[F](self, key, input, signed, params, provider)
 }
