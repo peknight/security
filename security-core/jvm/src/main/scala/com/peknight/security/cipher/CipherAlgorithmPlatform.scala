@@ -14,6 +14,8 @@ trait CipherAlgorithmPlatform { self: CipherAlgorithm =>
   def getCipher[F[_]: Sync](provider: Option[Provider | JProvider] = None): F[JCipher] =
     Cipher.getInstance[F](self, provider)
 
+  def getMaxAllowedKeyLength[F[_]: Sync]: F[Int] = Cipher.getMaxAllowedKeyLength[F](self)
+
   def keyCrypto[F[_]: Sync](opmode: Opmode, key: Key, input: ByteVector,
                             params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
                             random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)

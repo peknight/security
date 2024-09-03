@@ -26,6 +26,9 @@ trait CipherCompanion:
         case _ => JCipher.getInstance(transformation)
     }
 
+  def getMaxAllowedKeyLength[F[_]: Sync](transformation: CipherAlgorithm): F[Int] =
+    Sync[F].blocking(JCipher.getMaxAllowedKeyLength(transformation.transformation))
+
   def keyCrypto[F[_]: Sync](transformation: CipherAlgorithm, opmode: Opmode, key: Key, input: ByteVector,
                             params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
                             random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
