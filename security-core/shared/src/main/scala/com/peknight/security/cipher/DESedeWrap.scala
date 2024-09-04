@@ -7,7 +7,7 @@ trait DESedeWrap extends DESede:
   override val mode: CipherAlgorithmMode = KW
   override def /(mode: CipherAlgorithmMode): This = DESede(mode, padding)
   override def /(padding: CipherAlgorithmPadding): This = DESede(mode, padding)
-  override val transformation: String = "DESedeWrap"
-  override val algorithm: String = transformation
+  override def transformation: String = "DESedeWrap"
+  override def algorithm: String = transformation
 end DESedeWrap
 object DESedeWrap extends DESedeWrap
