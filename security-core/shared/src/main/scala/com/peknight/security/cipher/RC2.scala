@@ -11,7 +11,7 @@ trait RC2 extends CipherAlgorithm with AlgorithmParametersAlgorithm with KeyGene
   val blockSize: Int = 8
   def /(mode: CipherAlgorithmMode): This = RC2(mode, padding)
   def /(padding: CipherAlgorithmPadding): This = RC2(mode, padding)
-  val algorithm: String = "RC2"
+  def algorithm: String = "RC2"
 end RC2
 object RC2 extends RC2:
   private case class RC2(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)

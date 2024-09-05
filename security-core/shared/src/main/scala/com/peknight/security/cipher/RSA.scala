@@ -11,7 +11,7 @@ import com.peknight.security.key.pair.KeyPairGeneratorAlgorithm
  */
 trait RSA extends CipherAlgorithm with KeyFactoryAlgorithm with KeyPairGeneratorAlgorithm with Asymmetric:
   type This = RSA
-  val algorithm: String = "RSA"
+  def algorithm: String = "RSA"
   def /(mode: CipherAlgorithmMode): This = RSA(mode, padding)
   def /(padding: CipherAlgorithmPadding): This = RSA(mode, padding)
 end RSA

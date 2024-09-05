@@ -13,5 +13,5 @@ trait Hmac extends MACAlgorithm with PRF:
   def prf: String = algorithm
 end Hmac
 object Hmac extends SecretKeySpecAlgorithm:
-  override val algorithm: String = "HMAC"
+  override def algorithm: String = "HMAC"
 end Hmac

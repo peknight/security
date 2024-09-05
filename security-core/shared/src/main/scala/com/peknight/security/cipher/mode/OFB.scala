@@ -11,6 +11,6 @@ package com.peknight.security.cipher.mode
  * Thus, block ciphers can be turned into byte-oriented stream ciphers by using an 8-bit mode such as CFB8 or OFB8.
  */
 trait OFB extends CipherAlgorithmMode:
-  val mode: String = "OFB"
+  def mode: String = "OFB"
 end OFB
 object OFB extends OFB

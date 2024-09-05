@@ -5,6 +5,6 @@ package com.peknight.security.random
  * systems.
  */
 trait NativePRNGBlocking extends NativePRNG:
-  override val algorithm: String = "NativePRNGBlocking"
+  override def algorithm: String = "NativePRNGBlocking"
 end NativePRNGBlocking
 object NativePRNGBlocking extends NativePRNGBlocking

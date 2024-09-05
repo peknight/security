@@ -6,6 +6,6 @@ import com.peknight.security.digest.MessageDigestAlgorithm
 trait NONE extends MessageDigestAlgorithm with CipherAlgorithmMode:
   val bitLength: Int = 0
   def algorithm: String = "NONE"
-  val mode: String = algorithm
+  def mode: String = algorithm
 end NONE
 object NONE extends NONE

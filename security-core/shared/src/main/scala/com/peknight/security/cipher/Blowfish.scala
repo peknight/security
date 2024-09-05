@@ -10,7 +10,7 @@ trait Blowfish extends CipherAlgorithm with AlgorithmParametersAlgorithm with Ke
   with Symmetric:
   type This = Blowfish
   val blockSize: Int = 8
-  val algorithm: String = "Blowfish"
+  def algorithm: String = "Blowfish"
   def /(mode: CipherAlgorithmMode): This = Blowfish(mode, padding)
   def /(padding: CipherAlgorithmPadding): This = Blowfish(mode, padding)
 end Blowfish

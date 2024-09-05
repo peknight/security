@@ -2,7 +2,7 @@ package com.peknight.security.cipher.mode
 
 trait CFBx extends CFB:
   def bits: Int
-  override val mode: String = s"CFB$bits"
+  override def mode: String = s"CFB$bits"
 end CFBx
 object CFBx:
   private case class CFBx(bits: Int) extends com.peknight.security.cipher.mode.CFBx

@@ -11,7 +11,7 @@ import com.peknight.security.random.PRF
  */
 trait PBE
 object PBE extends PBE with AlgorithmParametersAlgorithm:
-  val algorithm: String = "PBE"
+  def algorithm: String = "PBE"
   def withDigestAndEncryption(digest: Digest, encryption: CipherAlgorithm): PBEWithDigestAndEncryption =
     PBEWithDigestAndEncryption(digest, encryption)
   def withPRFAndEncryption(prf: PRF, encryption: CipherAlgorithm): PBEWithPRFAndEncryption =

@@ -18,7 +18,7 @@ trait `RSASSA-PSS` extends SignatureAlgorithm
   def mgf: MGF = MGF1
   def saltLength: Int = digest.outputLength / 8
   def signature: DigestWithEncryption = digest.withEncryption(RSA, Some(mgf))
-  val padding: Padding = PSS
+  def padding: Padding = PSS
   override def oid: Option[ObjectIdentifier] = Some(ObjectIdentifier.unsafeFromString("1.2.840.113549.1.1.10"))
 end `RSASSA-PSS`
 object `RSASSA-PSS` extends `RSASSA-PSS`:

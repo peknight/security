@@ -9,7 +9,7 @@ trait RC5 extends CipherAlgorithm with RC:
   type This = RC5
   def /(mode: CipherAlgorithmMode): This = RC5(mode, padding)
   def /(padding: CipherAlgorithmPadding): This = RC5(mode, padding)
-  val algorithm: String = "RC5"
+  def algorithm: String = "RC5"
 end RC5
 object RC5 extends RC5:
   private case class RC5(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)

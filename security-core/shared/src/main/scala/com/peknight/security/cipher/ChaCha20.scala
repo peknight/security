@@ -10,7 +10,7 @@ import com.peknight.security.mac.{MAC, Poly1305}
 trait ChaCha20 extends CipherAlgorithm with KeyGeneratorAlgorithm with SecretKeyFactoryAlgorithm with StreamCipher
   with Symmetric:
   type This = ChaCha20
-  val algorithm: String = "ChaCha20"
+  def algorithm: String = "ChaCha20"
   def /(mode: CipherAlgorithmMode): This = ChaCha20(mode, padding)
   def /(padding: CipherAlgorithmPadding): This = ChaCha20(mode, padding)
   override def -(mac: MAC): AEAD =

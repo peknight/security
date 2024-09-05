@@ -12,7 +12,7 @@ trait RC4 extends ARCFOUR:
   type This = RC4
   def /(mode: CipherAlgorithmMode): This = RC4(mode, padding)
   def /(padding: CipherAlgorithmPadding): This = RC4(mode, padding)
-  override val algorithm: String = "RC4"
+  override def algorithm: String = "RC4"
 end RC4
 object RC4 extends RC4:
   private case class RC4(override val mode: CipherAlgorithmMode, override val padding: CipherAlgorithmPadding)

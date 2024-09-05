@@ -10,7 +10,7 @@ import com.peknight.security.cipher.padding.{CipherAlgorithmPadding, NoPadding}
  */
 trait ECIES extends CipherAlgorithm with Asymmetric:
   type This = ECIES
-  val algorithm: String = "ECIES"
+  def algorithm: String = "ECIES"
   def /(mode: CipherAlgorithmMode): This = ECIES(mode, padding)
   def /(padding: CipherAlgorithmPadding): This = ECIES(mode, padding)
 end ECIES

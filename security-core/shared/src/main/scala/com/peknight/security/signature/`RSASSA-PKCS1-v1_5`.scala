@@ -6,7 +6,7 @@ import com.peknight.security.padding.{Padding, `PKCS1-v1_5`}
 
 trait `RSASSA-PKCS1-v1_5` extends RSASSA with `RSASSA-PKCS1-v1_5Platform`:
   def signature: DigestWithEncryption = digest.withEncryption(RSA)
-  val padding: Padding = `PKCS1-v1_5`
+  def padding: Padding = `PKCS1-v1_5`
 end `RSASSA-PKCS1-v1_5`
 object `RSASSA-PKCS1-v1_5` extends `RSASSA-PKCS1-v1_5`:
   def digest: MessageDigestAlgorithm = `SHA-256`

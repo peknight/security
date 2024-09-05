@@ -5,6 +5,6 @@ package com.peknight.security.random
  * 	stalling. For example, /dev/urandom on UNIX-like systems.
  */
 trait NativePRNGNonBlocking extends NativePRNG:
-  override val algorithm: String = "NativePRNGNonBlocking"
+  override def algorithm: String = "NativePRNGNonBlocking"
 end NativePRNGNonBlocking
 object NativePRNGNonBlocking extends NativePRNGNonBlocking
