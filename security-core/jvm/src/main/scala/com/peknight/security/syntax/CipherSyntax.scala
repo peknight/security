@@ -1,7 +1,8 @@
 package com.peknight.security.syntax
 
 import cats.effect.Sync
-import com.peknight.security.cipher.Opmode
+import com.peknight.security.algorithm.Algorithm
+import com.peknight.security.cipher.{Opmode, WrappedKeyType}
 import com.peknight.security.cipher.Opmode.{Decrypt, Encrypt, Unwrap, Wrap}
 import com.peknight.security.spec.{IvParameterSpec, SecretKeySpec, SecretKeySpecAlgorithm}
 import scodec.bits.ByteVector
@@ -85,6 +86,11 @@ trait CipherSyntax:
     def doFinalF[F[_]: Sync]: F[ByteVector] = Sync[F].blocking(ByteVector(cipher.doFinal()))
     def doFinalF[F[_]: Sync](input: ByteVector): F[ByteVector] = Sync[F].blocking(ByteVector(cipher.doFinal(input.toArray)))
     def doFinalF[F[_]: Sync](input: Option[ByteVector] = None): F[ByteVector] = input.fold(doFinalF[F])(doFinalF[F])
+    
+    def wrapF[F[_]: Sync](key: Key): F[ByteVector] = Sync[F].blocking(ByteVector(cipher.wrap(key)))
+    def unwrapF[F[_]: Sync](wrappedKey: ByteVector, wrappedKeyAlgorithm: Algorithm, wrappedKeyType: WrappedKeyType)
+    : F[Key] =
+      Sync[F].blocking(cipher.unwrap(wrappedKey.toArray, wrappedKeyAlgorithm.algorithm, wrappedKeyType.keyType))
   end extension
 end CipherSyntax
 object CipherSyntax extends CipherSyntax
