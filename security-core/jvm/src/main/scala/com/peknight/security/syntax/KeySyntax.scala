@@ -26,6 +26,16 @@ trait KeySyntax:
                             aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
                             provider: Option[Provider | JProvider] = None): F[ByteVector] =
       Cipher.keyAlgorithmDecrypt[F](key, input, params, aad, random, provider)
+
+    def wrap[F[_] : Sync](input: ByteVector, params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
+                          aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                          provider: Option[Provider | JProvider] = None): F[ByteVector] =
+      Cipher.keyAlgorithmWrap[F](key, input, params, aad, random, provider)
+
+    def unwrap[F[_] : Sync](input: ByteVector, params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
+                            aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                            provider: Option[Provider | JProvider] = None): F[ByteVector] =
+      Cipher.keyAlgorithmUnwrap[F](key, input, params, aad, random, provider)
   end extension
 end KeySyntax
 object KeySyntax extends KeySyntax

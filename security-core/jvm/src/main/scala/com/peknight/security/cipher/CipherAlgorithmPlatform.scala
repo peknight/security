@@ -34,6 +34,17 @@ trait CipherAlgorithmPlatform { self: CipherAlgorithm =>
                              provider: Option[Provider | JProvider] = None): F[ByteVector] =
     Cipher.keyDecrypt[F](self, key, input, params, aad, random, provider)
 
+  def keyWrap[F[_]: Sync](key: Key, input: ByteVector,
+                          params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
+                          aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                          provider: Option[Provider | JProvider] = None): F[ByteVector] =
+    Cipher.keyWrap[F](self, key, input, params, aad, random, provider)
+
+  def keyUnwrap[F[_]: Sync](key: Key, input: ByteVector,
+                            params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
+                            aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                            provider: Option[Provider | JProvider] = None): F[ByteVector] =
+    Cipher.keyUnwrap[F](self, key, input, params, aad, random, provider)
 
   def certificateCrypto[F[_]: Sync](opmode: Opmode, certificate: Certificate, input: ByteVector,
                                     aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
@@ -49,4 +60,14 @@ trait CipherAlgorithmPlatform { self: CipherAlgorithm =>
                                      random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
   : F[ByteVector] =
     Cipher.certificateDecrypt[F](self, certificate, input, aad, random, provider)
+
+  def certificateWrap[F[_]: Sync](certificate: Certificate, input: ByteVector, aad: Option[ByteVector] = None,
+                                  random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
+  : F[ByteVector] =
+    Cipher.certificateWrap[F](self, certificate, input, aad, random, provider)
+
+  def certificateUnwrap[F[_]: Sync](certificate: Certificate, input: ByteVector, aad: Option[ByteVector] = None,
+                                    random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
+  : F[ByteVector] =
+    Cipher.certificateUnwrap[F](self, certificate, input, aad, random, provider)
 }
