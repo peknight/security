@@ -2,11 +2,10 @@ package com.peknight.security.signature
 
 import cats.effect.Sync
 import cats.syntax.applicative.*
-import cats.syntax.applicativeError.*
 import cats.syntax.either.*
 import cats.syntax.functor.*
 import com.peknight.error.Error
-import com.peknight.error.syntax.either.asError
+import com.peknight.error.syntax.applicativeError.asError
 import com.peknight.scodec.bits.ext.syntax.byteVector.{leftHalf, rightHalf, toUnsignedBigInt}
 import com.peknight.security.error.InvalidSignature
 import com.peknight.security.provider.Provider
@@ -25,10 +24,10 @@ trait ECDSAPlatform { self: ECDSA =>
   def signES[F[_]: Sync](privateKey: PrivateKey, data: ByteVector, params: Option[AlgorithmParameterSpec] = None,
                          random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
   : F[Either[Error, ByteVector]] =
-    self.signature.sign[F](privateKey, data, params, random, provider).attempt
+    self.signature.sign[F](privateKey, data, params, random, provider).asError
       .map { either =>
           for
-            derEncodedBytes <- either.asError
+            derEncodedBytes <- either
             privateKey <- typed[ECPrivateKey](privateKey)
             res <- ECDSA.convertDERToConcatenated(derEncodedBytes, privateKey.getParams.signatureByteLength)
           yield res
@@ -60,7 +59,7 @@ trait ECDSAPlatform { self: ECDSA =>
           val orderN = BigInt(params.getOrder)
           if r.mod(orderN) != BigInt(0) && s.mod(orderN) != BigInt(0) then
             convertConcatenatedToDER(signed) match
-              case Right(signed) => f(signed).attempt.map(_.asError)
+              case Right(signed) => f(signed).asError
               case Left(error) => error.asLeft.pure
           else false.asRight.pure
         else false.asRight.pure

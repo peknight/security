@@ -1,6 +1,7 @@
 package com.peknight.security
 
 package object syntax:
+  object algorithmParameterSpec extends AlgorithmParameterSpecSyntax
   object certificateFactory extends CertificateFactorySyntax
   object certificate extends CertificateSyntax
   object cipher extends CipherSyntax
