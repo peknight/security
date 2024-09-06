@@ -48,35 +48,33 @@ trait CipherCompanion:
       output
 
   private def handleWrap[F[_]: Sync](transformation: CipherAlgorithm, keyToBeWrapped: Key,
-                                     aad: Option[ByteVector] = None, provider: Option[Provider | JProvider] = None)
+                                     provider: Option[Provider | JProvider] = None)
                                     (init: JCipher => F[Unit]): F[ByteVector] =
-    handleWrapRaw[F](transformation.transformation, keyToBeWrapped, aad, provider)(init)
+    handleWrapRaw[F](transformation.transformation, keyToBeWrapped, provider)(init)
 
-  private def handleWrapRaw[F[_]: Sync](transformation: String, keyToBeWrapped: Key, aad: Option[ByteVector] = None,
+  private def handleWrapRaw[F[_]: Sync](transformation: String, keyToBeWrapped: Key,
                                         provider: Option[Provider | JProvider] = None)
                                        (init: JCipher => F[Unit]): F[ByteVector] =
     for
       cipher <- getInstanceRaw[F](transformation, provider)
       _ <- init(cipher)
-      _ <- aad.filter(_.nonEmpty).fold(().pure[F])(cipher.updateAADF[F])
       output <- cipher.wrapF[F](keyToBeWrapped)
     yield
       output
 
   private def handleUnwrap[F[_] : Sync](transformation: CipherAlgorithm, wrappedKey: ByteVector,
                                         wrappedKeyAlgorithm: Algorithm, wrappedKeyType: WrappedKeyType,
-                                        aad: Option[ByteVector] = None, provider: Option[Provider | JProvider] = None)
+                                        provider: Option[Provider | JProvider] = None)
                                        (init: JCipher => F[Unit]): F[Key] =
-    handleUnwrapRaw[F](transformation.transformation, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, aad, provider)(init)
+    handleUnwrapRaw[F](transformation.transformation, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, provider)(init)
 
   private def handleUnwrapRaw[F[_] : Sync](transformation: String, wrappedKey: ByteVector,
                                            wrappedKeyAlgorithm: Algorithm, wrappedKeyType: WrappedKeyType,
-                                           aad: Option[ByteVector] = None, provider: Option[Provider | JProvider] = None)
+                                           provider: Option[Provider | JProvider] = None)
                                           (init: JCipher => F[Unit]): F[Key] =
     for
       cipher <- getInstanceRaw[F](transformation, provider)
       _ <- init(cipher)
-      _ <- aad.filter(_.nonEmpty).fold(().pure[F])(cipher.updateAADF[F])
       output <- cipher.unwrapF[F](wrappedKey, wrappedKeyAlgorithm, wrappedKeyType)
     yield
       output
@@ -101,16 +99,16 @@ trait CipherCompanion:
 
   def keyWrap[F[_] : Sync](transformation: CipherAlgorithm, key: Key, keyToBeWrapped: Key,
                            params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
-                           aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                           random: Option[SecureRandom] = None,
                            provider: Option[Provider | JProvider] = None): F[ByteVector] =
-    handleWrap[F](transformation, keyToBeWrapped, aad, provider)(_.keyInitWrap[F](key, params, random))
+    handleWrap[F](transformation, keyToBeWrapped, provider)(_.keyInitWrap[F](key, params, random))
 
   def keyUnwrap[F[_] : Sync](transformation: CipherAlgorithm, key: Key, wrappedKey: ByteVector,
                              wrappedKeyAlgorithm: Algorithm, wrappedKeyType: WrappedKeyType,
                              params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
-                             aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                             random: Option[SecureRandom] = None,
                              provider: Option[Provider | JProvider] = None): F[Key] =
-    handleUnwrap[F](transformation, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, aad, provider)(
+    handleUnwrap[F](transformation, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, provider)(
       _.keyInitUnwrap[F](key, params, random)
     )
 
@@ -134,16 +132,16 @@ trait CipherCompanion:
 
   def keyAlgorithmWrap[F[_] : Sync](key: Key, keyToBeWrapped: Key,
                                     params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
-                                    aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                                    random: Option[SecureRandom] = None,
                                     provider: Option[Provider | JProvider] = None): F[ByteVector] =
-    handleWrapRaw[F](key.getAlgorithm, keyToBeWrapped, aad, provider)(_.keyInitWrap[F](key, params, random))
+    handleWrapRaw[F](key.getAlgorithm, keyToBeWrapped, provider)(_.keyInitWrap[F](key, params, random))
 
   def keyAlgorithmUnwrap[F[_] : Sync](key: Key, wrappedKey: ByteVector, wrappedKeyAlgorithm: Algorithm,
                                       wrappedKeyType: WrappedKeyType,
                                       params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
-                                      aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                                      random: Option[SecureRandom] = None,
                                       provider: Option[Provider | JProvider] = None): F[Key] =
-    handleUnwrapRaw[F](key.getAlgorithm, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, aad, provider)(
+    handleUnwrapRaw[F](key.getAlgorithm, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, provider)(
       _.keyInitUnwrap[F](key, params, random)
     )
 
@@ -166,17 +164,16 @@ trait CipherCompanion:
     handleCrypto[F](transformation, input, aad, provider)(_.rawKeyInitDecrypt[F](transformation, key, iv, random))
 
   def rawKeyWrap[F[_] : Sync](transformation: CipherAlgorithm & SecretKeyFactoryAlgorithm, key: ByteVector,
-                              keyToBeWrapped: Key, iv: Option[ByteVector] = None, aad: Option[ByteVector] = None,
+                              keyToBeWrapped: Key, iv: Option[ByteVector] = None,
                               random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
   : F[ByteVector] =
-    handleWrap[F](transformation, keyToBeWrapped, aad, provider)(_.rawKeyInitWrap[F](transformation, key, iv, random))
+    handleWrap[F](transformation, keyToBeWrapped, provider)(_.rawKeyInitWrap[F](transformation, key, iv, random))
 
   def rawKeyUnwrap[F[_] : Sync](transformation: CipherAlgorithm & SecretKeyFactoryAlgorithm, key: ByteVector,
                                 wrappedKey: ByteVector, wrappedKeyAlgorithm: Algorithm, wrappedKeyType: WrappedKeyType,
-                                iv: Option[ByteVector] = None, aad: Option[ByteVector] = None,
-                                random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
-  : F[Key] =
-    handleUnwrap[F](transformation, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, aad, provider)(
+                                iv: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                                provider: Option[Provider | JProvider] = None): F[Key] =
+    handleUnwrap[F](transformation, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, provider)(
       _.rawKeyInitUnwrap[F](transformation, key, iv, random)
     )
 
@@ -199,17 +196,16 @@ trait CipherCompanion:
     handleCrypto[F](transformation, input, aad, provider)(_.certificateInitDecrypt[F](certificate, random))
 
   def certificateWrap[F[_] : Sync](transformation: CipherAlgorithm, certificate: Certificate,
-                                   keyToBeWrapped: Key, aad: Option[ByteVector] = None,
-                                   random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
+                                   keyToBeWrapped: Key, random: Option[SecureRandom] = None,
+                                   provider: Option[Provider | JProvider] = None)
   : F[ByteVector] =
-    handleWrap[F](transformation, keyToBeWrapped, aad, provider)(_.certificateInitWrap[F](certificate, random))
+    handleWrap[F](transformation, keyToBeWrapped, provider)(_.certificateInitWrap[F](certificate, random))
 
   def certificateUnwrap[F[_] : Sync](transformation: CipherAlgorithm, certificate: Certificate,
                                      wrappedKey: ByteVector, wrappedKeyAlgorithm: Algorithm,
-                                     wrappedKeyType: WrappedKeyType, aad: Option[ByteVector] = None,
-                                     random: Option[SecureRandom] = None,
+                                     wrappedKeyType: WrappedKeyType, random: Option[SecureRandom] = None,
                                      provider: Option[Provider | JProvider] = None): F[Key] =
-    handleUnwrap[F](transformation, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, aad, provider)(
+    handleUnwrap[F](transformation, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, provider)(
       _.certificateInitUnwrap[F](certificate, random)
     )
 
@@ -235,17 +231,17 @@ trait CipherCompanion:
     )
 
   def certificateAlgorithmWrap[F[_]: Sync](certificate: Certificate, keyToBeWrapped: Key,
-                                           aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                                           random: Option[SecureRandom] = None,
                                            provider: Option[Provider | JProvider] = None): F[ByteVector] =
-    handleWrapRaw[F](certificate.getPublicKey.getAlgorithm, keyToBeWrapped, aad, provider)(
+    handleWrapRaw[F](certificate.getPublicKey.getAlgorithm, keyToBeWrapped, provider)(
       _.certificateInitWrap[F](certificate, random)
     )
 
   def certificateAlgorithmUnwrap[F[_]: Sync](certificate: Certificate, wrappedKey: ByteVector,
                                              wrappedKeyAlgorithm: Algorithm, wrappedKeyType: WrappedKeyType,
-                                             aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                                             random: Option[SecureRandom] = None,
                                              provider: Option[Provider | JProvider] = None): F[Key] =
-    handleUnwrapRaw[F](certificate.getPublicKey.getAlgorithm, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, aad, provider)(
+    handleUnwrapRaw[F](certificate.getPublicKey.getAlgorithm, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, provider)(
       _.certificateInitUnwrap[F](certificate, random)
     )
 end CipherCompanion

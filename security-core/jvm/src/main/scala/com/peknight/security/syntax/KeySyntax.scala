@@ -29,15 +29,14 @@ trait KeySyntax:
       Cipher.keyAlgorithmDecrypt[F](key, input, params, aad, random, provider)
 
     def wrap[F[_] : Sync](keyToBeWrapped: Key, params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
-                          aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
-                          provider: Option[Provider | JProvider] = None): F[ByteVector] =
-      Cipher.keyAlgorithmWrap[F](key, keyToBeWrapped, params, aad, random, provider)
+                          random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
+    : F[ByteVector] =
+      Cipher.keyAlgorithmWrap[F](key, keyToBeWrapped, params, random, provider)
 
     def unwrap[F[_] : Sync](wrappedKey: ByteVector, wrappedKeyAlgorithm: Algorithm, wrappedKeyType: WrappedKeyType,
                             params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
-                            aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
-                            provider: Option[Provider | JProvider] = None): F[Key] =
-      Cipher.keyAlgorithmUnwrap[F](key, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, params, aad, random, provider)
+                            random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None): F[Key] =
+      Cipher.keyAlgorithmUnwrap[F](key, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, params, random, provider)
   end extension
 end KeySyntax
 object KeySyntax extends KeySyntax

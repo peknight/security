@@ -37,16 +37,16 @@ trait CipherAlgorithmPlatform { self: CipherAlgorithm =>
 
   def keyWrap[F[_]: Sync](key: Key, keyToBeWrapped: Key,
                           params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
-                          aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                          random: Option[SecureRandom] = None,
                           provider: Option[Provider | JProvider] = None): F[ByteVector] =
-    Cipher.keyWrap[F](self, key, keyToBeWrapped, params, aad, random, provider)
+    Cipher.keyWrap[F](self, key, keyToBeWrapped, params, random, provider)
 
   def keyUnwrap[F[_]: Sync](key: Key, wrappedKey: ByteVector, wrappedKeyAlgorithm: Algorithm,
                             wrappedKeyType: WrappedKeyType,
                             params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
-                            aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
+                            random: Option[SecureRandom] = None,
                             provider: Option[Provider | JProvider] = None): F[Key] =
-    Cipher.keyUnwrap[F](self, key, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, params, aad, random, provider)
+    Cipher.keyUnwrap[F](self, key, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, params, random, provider)
 
   def certificateCrypto[F[_]: Sync](opmode: Opmode, certificate: Certificate, input: ByteVector,
                                     aad: Option[ByteVector] = None, random: Option[SecureRandom] = None,
@@ -63,14 +63,12 @@ trait CipherAlgorithmPlatform { self: CipherAlgorithm =>
   : F[ByteVector] =
     Cipher.certificateDecrypt[F](self, certificate, input, aad, random, provider)
 
-  def certificateWrap[F[_]: Sync](certificate: Certificate, keyToBeWrapped: Key, aad: Option[ByteVector] = None,
-                                  random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
-  : F[ByteVector] =
-    Cipher.certificateWrap[F](self, certificate, keyToBeWrapped, aad, random, provider)
+  def certificateWrap[F[_]: Sync](certificate: Certificate, keyToBeWrapped: Key, random: Option[SecureRandom] = None,
+                                  provider: Option[Provider | JProvider] = None): F[ByteVector] =
+    Cipher.certificateWrap[F](self, certificate, keyToBeWrapped, random, provider)
 
   def certificateUnwrap[F[_]: Sync](certificate: Certificate, wrappedKey: ByteVector, wrappedKeyAlgorithm: Algorithm,
-                                    wrappedKeyType: WrappedKeyType, aad: Option[ByteVector] = None,
-                                    random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
-  : F[Key] =
-    Cipher.certificateUnwrap[F](self, certificate, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, aad, random, provider)
+                                    wrappedKeyType: WrappedKeyType, random: Option[SecureRandom] = None,
+                                    provider: Option[Provider | JProvider] = None): F[Key] =
+    Cipher.certificateUnwrap[F](self, certificate, wrappedKey, wrappedKeyAlgorithm, wrappedKeyType, random, provider)
 }
