@@ -3,7 +3,7 @@ package com.peknight.security.otp
 import cats.data.EitherT
 import cats.effect.IO
 import cats.effect.testing.scalatest.AsyncIOSpec
-import com.peknight.cats.ext.monad.transformer.syntax.eitherT.frLiftET
+import com.peknight.cats.ext.syntax.eitherT.frLiftET
 import com.peknight.codec.base.Base32
 import com.peknight.error.Error
 import com.peknight.security.random.SecureRandom

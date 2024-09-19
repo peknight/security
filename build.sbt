@@ -1,6 +1,6 @@
 ThisBuild / version := "0.1.0-SNAPSHOT"
 
-ThisBuild / scalaVersion := "3.4.2"
+ThisBuild / scalaVersion := "3.5.0"
 
 ThisBuild / organization := "com.peknight"
 
@@ -104,7 +104,7 @@ lazy val securityOtp = (crossProject(JSPlatform, JVMPlatform) in file("security-
 
 val catsParseVersion = "0.3.10"
 val catsEffectVersion = "3.5.4"
-val fs2Version = "3.10.2"
+val fs2Version = "3.11.0"
 val bouncyCastleVersion = "1.78.1"
 val pekVersion = "0.1.0-SNAPSHOT"
 val pekExtVersion = pekVersion
