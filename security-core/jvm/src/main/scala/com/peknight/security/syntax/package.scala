@@ -14,6 +14,7 @@ package object syntax:
   object keyStore extends KeyStoreSyntax
   object key extends KeySyntax
   object mac extends MACSyntax
+  object messageDigest extends MessageDigestSyntax
   object rsaKey extends RSAKeySyntax
   object secretKeyFactory extends SecretKeyFactorySyntax
   object secureRandom extends SecureRandomSyntax

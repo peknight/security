@@ -14,7 +14,8 @@ import javax.crypto.Cipher
 
 trait CipherSyntax:
   extension (cipher: Cipher)
-    def keyInit[F[_]: Sync](opmode: Opmode, key: Key, params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
+    def keyInit[F[_]: Sync](opmode: Opmode, key: Key,
+                            params: Option[AlgorithmParameterSpec | AlgorithmParameters] = None,
                             random: Option[SecureRandom] = None): F[Unit] =
       Sync[F].blocking {
         (params, random) match
@@ -62,7 +63,8 @@ trait CipherSyntax:
                                       iv: Option[ByteVector] = None, random: Option[SecureRandom] = None): F[Unit] =
       rawKeyInit[F](algorithm, Unwrap, key, iv, random)
 
-    def certificateInit[F[_]: Sync](opmode: Opmode, certificate: Certificate, random: Option[SecureRandom] = None): F[Unit] =
+    def certificateInit[F[_]: Sync](opmode: Opmode, certificate: Certificate, random: Option[SecureRandom] = None)
+    : F[Unit] =
       Sync[F].blocking {
         random match
           case Some(random) => cipher.init(opmode.mode, certificate, random)
@@ -84,7 +86,8 @@ trait CipherSyntax:
     def updateAADF[F[_]: Sync](src: ByteVector): F[Unit] = Sync[F].blocking(cipher.updateAAD(src.toArray))
 
     def doFinalF[F[_]: Sync]: F[ByteVector] = Sync[F].blocking(ByteVector(cipher.doFinal()))
-    def doFinalF[F[_]: Sync](input: ByteVector): F[ByteVector] = Sync[F].blocking(ByteVector(cipher.doFinal(input.toArray)))
+    def doFinalF[F[_]: Sync](input: ByteVector): F[ByteVector] = 
+      Sync[F].blocking(ByteVector(cipher.doFinal(input.toArray)))
     def doFinalF[F[_]: Sync](input: Option[ByteVector] = None): F[ByteVector] = input.fold(doFinalF[F])(doFinalF[F])
     
     def wrapF[F[_]: Sync](key: Key): F[ByteVector] = Sync[F].blocking(ByteVector(cipher.wrap(key)))
