@@ -11,7 +11,7 @@ import java.security.spec.AlgorithmParameterSpec
 import java.security.{Key, SecureRandom, Provider as JProvider}
 import javax.crypto.KeyAgreement as JKeyAgreement
 
-object KeyAgreement:
+trait KeyAgreementCompanion:
   def getInstance[F[_]: Sync](algorithm: KeyAgreementAlgorithm, provider: Option[Provider | JProvider] = None)
   : F[JKeyAgreement] =
     Sync[F].blocking {
@@ -31,4 +31,4 @@ object KeyAgreement:
       res <- keyAgreement.generateSecretF[F]
     yield
       res
-end KeyAgreement
+end KeyAgreementCompanion

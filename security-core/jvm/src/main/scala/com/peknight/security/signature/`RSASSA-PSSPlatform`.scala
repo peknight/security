@@ -43,17 +43,13 @@ trait `RSASSA-PSSPlatform` { self: `RSASSA-PSS` =>
   private def handleSignature[F[_]: Sync, A](useLegacyName: Boolean)
                                             (f: (SignatureAlgorithm, Option[AlgorithmParameterSpec]) => F[A]): F[A] =
     for
-      algorithms <- Security.getAlgorithms[F](Signature)
-      (signature, params) = getSignatureAndParams(useLegacyName, algorithms)
+      available <- Security.isAvailable[F](Signature, `RSASSA-PSS`)
+      (signature, params) =
+        if available && !useLegacyName then (`RSASSA-PSS`, Some(pssParameterSpec))
+        else (self.signature, None)
       res <- f(signature, params)
     yield
       res
-
-  private def getSignatureAndParams(useLegacyName: Boolean, algorithms: Set[String])
-  : (SignatureAlgorithm, Option[AlgorithmParameterSpec]) =
-    if algorithms.contains(`RSASSA-PSS`.algorithm) && !useLegacyName then
-      (`RSASSA-PSS`, Some(pssParameterSpec))
-    else (self.signature, None)
 
   override def getSignature[F[_]: Sync](provider: Option[Provider | JProvider] = None): F[JSignature] =
     self.signature.getSignature[F](provider)
