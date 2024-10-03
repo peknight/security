@@ -6,7 +6,7 @@ import com.peknight.security.error.SecurityError
 import com.peknight.security.provider.Provider
 
 import java.security.interfaces.{ECPrivateKey, ECPublicKey}
-import java.security.spec.{ECParameterSpec, ECPrivateKeySpec, ECPublicKeySpec}
+import java.security.spec.{ECParameterSpec, ECPrivateKeySpec, ECPublicKeySpec, ECPoint as JECPoint}
 import java.security.{KeyPair, SecureRandom, Provider as JProvider}
 
 trait ECParameterSpecPlatform:
@@ -20,6 +20,8 @@ trait ECParameterSpecPlatform:
     EC.publicKey[F](x, y, ecParameterSpec, provider)
   def privateKey[F[_]: Sync](s: BigInt, provider: Option[Provider | JProvider] = None): F[ECPrivateKey] =
     EC.privateKey[F](s, ecParameterSpec, provider)
+  def isPointOnCurve(point: JECPoint): Either[SecurityError, Boolean] = EC.isPointOnCurve(point, ecParameterSpec)
   def isPointOnCurve(x: BigInt, y: BigInt): Either[SecurityError, Boolean] = EC.isPointOnCurve(x, y, ecParameterSpec)
+  def checkPointOnCurve(point: JECPoint): Either[SecurityError, Unit] = EC.checkPointOnCurve(point, ecParameterSpec)
   def checkPointOnCurve(x: BigInt, y: BigInt): Either[SecurityError, Unit] = EC.checkPointOnCurve(x, y, ecParameterSpec)
 end ECParameterSpecPlatform

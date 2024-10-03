@@ -12,7 +12,7 @@ import scodec.bits.ByteVector
 
 import java.security.Provider as JProvider
 import java.security.interfaces.{ECKey, ECPrivateKey, ECPublicKey}
-import java.security.spec.{ECFieldFp, ECParameterSpec, ECPublicKeySpec, ECPrivateKeySpec as JECPrivateKeySpec}
+import java.security.spec.{ECFieldFp, ECParameterSpec, ECPublicKeySpec, ECPoint as JECPoint, ECPrivateKeySpec as JECPrivateKeySpec}
 import scala.reflect.ClassTag
 
 trait ECCompanion:
@@ -39,6 +39,9 @@ trait ECCompanion:
 
   def rawPrivateKey(privateKey: ECPrivateKey): ByteVector = BigInt(privateKey.getS).toUnsignedBytes(minByteLength(privateKey))
 
+  def isPointOnCurve(point: JECPoint, params: ECParameterSpec): Either[SecurityError, Boolean] =
+    isPointOnCurve(BigInt(point.getAffineX), BigInt(point.getAffineY), params)
+
   def isPointOnCurve(x: BigInt, y: BigInt, params: ECParameterSpec): Either[SecurityError, Boolean] =
     val curve = params.getCurve
     curve.getField match
@@ -50,6 +53,9 @@ trait ECCompanion:
         val rightSide = (x.pow(3) + (a * x) + b).mod(p)
         (leftSide == rightSide).asRight
       case field => UnsupportedECField[ECFieldFp](field).asLeft
+
+  def checkPointOnCurve(point: JECPoint, params: ECParameterSpec): Either[SecurityError, Unit] =
+    checkPointOnCurve(BigInt(point.getAffineX), BigInt(point.getAffineY), params)
 
   def checkPointOnCurve(x: BigInt, y: BigInt, params: ECParameterSpec): Either[SecurityError, Unit] =
     isPointOnCurve(x, y, params).flatMap(isTrue(_, PointNotOnCurve(x, y, params)))

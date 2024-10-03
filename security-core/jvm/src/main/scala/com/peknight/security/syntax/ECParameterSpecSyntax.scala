@@ -7,7 +7,7 @@ import com.peknight.security.provider.Provider
 import com.peknight.security.signature.calculateSignatureByteLength
 
 import java.security.interfaces.{ECPrivateKey, ECPublicKey}
-import java.security.spec.{ECParameterSpec, ECPrivateKeySpec, ECPublicKeySpec}
+import java.security.spec.{ECParameterSpec, ECPoint, ECPrivateKeySpec, ECPublicKeySpec}
 import java.security.{KeyPair, SecureRandom, Provider as JProvider}
 
 trait ECParameterSpecSyntax:
@@ -23,7 +23,9 @@ trait ECParameterSpecSyntax:
       EC.publicKey[F](x, y, params, provider)
     def privateKey[F[_] : Sync](s: BigInt, provider: Option[Provider | JProvider] = None): F[ECPrivateKey] =
       EC.privateKey[F](s, params, provider)
+    def isPointOnCurve(point: ECPoint): Either[SecurityError, Boolean] = EC.isPointOnCurve(point, params)
     def isPointOnCurve(x: BigInt, y: BigInt): Either[SecurityError, Boolean] = EC.isPointOnCurve(x, y, params)
+    def checkPointOnCurve(point: ECPoint): Either[SecurityError, Unit] = EC.checkPointOnCurve(point, params)
     def checkPointOnCurve(x: BigInt, y: BigInt): Either[SecurityError, Unit] = EC.checkPointOnCurve(x, y, params)
   end extension
 end ECParameterSpecSyntax
