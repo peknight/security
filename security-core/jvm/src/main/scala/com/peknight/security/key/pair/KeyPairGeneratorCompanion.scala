@@ -9,7 +9,7 @@ import com.peknight.security.syntax.keyPairGenerator.{generateKeyPairF, keySizeI
 import java.security.spec.AlgorithmParameterSpec
 import java.security.{KeyPair, SecureRandom, KeyPairGenerator as JKeyPairGenerator, Provider as JProvider}
 
-object KeyPairGenerator:
+trait KeyPairGeneratorCompanion:
   def getInstance[F[_]: Sync](algorithm: KeyPairGeneratorAlgorithm, provider: Option[Provider | JProvider] = None)
   : F[JKeyPairGenerator] =
     Sync[F].blocking {
@@ -36,4 +36,4 @@ object KeyPairGenerator:
       _ <- keyPairGenerator.paramsInitialize[F](params, random)
       keyPair <- keyPairGenerator.generateKeyPairF[F]
     yield keyPair
-end KeyPairGenerator
+end KeyPairGeneratorCompanion

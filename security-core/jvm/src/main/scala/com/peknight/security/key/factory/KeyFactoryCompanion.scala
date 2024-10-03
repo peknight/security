@@ -9,7 +9,7 @@ import com.peknight.security.syntax.keyFactory.{generatePrivateF, generatePublic
 import java.security.spec.KeySpec
 import java.security.{PrivateKey, PublicKey, KeyFactory as JKeyFactory, Provider as JProvider}
 
-object KeyFactory:
+trait KeyFactoryCompanion:
   def getInstance[F[_]: Sync](algorithm: KeyFactoryAlgorithm, provider: Option[Provider | JProvider]): F[JKeyFactory] =
     Sync[F].blocking {
       provider match
@@ -26,9 +26,9 @@ object KeyFactory:
     yield publicKey
 
   def generatePrivate[F[_]: Sync](algorithm: KeyFactoryAlgorithm, keySpec: KeySpec,
-                                 provider: Option[Provider | JProvider]): F[PrivateKey] =
+                                  provider: Option[Provider | JProvider]): F[PrivateKey] =
     for
       keyFactory <- getInstance[F](algorithm, provider)
       privateKey <- keyFactory.generatePrivateF[F](keySpec)
     yield privateKey
-end KeyFactory
+end KeyFactoryCompanion
