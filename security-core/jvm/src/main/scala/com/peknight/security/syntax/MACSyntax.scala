@@ -23,6 +23,7 @@ trait MACSyntax:
       Sync[F].blocking(ByteVector(mac.doFinal(input.toArray)))
     def doFinalF[F[_]: Sync](input: Option[ByteVector]): F[ByteVector] =
       input.fold(doFinalF[F])(doFinalF[F])
+    def getMacLengthF[F[_]: Sync]: F[Int] = Sync[F].blocking(mac.getMacLength)
   end extension
 end MACSyntax
 object MACSyntax extends MACSyntax
