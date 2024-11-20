@@ -11,6 +11,7 @@ import java.security.{AlgorithmParameters, Key, SecureRandom, Provider as JProvi
 
 trait CertificateSyntax:
   extension (certificate: Certificate)
+    def getEncodedF[F[_]: Sync]: F[ByteVector] = Sync[F].blocking(ByteVector(certificate.getEncoded))
     def crypto[F[_]: Sync](opmode: Opmode, input: ByteVector, aad: Option[ByteVector] = None,
                            random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
     : F[ByteVector] =
