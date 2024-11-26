@@ -12,5 +12,5 @@ object Security:
   def getAlgorithms[F[_]: Sync](serviceName: ServiceName): F[Set[String]] =
     Sync[F].blocking(JSecurity.getAlgorithms(serviceName.serviceName).asScala.toSet)
   def isAvailable[F[_]: Sync](serviceName: ServiceName, algorithm: Algorithm): F[Boolean] =
-    getAlgorithms[F](serviceName).map(_.contains(algorithm.algorithm))
+    getAlgorithms[F](serviceName).map(_.exists(_.equalsIgnoreCase(algorithm.algorithm)))
 end Security
