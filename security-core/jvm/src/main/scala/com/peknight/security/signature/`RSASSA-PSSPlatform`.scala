@@ -45,27 +45,9 @@ trait `RSASSA-PSSPlatform` { self: `RSASSA-PSS` =>
     for
       available <- Security.isAvailable[F](Signature, `RSASSA-PSS`)
       (signature, params) =
-        if available && !useLegacyName then (`RSASSA-PSS`, Some(pssParameterSpec))
+        if available && !useLegacyName then (self, Some(pssParameterSpec))
         else (self.signature, None)
       res <- f(signature, params)
     yield
       res
-
-  override def getSignature[F[_]: Sync](provider: Option[Provider | JProvider] = None): F[JSignature] =
-    self.signature.getSignature[F](provider)
-
-  override def sign[F[_]: Sync](privateKey: PrivateKey, data: ByteVector, params: Option[AlgorithmParameterSpec] = None,
-                                random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
-  : F[ByteVector] =
-    self.signature.sign[F](privateKey, data, params, random, provider)
-
-  override def publicKeyVerify[F[_]: Sync](publicKey: PublicKey, data: ByteVector, signed: ByteVector,
-                                           params: Option[AlgorithmParameterSpec] = None,
-                                           provider: Option[Provider | JProvider] = None): F[Boolean] =
-    self.signature.publicKeyVerify[F](publicKey, data, signed, params, provider)
-
-  override def certificateVerify[F[_]: Sync](certificate: Certificate, data: ByteVector, signed: ByteVector,
-                                             params: Option[AlgorithmParameterSpec] = None,
-                                             provider: Option[Provider | JProvider] = None): F[Boolean] =
-    self.signature.certificateVerify[F](certificate, data, signed, params, provider)
 }
