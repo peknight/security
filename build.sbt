@@ -1,6 +1,6 @@
 ThisBuild / version := "0.1.0-SNAPSHOT"
 
-ThisBuild / scalaVersion := "3.5.0"
+ThisBuild / scalaVersion := "3.6.2"
 
 ThisBuild / organization := "com.peknight"
 
@@ -43,6 +43,7 @@ lazy val securityCore = (crossProject(JSPlatform, JVMPlatform) in file("security
       "com.peknight" %%% "scodec-bits-ext" % pekExtVersion,
       "com.peknight" %%% "validation-core" % pekValidationVersion,
       "com.peknight" %%% "io-core" % pekIoVersion,
+      "org.scalatest" %% "scalatest-flatspec" % scalaTestVersion % Test,
       "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     ),
   )
@@ -54,6 +55,7 @@ lazy val securityFs2 = (crossProject(JSPlatform, JVMPlatform) in file("security-
     name := "security-fs2",
     libraryDependencies ++= Seq(
       "com.peknight" %%% "fs2-ext" % pekExtVersion,
+      "org.scalatest" %% "scalatest-flatspec" % scalaTestVersion % Test,
       "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     ),
   )
@@ -66,6 +68,7 @@ lazy val securityBouncyCastleProvider = (crossProject(JSPlatform, JVMPlatform) i
   .settings(
     name := "security-bcprov",
     libraryDependencies ++= Seq(
+      "org.scalatest" %% "scalatest-flatspec" % scalaTestVersion % Test,
       "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     ),
   )
@@ -98,20 +101,22 @@ lazy val securityOtp = (crossProject(JSPlatform, JVMPlatform) in file("security-
       "com.peknight" %%% "cats-ext" % pekExtVersion,
       "com.peknight" %%% "codec-base" % pekCodecVersion,
       "com.peknight" %%% "validation-spire" % pekValidationVersion,
+      "org.scalatest" %% "scalatest-flatspec" % scalaTestVersion % Test,
       "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     )
   )
 
 val catsParseVersion = "0.3.10"
-val catsEffectVersion = "3.5.4"
+val catsEffectVersion = "3.5.7"
 val fs2Version = "3.11.0"
-val bouncyCastleVersion = "1.78.1"
+val bouncyCastleVersion = "1.79"
 val pekVersion = "0.1.0-SNAPSHOT"
 val pekExtVersion = pekVersion
 val pekValidationVersion = pekVersion
 val pekCodecVersion = pekVersion
 val pekIoVersion = pekVersion
-val catsEffectTestingScalaTestVersion = "1.5.0"
+val scalaTestVersion = "3.2.19"
+val catsEffectTestingScalaTestVersion = "1.6.0"
 
 val bouncyCastleProvider = "org.bouncycastle" % "bcprov-jdk18on" % bouncyCastleVersion
 val bouncyCastlePkix = "org.bouncycastle" % "bcpkix-jdk18on" % bouncyCastleVersion
