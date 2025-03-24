@@ -1,4 +1,4 @@
-package com.peknight.security.bouncycastle.openssl.jcajce.syntax
+package com.peknight.security.bouncycastle.pkix.syntax
 
 import cats.effect.Sync
 import org.bouncycastle.openssl.jcajce.JcaPEMWriter

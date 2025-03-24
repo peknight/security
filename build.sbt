@@ -79,6 +79,9 @@ lazy val securityBouncyCastleProvider = (crossProject(JSPlatform, JVMPlatform) i
   )
 
 lazy val securityBouncyCastlePkix = (crossProject(JSPlatform, JVMPlatform) in file("security-bcpkix"))
+  .dependsOn(
+    securityCore,
+  )
   .settings(commonSettings)
   .settings(
     name := "security-bcpkix",
