@@ -12,6 +12,9 @@ trait CertificateFactoryTypePlatform { self: CertificateFactoryType =>
   def generateCertificateFromBytes[F[_]: Sync](bytes: ByteVector, provider: Option[Provider | JProvider] = None)
   : F[Certificate] =
     CertificateFactory.generateCertificateFromBytes[F](self, bytes, provider)
+  def generateCertificatesFromBytes[F[_]: Sync](bytes: ByteVector, provider: Option[Provider | JProvider] = None)
+  : F[List[Certificate]] =
+    CertificateFactory.generateCertificatesFromBytes[F](self, bytes, provider)
 
   def getCertificateFactory[F[_]: Sync](provider: Option[Provider | JProvider] = None): F[JCertificateFactory] =
     CertificateFactory.getInstance[F](self, provider)
@@ -19,4 +22,7 @@ trait CertificateFactoryTypePlatform { self: CertificateFactoryType =>
   def generateCertificate[F[_]: Sync](inStream: InputStream, provider: Option[Provider | JProvider] = None)
   : F[Certificate] =
     CertificateFactory.generateCertificate[F](self, inStream, provider)
+  def generateCertificates[F[_]: Sync](inStream: InputStream, provider: Option[Provider | JProvider] = None)
+  : F[List[Certificate]] =
+    CertificateFactory.generateCertificates[F](self, inStream, provider)
 }

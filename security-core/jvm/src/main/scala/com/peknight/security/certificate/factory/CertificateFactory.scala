@@ -5,7 +5,7 @@ import cats.syntax.flatMap.*
 import cats.syntax.functor.*
 import com.peknight.io.ByteArrayInputStream
 import com.peknight.security.provider.Provider
-import com.peknight.security.syntax.certificateFactory.generateCertificateF
+import com.peknight.security.syntax.certificateFactory.{generateCertificateF, generateCertificatesF}
 import scodec.bits.ByteVector
 
 import java.io.InputStream
@@ -16,6 +16,9 @@ object CertificateFactory:
   def generateCertificateFromBytes[F[_]: Sync](typ: CertificateFactoryType, bytes: ByteVector,
                                                provider: Option[Provider | JProvider] = None): F[Certificate] =
     generateCertificate[F](typ, ByteArrayInputStream(bytes), provider)
+  def generateCertificatesFromBytes[F[_]: Sync](typ: CertificateFactoryType, bytes: ByteVector,
+                                                provider: Option[Provider | JProvider] = None): F[List[Certificate]] =
+    generateCertificates[F](typ, ByteArrayInputStream(bytes), provider)
 
   def getInstance[F[_]: Sync](typ: CertificateFactoryType, provider: Option[Provider | JProvider] = None): F[JCertificateFactory] =
     Sync[F].blocking {
@@ -29,5 +32,11 @@ object CertificateFactory:
     for
       certificateFactory <- getInstance[F](typ, provider)
       certificate <- certificateFactory.generateCertificateF[F](inStream)
+    yield certificate
+  def generateCertificates[F[_]: Sync](typ: CertificateFactoryType, inStream: InputStream,
+                                       provider: Option[Provider | JProvider] = None): F[List[Certificate]] =
+    for
+      certificateFactory <- getInstance[F](typ, provider)
+      certificate <- certificateFactory.generateCertificatesF[F](inStream)
     yield certificate
 end CertificateFactory
