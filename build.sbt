@@ -29,6 +29,7 @@ lazy val security = (project in file("."))
     securityBouncyCastlePkix.js,
     securityOtp.jvm,
     securityOtp.js,
+    securityInstances,
   )
   .settings(commonSettings)
   .settings(
@@ -119,6 +120,28 @@ lazy val securityOtp = (crossProject(JSPlatform, JVMPlatform) in file("security-
       "org.scalatest" %% "scalatest-flatspec" % scalaTestVersion % Test,
       "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     )
+  )
+
+lazy val securityInstances = (project in file("security-instances"))
+  .aggregate(
+    securityCodecInstances.jvm,
+    securityCodecInstances.js,
+  )
+  .settings(commonSettings)
+  .settings(
+    name := "security-instances",
+    libraryDependencies ++= Seq(
+    ),
+  )
+
+lazy val securityCodecInstances = (crossProject(JSPlatform, JVMPlatform) in file("security-instances/codec"))
+  .dependsOn(securityCore)
+  .settings(commonSettings)
+  .settings(
+    name := "security-codec-instances",
+    libraryDependencies ++= Seq(
+      "com.peknight" %%% "codec-core" % pekCodecVersion,
+    ),
   )
 
 val catsParseVersion = "0.3.10"

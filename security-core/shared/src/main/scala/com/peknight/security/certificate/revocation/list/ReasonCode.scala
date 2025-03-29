@@ -16,7 +16,3 @@ enum ReasonCode(val code: Int) derives CanEqual:
   case privilegeWithdrawn extends ReasonCode(9)
   case aACompromise extends ReasonCode(10)
 end ReasonCode
-object ReasonCode:
-  def apply(code: Int): Option[ReasonCode] =
-    ReasonCode.values.find(_.code == code)
-end ReasonCode
