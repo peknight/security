@@ -99,6 +99,8 @@ lazy val securityBouncyCastlePkix = (crossProject(JSPlatform, JVMPlatform) in fi
   .settings(
     name := "security-bcpkix",
     libraryDependencies ++= Seq(
+      "com.peknight" %%% "method-core" % pekMethodVersion,
+      "com.peknight" %%% "cats-ext" % pekExtVersion,
       "co.fs2" %%% "fs2-io" % fs2Version,
     ),
   )
@@ -150,6 +152,7 @@ val fs2Version = "3.11.0"
 val http4sVersion = "1.0.0-M34"
 val bouncyCastleVersion = "1.79"
 val pekVersion = "0.1.0-SNAPSHOT"
+val pekMethodVersion = pekVersion
 val pekExtVersion = pekVersion
 val pekValidationVersion = pekVersion
 val pekCodecVersion = pekVersion
