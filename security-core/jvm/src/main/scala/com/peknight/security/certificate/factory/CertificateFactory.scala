@@ -3,7 +3,7 @@ package com.peknight.security.certificate.factory
 import cats.effect.Sync
 import cats.syntax.flatMap.*
 import cats.syntax.functor.*
-import com.peknight.io.ByteArrayInputStream
+import com.peknight.scodec.bits.ext.syntax.byteVector.toByteArrayInputStream
 import com.peknight.security.provider.Provider
 import com.peknight.security.syntax.certificateFactory.{generateCertificateF, generateCertificatesF}
 import scodec.bits.ByteVector
@@ -15,10 +15,10 @@ import java.security.cert.{Certificate, CertificateFactory as JCertificateFactor
 object CertificateFactory:
   def generateCertificateFromBytes[F[_]: Sync](typ: CertificateFactoryType, bytes: ByteVector,
                                                provider: Option[Provider | JProvider] = None): F[Certificate] =
-    generateCertificate[F](typ, ByteArrayInputStream(bytes), provider)
+    generateCertificate[F](typ, bytes.toByteArrayInputStream, provider)
   def generateCertificatesFromBytes[F[_]: Sync](typ: CertificateFactoryType, bytes: ByteVector,
                                                 provider: Option[Provider | JProvider] = None): F[List[Certificate]] =
-    generateCertificates[F](typ, ByteArrayInputStream(bytes), provider)
+    generateCertificates[F](typ, bytes.toByteArrayInputStream, provider)
 
   def getInstance[F[_]: Sync](typ: CertificateFactoryType, provider: Option[Provider | JProvider] = None): F[JCertificateFactory] =
     Sync[F].blocking {

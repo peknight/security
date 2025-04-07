@@ -43,9 +43,9 @@ lazy val securityCore = (crossProject(JSPlatform, JVMPlatform) in file("security
     libraryDependencies ++= Seq(
       "org.typelevel" %%% "cats-effect" % catsEffectVersion,
       "org.typelevel" %%% "cats-parse" % catsParseVersion,
+      "com.peknight" %%% "fs2-io-ext" % pekExtVersion,
       "com.peknight" %%% "scodec-bits-ext" % pekExtVersion,
       "com.peknight" %%% "validation-core" % pekValidationVersion,
-      "com.peknight" %%% "io-core" % pekIoVersion,
       "org.scalatest" %% "scalatest-flatspec" % scalaTestVersion % Test,
       "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     ),

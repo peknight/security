@@ -1,12 +1,34 @@
 package com.peknight.security.key.store
 
+import cats.data.NonEmptyList
 import cats.effect.Sync
 import cats.syntax.flatMap.*
+import cats.syntax.functor.*
 import com.peknight.security.provider.Provider
+import com.peknight.security.syntax.keyStore.{loadF, loadPath, setKeyEntryF, storePath}
+import fs2.io.file.Path
 
-import java.security.{KeyStore as JKeyStore, Provider as JProvider}
+import java.security.cert.Certificate
+import java.security.{PrivateKey, KeyStore as JKeyStore, Provider as JProvider}
 
 trait KeyStoreCompanion:
+  def apply[F[_]: Sync](`type`: KeyStoreType, alias: String, key: PrivateKey, password: String,
+                        chain: NonEmptyList[Certificate], provider: Option[Provider | JProvider] = None): F[JKeyStore] =
+    for
+      keyStore <- getInstance[F](`type`, provider)
+      _ <- keyStore.loadF[F](null, null)
+      _ <- keyStore.setKeyEntryF[F](alias, key, password, chain)
+    yield
+      keyStore
+
+  def loadPath[F[_]: Sync](`type`: KeyStoreType, path: Path, password: String,
+                           provider: Option[Provider | JProvider] = None): F[JKeyStore] =
+    for
+      keyStore <- getInstance[F](`type`, provider)
+      _ <- keyStore.loadPath[F](path, password)
+    yield
+      keyStore
+
   def getInstance[F[_]: Sync](`type`: KeyStoreType, provider: Option[Provider | JProvider] = None): F[JKeyStore] =
     Sync[F].blocking {
       provider match
