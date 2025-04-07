@@ -21,7 +21,6 @@ import com.peknight.security.bouncycastle.pkix.syntax.jcaPEMWriter.{flushF, writ
 import com.peknight.security.bouncycastle.pkix.syntax.jcaX509CertificateConverter.getCertificateF
 import com.peknight.security.bouncycastle.pkix.syntax.pemParser.readObjectF
 import com.peknight.security.provider.Provider
-import com.peknight.validation.std.either.typed
 import fs2.io.file.{Files, Path}
 import org.bouncycastle.cert.X509CertificateHolder
 import org.bouncycastle.openssl.jcajce.JcaPEMWriter as JJcaPEMWriter
@@ -32,17 +31,24 @@ import java.security.{KeyPair, Provider as JProvider}
 
 package object openssl:
 
-  private def readPem[F[_]: {Sync, Files}, A, B](path: Path)(f: JPEMParser => F[Option[A]])
-                                             (g: A => F[Either[Error, B]]): F[Either[Error, Option[B]]] =
+  private def readPem[F[_]: {Sync, Files}, A, B](path: Path)(f: NonEmptyList[AnyRef] => F[Either[Error, B]])
+  : F[Either[Error, Option[B]]] =
     val eitherT =
       for
         exists <- EitherT(Files[F].exists(path).asError)
         value <-
           if exists then
             for
-              value <- EitherT(Resource.fromAutoCloseable[F, JPEMParser](PEMParser[F](path)).use(f).asError)
-              value <- value match
-                case Some(value) => EitherT(g(value)).map(_.some)
+              values <- EitherT(Resource.fromAutoCloseable[F, JPEMParser](PEMParser[F](path)).use { parser =>
+                Monad[F].tailRecM[List[AnyRef], Option[NonEmptyList[AnyRef]]](Nil)(acc => parser.readObjectF[F].map {
+                  case Some(obj) => (obj :: acc).asLeft
+                  case _ => acc.reverse match
+                    case head :: tail => NonEmptyList(head, tail).some.asRight
+                    case _ => none[NonEmptyList[AnyRef]].asRight
+                })
+              }.asError)
+              value <- values match
+                case Some(values) => EitherT(f(values)).map(_.some)
                 case _ => none[B].rLiftET[F, Error]
             yield
               value
@@ -75,14 +81,11 @@ package object openssl:
 
   private def readPemKeyPair[F[_]: {Sync, Files}](path: Path, provider: Option[Provider | JProvider] = None)
   : F[Either[Error, Option[KeyPair]]] =
-    readPem[F, AnyRef, KeyPair](path)(_.readObjectF[F]) { pemKeyPair =>
-      val eitherT =
-        for
-          pemKeyPair <- typed[PEMKeyPair](pemKeyPair).eLiftET[F]
-          keyPair <- EitherT(JcaPEMKeyConverter(provider = provider).getKeyPairF[F](pemKeyPair).asError)
-        yield
-          keyPair
-      eitherT.value
+    readPem[F, NonEmptyList[AnyRef], KeyPair](path) { pemKeyPairs =>
+      pemKeyPairs.collect { case pemKeyPair: PEMKeyPair => pemKeyPair }
+        .headOption
+        .map(pemKeyPair => JcaPEMKeyConverter(provider = provider).getKeyPairF[F](pemKeyPair).asError)
+        .getOrElse(WrongClassTag[PEMKeyPair](pemKeyPairs).asLeft[KeyPair].pure[F])
     }
 
   private def writePemKeyPair[F[_] : {Sync, Files}](path: Path)(keyPair: KeyPair): F[Either[Error, Unit]] =
@@ -94,14 +97,7 @@ package object openssl:
 
   private def readX509Certificates[F[_]: {Sync, Files}](path: Path, provider: Option[Provider | JProvider] = None)
   : F[Either[Error, Option[NonEmptyList[X509Certificate]]]] =
-    readPem[F, NonEmptyList[AnyRef], NonEmptyList[X509Certificate]](path) { parser =>
-      Monad[F].tailRecM[List[AnyRef], Option[NonEmptyList[AnyRef]]](Nil)(acc => parser.readObjectF[F].map {
-        case Some(obj) => (obj :: acc).asLeft
-        case _ => acc.reverse match
-          case head :: tail => NonEmptyList(head, tail).some.asRight
-          case _ => none[NonEmptyList[AnyRef]].asRight
-      })
-    } { x509Certificates =>
+    readPem[F, NonEmptyList[AnyRef], NonEmptyList[X509Certificate]](path) { x509Certificates =>
       val converter = JcaX509CertificateConverter(provider = provider)
       x509Certificates.traverse {
         case x509Certificate: X509Certificate => x509Certificate.rLiftET[F, Error]
