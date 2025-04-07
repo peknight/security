@@ -5,7 +5,7 @@ import cats.effect.Sync
 import cats.syntax.flatMap.*
 import cats.syntax.functor.*
 import com.peknight.security.provider.Provider
-import com.peknight.security.syntax.keyStore.{loadF, loadPath, setKeyEntryF, storePath}
+import com.peknight.security.syntax.keyStore.{loadNothing, loadPath, setKeyEntryF}
 import fs2.io.file.Path
 
 import java.security.cert.Certificate
@@ -16,7 +16,7 @@ trait KeyStoreCompanion:
                         chain: NonEmptyList[Certificate], provider: Option[Provider | JProvider] = None): F[JKeyStore] =
     for
       keyStore <- getInstance[F](`type`, provider)
-      _ <- keyStore.loadF[F](null, null)
+      _ <- keyStore.loadNothing[F]
       _ <- keyStore.setKeyEntryF[F](alias, key, password, chain)
     yield
       keyStore

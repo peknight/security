@@ -14,6 +14,7 @@ trait KeyStoreSyntax:
   extension (keyStore: KeyStore)
     def loadF[F[_]: Sync](stream: InputStream, password: String): F[Unit] =
       Sync[F].blocking(keyStore.load(stream, password.toCharArray))
+    def loadNothing[F[_]: Sync]: F[Unit] = Sync[F].blocking(keyStore.load(null, null))
     def loadPath[F[_]: Sync](path: Path, password: String): F[Unit] =
       Resource.fromAutoCloseable[F, FileInputStream](path.toFileInputStream[F]).use(stream => loadF[F](stream, password))
     def storeF[F[_]: Sync](stream: OutputStream, password: String): F[Unit] =
