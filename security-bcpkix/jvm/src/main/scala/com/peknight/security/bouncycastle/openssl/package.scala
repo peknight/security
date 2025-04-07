@@ -97,7 +97,7 @@ package object openssl:
     readPem[F, NonEmptyList[AnyRef], NonEmptyList[X509Certificate]](path) { parser =>
       Monad[F].tailRecM[List[AnyRef], Option[NonEmptyList[AnyRef]]](Nil)(acc => parser.readObjectF[F].map {
         case Some(obj) => (obj :: acc).asLeft
-        case _ => acc match
+        case _ => acc.reverse match
           case head :: tail => NonEmptyList(head, tail).some.asRight
           case _ => none[NonEmptyList[AnyRef]].asRight
       })
