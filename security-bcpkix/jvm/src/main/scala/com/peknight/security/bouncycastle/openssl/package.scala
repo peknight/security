@@ -144,4 +144,15 @@ package object openssl:
         ()
     eitherT.value
 
+  def fetchX509CertificatesAndKeyPair[F[_]: {Sync, Files}](certPath: Path, keyPath: Path,
+                                                           provider: Option[Provider | JProvider] = None)
+                                                          (source: F[Either[Error, (NonEmptyList[X509Certificate], KeyPair)]])
+  : F[Either[Error, (NonEmptyList[X509Certificate], KeyPair)]] =
+    fetch[F, (NonEmptyList[X509Certificate], KeyPair)](
+      "x509CertificatesAndKeyPair",
+      readX509CertificatesAndKeyPair[F](certPath, keyPath, provider),
+      writeX509CertificatesAndKeyPair[F](certPath, keyPath),
+      source
+    )
+
 end openssl
