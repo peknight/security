@@ -13,7 +13,7 @@ import com.peknight.error.Error
 import com.peknight.error.option.OptionEmpty
 import com.peknight.error.std.WrongClassTag
 import com.peknight.error.syntax.applicativeError.asError
-import com.peknight.method.cascade.{Source, fetch}
+import com.peknight.method.cascade.{Source, fetch as cascadeFetch}
 import com.peknight.security.bouncycastle.cert.jcajce.JcaX509CertificateConverter
 import com.peknight.security.bouncycastle.openssl.jcajce.{JcaPEMKeyConverter, JcaPEMWriter}
 import com.peknight.security.bouncycastle.pkix.syntax.jcaPEMKeyConverter.getKeyPairF
@@ -31,7 +31,7 @@ import java.security.{KeyPair, Provider as JProvider}
 
 package object openssl:
 
-  private def readPem[F[_]: {Sync, Files}, A, B](path: Path)(f: NonEmptyList[AnyRef] => F[Either[Error, B]])
+  def readPEM[F[_]: {Sync, Files}, A, B](path: Path)(f: NonEmptyList[AnyRef] => F[Either[Error, B]])
   : F[Either[Error, Option[B]]] =
     val eitherT =
       for
@@ -58,7 +58,7 @@ package object openssl:
         value
     eitherT.value
 
-  private def writePem[F[_] : {Sync, Files}](path: Path)(f: JJcaPEMWriter => F[Unit]): F[Either[Error, Unit]] =
+  def writePEM[F[_] : {Sync, Files}](path: Path)(f: JJcaPEMWriter => F[Unit]): F[Either[Error, Unit]] =
     val eitherT =
       for
         _ <- path.parent.fold(().rLiftET[F, Error])(parent => EitherT(Files[F].createDirectories(parent).asError))
@@ -67,37 +67,37 @@ package object openssl:
         ()
     eitherT.value
 
-  private def fetchPem[F[_]: {Sync, Files}, A](label: String,
-                                               read: F[Either[Error, Option[A]]],
-                                               write: A => F[Either[Error, Unit]],
-                                               source: F[Either[Error, A]]): F[Either[Error, A]] =
+  def fetch[F[_]: {Sync, Files}, A](label: String,
+                                    read: F[Either[Error, Option[A]]],
+                                    write: A => F[Either[Error, Unit]],
+                                    source: F[Either[Error, A]]): F[Either[Error, A]] =
     val eitherT =
       for
-        value <- EitherT(fetch(Source(read, write), Source.read(source.map(_.map(_.some)))))
+        value <- EitherT(cascadeFetch(Source(read, write), Source.read(source.map(_.map(_.some)))))
         value <- value.toRight(OptionEmpty.label(label)).eLiftET[F]
       yield
         value
     eitherT.value
 
-  private def readPemKeyPair[F[_]: {Sync, Files}](path: Path, provider: Option[Provider | JProvider] = None)
+  def readPEMKeyPair[F[_]: {Sync, Files}](path: Path, provider: Option[Provider | JProvider] = None)
   : F[Either[Error, Option[KeyPair]]] =
-    readPem[F, NonEmptyList[AnyRef], KeyPair](path) { pemKeyPairs =>
+    readPEM[F, NonEmptyList[AnyRef], KeyPair](path) { pemKeyPairs =>
       pemKeyPairs.collect { case pemKeyPair: PEMKeyPair => pemKeyPair }
         .headOption
         .map(pemKeyPair => JcaPEMKeyConverter(provider = provider).getKeyPairF[F](pemKeyPair).asError)
         .getOrElse(WrongClassTag[PEMKeyPair](pemKeyPairs).asLeft[KeyPair].pure[F])
     }
 
-  private def writePemKeyPair[F[_] : {Sync, Files}](path: Path)(keyPair: KeyPair): F[Either[Error, Unit]] =
-    writePem[F](path)(_.writeObjectF[F](keyPair))
+  def writePEMKeyPair[F[_] : {Sync, Files}](path: Path)(keyPair: KeyPair): F[Either[Error, Unit]] =
+    writePEM[F](path)(_.writeObjectF[F](keyPair))
 
   def fetchKeyPair[F[_]: {Sync, Files}](path: Path, provider: Option[Provider | JProvider] = None)
                                        (source: F[Either[Error, KeyPair]]): F[Either[Error, KeyPair]] =
-    fetchPem[F, KeyPair]("keyPair", readPemKeyPair[F](path, provider), writePemKeyPair[F](path), source)
+    fetch[F, KeyPair]("keyPair", readPEMKeyPair[F](path, provider), writePEMKeyPair[F](path), source)
 
-  private def readX509Certificates[F[_]: {Sync, Files}](path: Path, provider: Option[Provider | JProvider] = None)
+  def readX509Certificates[F[_]: {Sync, Files}](path: Path, provider: Option[Provider | JProvider] = None)
   : F[Either[Error, Option[NonEmptyList[X509Certificate]]]] =
-    readPem[F, NonEmptyList[AnyRef], NonEmptyList[X509Certificate]](path) { x509Certificates =>
+    readPEM[F, NonEmptyList[AnyRef], NonEmptyList[X509Certificate]](path) { x509Certificates =>
       val converter = JcaX509CertificateConverter(provider = provider)
       x509Certificates.traverse {
         case x509Certificate: X509Certificate => x509Certificate.rLiftET[F, Error]
@@ -106,9 +106,9 @@ package object openssl:
       }.value
     }
 
-  private def writeX509Certificates[F[_]: {Sync, Files}](path: Path)(certificates: NonEmptyList[X509Certificate])
+  def writeX509Certificates[F[_]: {Sync, Files}](path: Path)(certificates: NonEmptyList[X509Certificate])
   : F[Either[Error, Unit]] =
-    writePem[F](path)(writer => Monad[F].tailRecM[List[X509Certificate], Unit](certificates.toList) {
+    writePEM[F](path)(writer => Monad[F].tailRecM[List[X509Certificate], Unit](certificates.toList) {
       case head :: tail => writer.writeObjectF[F](head).as(tail.asLeft[Unit])
       case _ => ().asRight[List[X509Certificate]].pure[F]
     }.flatMap(_ => writer.flushF[F]))
@@ -116,6 +116,32 @@ package object openssl:
   def fetchX509Certificates[F[_]: {Sync, Files}](path: Path, provider: Option[Provider | JProvider] = None)
                                                 (source: F[Either[Error, NonEmptyList[X509Certificate]]])
   : F[Either[Error, NonEmptyList[X509Certificate]]] =
-    fetchPem[F, NonEmptyList[X509Certificate]]("x509Certificates", readX509Certificates[F](path, provider),
+    fetch[F, NonEmptyList[X509Certificate]]("x509Certificates", readX509Certificates[F](path, provider),
       writeX509Certificates[F](path), source)
+
+  def readX509CertificatesAndKeyPair[F[_]: {Sync, Files}](certPath: Path, keyPath: Path, provider: Option[Provider | JProvider] = None)
+  : F[Either[Error, Option[(NonEmptyList[X509Certificate], KeyPair)]]] =
+    val eitherT =
+      for
+        certOption <- EitherT(readX509Certificates[F](certPath, provider))
+        keyPairOption <- EitherT(readPEMKeyPair[F](keyPath, provider))
+      yield
+        for
+          cert <- certOption
+          keyPair <- keyPairOption
+        yield
+          (cert, keyPair)
+    eitherT.value
+
+  def writeX509CertificatesAndKeyPair[F[_]: {Sync, Files}](certPath: Path, keyPath: Path)
+                                                          (certificates: NonEmptyList[X509Certificate], keyPair: KeyPair)
+  : F[Either[Error, Unit]] =
+    val eitherT =
+      for
+        _ <- EitherT(writeX509Certificates[F](certPath)(certificates))
+        _ <- EitherT(writePEMKeyPair[F](keyPath)(keyPair))
+      yield
+        ()
+    eitherT.value
+
 end openssl
