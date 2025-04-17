@@ -6,4 +6,4 @@ package com.peknight.security.cipher.mode
 trait ECB extends CipherAlgorithmMode:
   def mode: String = "ECB"
 end ECB
-object ECB extends ECB
+object ECB extends ECB with ECBCompanion

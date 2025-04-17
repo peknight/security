@@ -19,8 +19,6 @@ lazy val security = (project in file("."))
   .aggregate(
     securityCore.jvm,
     securityCore.js,
-    securityFs2.jvm,
-    securityFs2.js,
     securityHttp4s.jvm,
     securityHttp4s.js,
     securityBouncyCastleProvider.jvm,
@@ -43,6 +41,7 @@ lazy val securityCore = (crossProject(JSPlatform, JVMPlatform) in file("security
     libraryDependencies ++= Seq(
       "org.typelevel" %%% "cats-effect" % catsEffectVersion,
       "org.typelevel" %%% "cats-parse" % catsParseVersion,
+      "com.peknight" %%% "fs2-ext" % pekExtVersion,
       "com.peknight" %%% "fs2-io-ext" % pekExtVersion,
       "com.peknight" %%% "scodec-bits-ext" % pekExtVersion,
       "com.peknight" %%% "validation-core" % pekValidationVersion,
@@ -51,20 +50,8 @@ lazy val securityCore = (crossProject(JSPlatform, JVMPlatform) in file("security
     ),
   )
 
-lazy val securityFs2 = (crossProject(JSPlatform, JVMPlatform) in file("security-fs2"))
-  .dependsOn(securityCore)
-  .settings(commonSettings)
-  .settings(
-    name := "security-fs2",
-    libraryDependencies ++= Seq(
-      "com.peknight" %%% "fs2-ext" % pekExtVersion,
-      "org.scalatest" %% "scalatest-flatspec" % scalaTestVersion % Test,
-      "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
-    ),
-  )
-
 lazy val securityHttp4s = (crossProject(JSPlatform, JVMPlatform) in file("security-http4s"))
-  .dependsOn(securityFs2)
+  .dependsOn(securityCore)
   .settings(commonSettings)
   .settings(
     name := "security-http4s",

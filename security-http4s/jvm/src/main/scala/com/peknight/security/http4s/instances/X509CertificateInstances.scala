@@ -4,7 +4,7 @@ import cats.data.EitherT
 import cats.effect.Async
 import cats.syntax.functor.*
 import com.peknight.error.syntax.applicativeError.asError
-import com.peknight.security.fs2.certificate.toX509Certificate
+import com.peknight.security.certificate.toX509Certificate
 import com.peknight.security.http4s.media.MediaRange.`application/pem-certificate-chain`
 import org.http4s.{EntityDecoder, MalformedMessageBodyFailure}
 
