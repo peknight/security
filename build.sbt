@@ -45,6 +45,8 @@ lazy val securityCore = (crossProject(JSPlatform, JVMPlatform) in file("security
       "com.peknight" %%% "fs2-io-ext" % pekExtVersion,
       "com.peknight" %%% "scodec-bits-ext" % pekExtVersion,
       "com.peknight" %%% "validation-core" % pekValidationVersion,
+      "com.peknight" %%% "commons-time" % pekCommonsVersion,
+      "com.peknight" %%% "cats-instances-time" % pekInstancesVersion,
       "org.scalatest" %% "scalatest-flatspec" % scalaTestVersion % Test,
       "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
     ),
@@ -143,7 +145,8 @@ val pekMethodVersion = pekVersion
 val pekExtVersion = pekVersion
 val pekValidationVersion = pekVersion
 val pekCodecVersion = pekVersion
-val pekIoVersion = pekVersion
+val pekCommonsVersion = pekVersion
+val pekInstancesVersion = pekVersion
 val scalaTestVersion = "3.2.19"
 val catsEffectTestingScalaTestVersion = "1.6.0"
 
