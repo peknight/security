@@ -119,12 +119,14 @@ package object openssl:
     fetch[F, NonEmptyList[X509Certificate]]("x509Certificates", readX509Certificates[F](path, provider),
       writeX509Certificates[F](path), source)
 
-  def readX509CertificatesAndKeyPair[F[_]: {Sync, Files}](certPath: Path, keyPath: Path, provider: Option[Provider | JProvider] = None)
+  def readX509CertificatesAndKeyPair[F[_]: {Sync, Files}](certPath: Path, keyPath: Path,
+                                                          certProvider: Option[Provider | JProvider] = None,
+                                                          keyProvider: Option[Provider | JProvider] = None)
   : F[Either[Error, Option[(NonEmptyList[X509Certificate], KeyPair)]]] =
     val eitherT =
       for
-        certOption <- EitherT(readX509Certificates[F](certPath, provider))
-        keyPairOption <- EitherT(readPEMKeyPair[F](keyPath, provider))
+        certOption <- EitherT(readX509Certificates[F](certPath, certProvider))
+        keyPairOption <- EitherT(readPEMKeyPair[F](keyPath, keyProvider))
       yield
         for
           cert <- certOption
@@ -145,12 +147,14 @@ package object openssl:
     eitherT.value
 
   def fetchX509CertificatesAndKeyPair[F[_]: {Sync, Files}](certPath: Path, keyPath: Path,
-                                                           provider: Option[Provider | JProvider] = None)
+                                                           certProvider: Option[Provider | JProvider] = None,
+                                                           keyProvider: Option[Provider | JProvider] = None
+                                                          )
                                                           (source: F[Either[Error, (NonEmptyList[X509Certificate], KeyPair)]])
   : F[Either[Error, (NonEmptyList[X509Certificate], KeyPair)]] =
     fetch[F, (NonEmptyList[X509Certificate], KeyPair)](
       "x509CertificatesAndKeyPair",
-      readX509CertificatesAndKeyPair[F](certPath, keyPath, provider),
+      readX509CertificatesAndKeyPair[F](certPath, keyPath, certProvider, keyProvider),
       writeX509CertificatesAndKeyPair[F](certPath, keyPath),
       source
     )
