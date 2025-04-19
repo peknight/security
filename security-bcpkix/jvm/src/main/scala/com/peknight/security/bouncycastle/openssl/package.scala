@@ -31,8 +31,8 @@ import java.security.{KeyPair, Provider as JProvider}
 
 package object openssl:
 
-  def readPEM[F[_]: {Sync, Files}, A, B](path: Path)(f: NonEmptyList[AnyRef] => F[Either[Error, B]])
-  : F[Either[Error, Option[B]]] =
+  def readPEM[F[_]: {Sync, Files}, A](path: Path)(f: NonEmptyList[AnyRef] => F[Either[Error, A]])
+  : F[Either[Error, Option[A]]] =
     val eitherT =
       for
         exists <- EitherT(Files[F].exists(path).asError)
@@ -49,11 +49,11 @@ package object openssl:
               }.asError)
               value <- values match
                 case Some(values) => EitherT(f(values)).map(_.some)
-                case _ => none[B].rLiftET[F, Error]
+                case _ => none[A].rLiftET[F, Error]
             yield
               value
           else
-            none[B].rLiftET[F, Error]
+            none[A].rLiftET[F, Error]
       yield
         value
     eitherT.value
@@ -81,7 +81,7 @@ package object openssl:
 
   def readPEMKeyPair[F[_]: {Sync, Files}](path: Path, provider: Option[Provider | JProvider] = None)
   : F[Either[Error, Option[KeyPair]]] =
-    readPEM[F, NonEmptyList[AnyRef], KeyPair](path) { pemKeyPairs =>
+    readPEM[F, KeyPair](path) { pemKeyPairs =>
       pemKeyPairs.collect { case pemKeyPair: PEMKeyPair => pemKeyPair }
         .headOption
         .map(pemKeyPair => JcaPEMKeyConverter(provider = provider).getKeyPairF[F](pemKeyPair).asError)
@@ -97,7 +97,7 @@ package object openssl:
 
   def readX509Certificates[F[_]: {Sync, Files}](path: Path, provider: Option[Provider | JProvider] = None)
   : F[Either[Error, Option[NonEmptyList[X509Certificate]]]] =
-    readPEM[F, NonEmptyList[AnyRef], NonEmptyList[X509Certificate]](path) { x509Certificates =>
+    readPEM[F, NonEmptyList[X509Certificate]](path) { x509Certificates =>
       val converter = JcaX509CertificateConverter(provider = provider)
       x509Certificates.traverse {
         case x509Certificate: X509Certificate => x509Certificate.rLiftET[F, Error]
