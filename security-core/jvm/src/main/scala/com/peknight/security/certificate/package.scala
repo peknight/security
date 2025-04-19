@@ -1,5 +1,6 @@
 package com.peknight.security
 
+import cats.Show
 import cats.effect.Async
 import cats.syntax.functor.*
 import com.peknight.error.syntax.applicativeError.*
@@ -8,6 +9,7 @@ import com.peknight.security.certificate.factory.X509
 import com.peknight.security.provider.Provider
 import fs2.io.toInputStream
 import fs2.{Chunk, Pipe, Pull, Stream}
+import scodec.bits.ByteVector
 
 import java.io.InputStream
 import java.security.Provider as JProvider
@@ -58,4 +60,6 @@ package object certificate:
         _.traverse(in => X509.generateCertificates[F](in, provider))
           .map(_.flatMap(list => Chunk.from(list.collect { case certificate: X509Certificate => certificate } )))
       ))
+
+  def showCertificate[Cert <: Certificate]: Show[Cert] = Show.show(cert => ByteVector(cert.getEncoded).toBase64)
 end certificate
