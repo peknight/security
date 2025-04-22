@@ -5,6 +5,7 @@ package object syntax:
   object certificateFactory extends CertificateFactorySyntax
   object certificate extends CertificateSyntax
   object cipher extends CipherSyntax
+  object ecGenParameterSpec extends ECGenParameterSpecSyntax
   object ecKey extends ECKeySyntax
   object ecParameterSpec extends ECParameterSpecSyntax
   object edECKey extends EdECKeySyntax

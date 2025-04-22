@@ -11,7 +11,7 @@ import java.security.{KeyPair, SecureRandom, Provider as JProvider}
 
 trait ECParameterSpecPlatform:
   def ecParameterSpec: ECParameterSpec
-  def generateKeyPair[F[_]: Sync](random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
+  def curveGenerateKeyPair[F[_]: Sync](random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None)
   : F[KeyPair] =
     EC.paramsGenerateKeyPair[F](ecParameterSpec, random, provider)
   def publicKeySpec(x: BigInt, y: BigInt): ECPublicKeySpec = EC.publicKeySpec(x, y, ecParameterSpec)

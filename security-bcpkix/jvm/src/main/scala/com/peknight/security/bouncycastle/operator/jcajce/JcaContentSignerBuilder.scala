@@ -14,5 +14,4 @@ object JcaContentSignerBuilder:
       case Some(provider: Provider) => builder.setProvider(provider.name)
       case Some(provider: JProvider) => builder.setProvider(provider)
       case _ => builder
-
 end JcaContentSignerBuilder
