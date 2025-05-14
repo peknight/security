@@ -123,6 +123,7 @@ package object openssl:
         _ <- EitherT(Stream.emits(certificates.toList).covary[F]
           .through(certificate.encode[F])
           .through(pemObject.encode[F])
+          .intersperse("\n")
           .through(utf8.encode[F])
           .through(Files[F].writeAll(path))
           .compile.drain.asError)
