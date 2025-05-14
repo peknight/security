@@ -5,24 +5,23 @@ import cats.data.{EitherT, NonEmptyList}
 import cats.effect.{Resource, Sync}
 import cats.syntax.applicative.*
 import cats.syntax.either.*
-import cats.syntax.flatMap.*
 import cats.syntax.functor.*
 import cats.syntax.option.*
-import com.peknight.cats.ext.syntax.eitherT.{eLiftET, lLiftET, rLiftET}
+import com.peknight.cats.ext.syntax.eitherT.{eLiftET, rLiftET}
 import com.peknight.error.Error
 import com.peknight.error.option.OptionEmpty
 import com.peknight.error.std.WrongClassTag
 import com.peknight.error.syntax.applicativeError.asError
 import com.peknight.method.cascade.{Source, fetch as cascadeFetch}
-import com.peknight.security.bouncycastle.cert.jcajce.JcaX509CertificateConverter
 import com.peknight.security.bouncycastle.openssl.jcajce.{JcaPEMKeyConverter, JcaPEMWriter}
 import com.peknight.security.bouncycastle.pkix.syntax.jcaPEMKeyConverter.getKeyPairF
-import com.peknight.security.bouncycastle.pkix.syntax.jcaPEMWriter.{flushF, writeObjectF}
-import com.peknight.security.bouncycastle.pkix.syntax.jcaX509CertificateConverter.getCertificateF
+import com.peknight.security.bouncycastle.pkix.syntax.jcaPEMWriter.writeObjectF
 import com.peknight.security.bouncycastle.pkix.syntax.pemParser.readObjectF
+import com.peknight.security.pkix.pipe.{certificate, pemObject, x509Certificate}
 import com.peknight.security.provider.Provider
+import fs2.Stream
 import fs2.io.file.{Files, Path}
-import org.bouncycastle.cert.X509CertificateHolder
+import fs2.text.utf8
 import org.bouncycastle.openssl.jcajce.JcaPEMWriter as JJcaPEMWriter
 import org.bouncycastle.openssl.{PEMKeyPair, PEMParser as JPEMParser}
 
@@ -97,21 +96,39 @@ package object openssl:
 
   def readX509Certificates[F[_]: {Sync, Files}](path: Path, provider: Option[Provider | JProvider] = None)
   : F[Either[Error, Option[NonEmptyList[X509Certificate]]]] =
-    readPEM[F, NonEmptyList[X509Certificate]](path) { x509Certificates =>
-      val converter = JcaX509CertificateConverter(provider = provider)
-      x509Certificates.traverse {
-        case x509Certificate: X509Certificate => x509Certificate.rLiftET[F, Error]
-        case certHolder: X509CertificateHolder => EitherT(converter.getCertificateF[F](certHolder).asError)
-        case obj => WrongClassTag[X509Certificate](obj).lLiftET[F, X509Certificate]
-      }.value
-    }
+    val eitherT =
+      for
+        exists <- EitherT(Files[F].exists(path).asError)
+        value <-
+          if exists then
+            EitherT(Files[F].readAll(path).through(utf8.decode)
+              .through(pemObject.decode[F]).through(x509Certificate.decode[F](provider))
+              .compile.toList.map {
+                case head :: tail => NonEmptyList(head, tail).some
+                case _ => none[NonEmptyList[X509Certificate]]
+              }
+              .asError
+            )
+          else
+            none[NonEmptyList[X509Certificate]].rLiftET[F, Error]
+      yield
+        value
+    eitherT.value
 
   def writeX509Certificates[F[_]: {Sync, Files}](path: Path)(certificates: NonEmptyList[X509Certificate])
   : F[Either[Error, Unit]] =
-    writePEM[F](path)(writer => Monad[F].tailRecM[List[X509Certificate], Unit](certificates.toList) {
-      case head :: tail => writer.writeObjectF[F](head).as(tail.asLeft[Unit])
-      case _ => ().asRight[List[X509Certificate]].pure[F]
-    }.flatMap(_ => writer.flushF[F]))
+    val eitherT =
+      for
+        _ <- path.parent.fold(().rLiftET[F, Error])(parent => EitherT(Files[F].createDirectories(parent).asError))
+        _ <- EitherT(Stream.emits(certificates.toList).covary[F]
+          .through(certificate.encode[F])
+          .through(pemObject.encode[F])
+          .through(utf8.encode[F])
+          .through(Files[F].writeAll(path))
+          .compile.drain.asError)
+      yield
+        ()
+    eitherT.value
 
   def fetchX509Certificates[F[_]: {Sync, Files}](path: Path, provider: Option[Provider | JProvider] = None)
                                                 (source: F[Either[Error, NonEmptyList[X509Certificate]]])
