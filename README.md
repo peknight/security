@@ -18,4 +18,6 @@ Java的加解密相关的api太难用了。各种加密算法名全是字符串�
 
 然后每种trait按其能力提供函数式的api调用相关方法（把getInstance、init、update、doFinal，sign、verify这些方法整合起来，避免中间态的可变参数暴露给调用方。
 
+在实现jose的过程中用到了很多加解密相关的逻辑，和jose本身没啥耦合的加解密逻辑基本都整合到这个库里了。
+
 顺便参考Google Authenticator把它的OTP功能实现出来了，这玩意的原理倒是挺简单。
