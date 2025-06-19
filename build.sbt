@@ -4,6 +4,8 @@ ThisBuild / scalaVersion := "3.7.1"
 
 ThisBuild / organization := "com.peknight"
 
+ThisBuild / versionScheme := Some("early-semver")
+
 ThisBuild / publishTo := {
   val nexus = "https://nexus.peknight.com/repository"
   if (isSnapshot.value)
