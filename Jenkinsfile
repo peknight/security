@@ -11,11 +11,6 @@ pipeline {
                 sh 'sbt test'
             }
         }
-        stage('Publish Local') {
-            steps {
-                sh 'sbt publishLocal'
-            }
-        }
         stage('Publish') {
             steps {
                 sh 'sbt publish'
