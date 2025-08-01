@@ -10,7 +10,7 @@ import cats.syntax.option.none
 import cats.syntax.order.*
 import com.peknight.cats.instances.time.instant.given
 import com.peknight.commons.time.syntax.temporal.-
-import com.peknight.error.syntax.applicativeError.*
+import com.peknight.error.syntax.applicativeError.asError
 import com.peknight.fs2.ext.resource.ScheduledResource as Fs2ScheduledResource
 import com.peknight.security.key.store.pkcs12
 import com.peknight.security.provider.Provider

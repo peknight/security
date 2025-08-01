@@ -12,8 +12,6 @@ import com.peknight.validation.spire.math.interval.either.{atOrBelow, contains}
 import scodec.bits.ByteVector
 import spire.math.Interval
 
-import scala.annotation.tailrec
-
 /**
  * An implementation of the HOTP generator specified by RFC 4226.
  *
