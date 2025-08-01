@@ -11,7 +11,7 @@ import com.peknight.cats.ext.syntax.eitherT.{eLiftET, rLiftET}
 import com.peknight.error.Error
 import com.peknight.error.option.OptionEmpty
 import com.peknight.error.std.WrongClassTag
-import com.peknight.error.syntax.applicativeError.asError
+import com.peknight.error.syntax.applicativeError.{asError, faeLiftET}
 import com.peknight.fs2.io.ext.syntax.path.createParentDirectories
 import com.peknight.method.cascade.{Source, fetch as cascadeFetch}
 import com.peknight.security.bouncycastle.openssl.jcajce.{JcaPEMKeyConverter, JcaPEMWriter}
@@ -35,29 +35,26 @@ package object openssl:
   : F[Either[Error, Option[A]]] =
     val read =
       for
-        values <- EitherT(Resource.fromAutoCloseable[F, JPEMParser](PEMParser[F](path)).use { parser =>
+        values <- Resource.fromAutoCloseable[F, JPEMParser](PEMParser[F](path)).use { parser =>
           Monad[F].tailRecM[List[AnyRef], Option[NonEmptyList[AnyRef]]](Nil)(acc => parser.readObjectF[F].map {
             case Some(obj) => (obj :: acc).asLeft
             case _ => acc.reverse match
               case head :: tail => NonEmptyList(head, tail).some.asRight
               case _ => none[NonEmptyList[AnyRef]].asRight
           })
-        }.asError)
+        }.faeLiftET
         value <- values match
           case Some(values) => EitherT(f(values)).map(_.some)
           case _ => none[A].rLiftET[F, Error]
       yield
         value
-    Monad[[X] =>> EitherT[F, Error, X]].ifM[Option[A]](EitherT(Files[F].exists(path).asError))(
-      read,
-      none[A].rLiftET[F, Error]
-    ).value
+    Monad[[X] =>> EitherT[F, Error, X]].ifM[Option[A]](Files[F].exists(path).faeLiftET)(read, none[A].rLiftET[F, Error]).value
 
   def writePEM[F[_] : {Sync, Files}](path: Path)(f: JJcaPEMWriter => F[Unit]): F[Either[Error, Unit]] =
     val eitherT =
       for
-        _ <- EitherT(path.createParentDirectories[F].asError)
-        _ <- EitherT(Resource.fromAutoCloseable[F, JJcaPEMWriter](JcaPEMWriter[F](path)).use(f).asError)
+        _ <- path.createParentDirectories[F].faeLiftET
+        _ <- Resource.fromAutoCloseable[F, JJcaPEMWriter](JcaPEMWriter[F](path)).use(f).faeLiftET
       yield
         ()
     eitherT.value
@@ -92,14 +89,16 @@ package object openssl:
 
   def readX509Certificates[F[_]: {Sync, Files}](path: Path, provider: Option[Provider | JProvider] = None)
   : F[Either[Error, Option[NonEmptyList[X509Certificate]]]] =
-    Monad[[X] =>> EitherT[F, Error, X]].ifM[Option[NonEmptyList[X509Certificate]]](EitherT(Files[F].exists(path).asError))(
-      EitherT(Files[F].readAll(path).through(utf8.decode)
-        .through(pemObject.decode[F]).through(x509Certificate.decode[F](provider))
+    Monad[[X] =>> EitherT[F, Error, X]].ifM[Option[NonEmptyList[X509Certificate]]](Files[F].exists(path).faeLiftET)(
+      Files[F].readAll(path)
+        .through(utf8.decode)
+        .through(pemObject.decode[F])
+        .through(x509Certificate.decode[F](provider))
         .compile.toList.map {
           case head :: tail => NonEmptyList(head, tail).some
           case _ => none[NonEmptyList[X509Certificate]]
-        }.asError
-      ),
+        }
+        .faeLiftET,
       none[NonEmptyList[X509Certificate]].rLiftET[F, Error]
     ).value
 
@@ -107,14 +106,14 @@ package object openssl:
   : F[Either[Error, Unit]] =
     val eitherT =
       for
-        _ <- EitherT(path.createParentDirectories[F].asError)
-        _ <- EitherT(Stream.emits(certificates.toList).covary[F]
+        _ <- path.createParentDirectories[F].faeLiftET
+        _ <- Stream.emits(certificates.toList).covary[F]
           .through(certificate.encode[F])
           .through(pemObject.encode[F])
           .intersperse("\n")
           .through(utf8.encode[F])
           .through(Files[F].writeAll(path))
-          .compile.drain.asError)
+          .compile.drain.faeLiftET
       yield
         ()
     eitherT.value

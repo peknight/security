@@ -11,7 +11,7 @@ import com.peknight.codec.base.Base64
 import com.peknight.codec.error.DecodingFailure
 import com.peknight.codec.{Decoder, Encoder}
 import com.peknight.error.Error
-import com.peknight.error.syntax.applicativeError.asError
+import com.peknight.error.syntax.applicativeError.faeLiftET
 import com.peknight.security.certificate.factory.X509
 import com.peknight.security.error.PEMLabelNotMatch
 import com.peknight.security.provider.Provider
@@ -64,7 +64,7 @@ object PEMObject:
         for
           _ <- isTrue(t.label === certificateLabel, PEMLabelNotMatch(certificateLabel, t.label)).eLiftET[F]
           bytes <- EitherT(t.data.decode[F])
-          certificate <- EitherT(X509.generateCertificateFromBytes[F](bytes, provider).asError)
+          certificate <- X509.generateCertificateFromBytes[F](bytes, provider).faeLiftET
           x509Certificate <- typed[X509Certificate](certificate).eLiftET[F]
         yield
           x509Certificate
