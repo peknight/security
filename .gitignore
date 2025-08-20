@@ -1,3 +1,5 @@
+build.properties
+
 .bsp/
 .bloop/
 .metals/
