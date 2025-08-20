@@ -1,37 +1,7 @@
-ThisBuild / version := "0.1.0-SNAPSHOT"
+import com.peknight.build.gav.*
+import com.peknight.build.sbt.*
 
-ThisBuild / scalaVersion := "3.7.1"
-
-ThisBuild / organization := "com.peknight"
-
-ThisBuild / versionScheme := Some("early-semver")
-
-ThisBuild / publishTo := {
-  val nexus = "https://nexus.peknight.com/repository"
-  if (isSnapshot.value)
-    Some("snapshot" at s"$nexus/maven-snapshots/")
-  else
-    Some("releases" at s"$nexus/maven-releases/")
-}
-
-ThisBuild / credentials ++= Seq(
-  Credentials(Path.userHome / ".sbt" / ".credentials")
-)
-
-ThisBuild / resolvers ++= Seq(
-  "Pek Nexus" at "https://nexus.peknight.com/repository/maven-public/",
-)
-
-lazy val commonSettings = Seq(
-  scalacOptions ++= Seq(
-    "-feature",
-    "-deprecation",
-    "-unchecked",
-    "-Xfatal-warnings",
-    "-language:strictEquality",
-    "-Xmax-inlines:64"
-  ),
-)
+commonSettings
 
 lazy val security = (project in file("."))
   .aggregate(
@@ -47,87 +17,79 @@ lazy val security = (project in file("."))
     securityOtp.js,
     securityInstances,
   )
-  .settings(commonSettings)
   .settings(
     name := "security",
   )
 
-lazy val securityCore = (crossProject(JSPlatform, JVMPlatform) in file("security-core"))
-  .settings(commonSettings)
+lazy val securityCore = (crossProject(JVMPlatform, JSPlatform) in file("security-core"))
+  .settings(crossDependencies(
+    typelevel.catsEffect,
+    typelevel.catsParse,
+    peknight.ext.fs2,
+    peknight.ext.fs2.io,
+    peknight.codec.base,
+    peknight.validation,
+    peknight.commons.time,
+    peknight.instances.cats.time,
+  ))
+  .settings(crossTestDependencies(
+    scalaTest.flatSpec,
+    typelevel.catsEffect.testingScalaTest,
+  ))
   .settings(
     name := "security-core",
-    libraryDependencies ++= Seq(
-      "org.typelevel" %%% "cats-effect" % catsEffectVersion,
-      "org.typelevel" %%% "cats-parse" % catsParseVersion,
-      "com.peknight" %%% "fs2-ext" % pekExtVersion,
-      "com.peknight" %%% "fs2-io-ext" % pekExtVersion,
-      "com.peknight" %%% "codec-base" % pekCodecVersion,
-      "com.peknight" %%% "validation-core" % pekValidationVersion,
-      "com.peknight" %%% "commons-time" % pekCommonsVersion,
-      "com.peknight" %%% "cats-instances-time" % pekInstancesVersion,
-      "org.scalatest" %% "scalatest-flatspec" % scalaTestVersion % Test,
-      "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
-    ),
   )
 
-lazy val securityHttp4s = (crossProject(JSPlatform, JVMPlatform) in file("security-http4s"))
+lazy val securityHttp4s = (crossProject(JVMPlatform, JSPlatform) in file("security-http4s"))
   .dependsOn(securityCore)
-  .settings(commonSettings)
+  .settings(crossDependencies(http4s))
   .settings(
     name := "security-http4s",
-    libraryDependencies ++= Seq(
-      "org.http4s" %%% "http4s-core" % http4sVersion,
-    ),
   )
 
-lazy val securityBouncyCastleProvider = (crossProject(JSPlatform, JVMPlatform) in file("security-bcprov"))
-  .dependsOn(
-    securityCore,
-  )
-  .settings(commonSettings)
+lazy val securityBouncyCastleProvider = (crossProject(JVMPlatform, JSPlatform) in file("security-bcprov"))
+  .dependsOn(securityCore)
+  .settings(crossTestDependencies(
+    scalaTest.flatSpec,
+    typelevel.catsEffect.testingScalaTest,
+  ))
   .settings(
     name := "security-bcprov",
-    libraryDependencies ++= Seq(
-      "org.scalatest" %% "scalatest-flatspec" % scalaTestVersion % Test,
-      "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
-    ),
   )
   .jvmSettings(
     libraryDependencies ++= Seq(
-      bouncyCastleProvider,
+      jvmDependency(bouncyCastle.provider),
     ),
   )
 
-lazy val securityBouncyCastlePkix = (crossProject(JSPlatform, JVMPlatform) in file("security-bcpkix"))
-  .dependsOn(
-    securityCore,
-  )
-  .settings(commonSettings)
+lazy val securityBouncyCastlePkix = (crossProject(JVMPlatform, JSPlatform) in file("security-bcpkix"))
+  .dependsOn(securityCore)
+  .settings(crossDependencies(
+    peknight.method,
+    peknight.ext.cats,
+    fs2.io,
+  ))
   .settings(
     name := "security-bcpkix",
-    libraryDependencies ++= Seq(
-      "com.peknight" %%% "method-core" % pekMethodVersion,
-      "com.peknight" %%% "cats-ext" % pekExtVersion,
-      "co.fs2" %%% "fs2-io" % fs2Version,
-    ),
   )
   .jvmSettings(
     libraryDependencies ++= Seq(
-      bouncyCastlePkix,
+      jvmDependency(bouncyCastle.pkix),
     ),
   )
 
-lazy val securityOtp = (crossProject(JSPlatform, JVMPlatform) in file("security-otp"))
+lazy val securityOtp = (crossProject(JVMPlatform, JSPlatform) in file("security-otp"))
   .dependsOn(securityCore)
-  .settings(commonSettings)
+  .settings(crossDependencies(
+    peknight.ext.cats,
+    peknight.validation.spire,
+  ))
+  .settings(crossTestDependencies(
+    scalaTest.flatSpec,
+    typelevel.catsEffect.testingScalaTest,
+  ))
   .settings(
     name := "security-otp",
-    libraryDependencies ++= Seq(
-      "com.peknight" %%% "cats-ext" % pekExtVersion,
-      "com.peknight" %%% "validation-spire" % pekValidationVersion,
-      "org.scalatest" %% "scalatest-flatspec" % scalaTestVersion % Test,
-      "org.typelevel" %%% "cats-effect-testing-scalatest" % catsEffectTestingScalaTestVersion % Test,
-    )
   )
 
 lazy val securityInstances = (project in file("security-instances"))
@@ -135,38 +97,15 @@ lazy val securityInstances = (project in file("security-instances"))
     securityCodecInstances.jvm,
     securityCodecInstances.js,
   )
-  .settings(commonSettings)
   .settings(
     name := "security-instances",
-    libraryDependencies ++= Seq(
-    ),
   )
 
-lazy val securityCodecInstances = (crossProject(JSPlatform, JVMPlatform) in file("security-instances/codec"))
+lazy val securityCodecInstances = (crossProject(JVMPlatform, JSPlatform) in file("security-instances/codec"))
   .dependsOn(securityCore)
-  .settings(commonSettings)
+  .settings(crossDependencies(
+    peknight.codec,
+  ))
   .settings(
     name := "security-codec-instances",
-    libraryDependencies ++= Seq(
-      "com.peknight" %%% "codec-core" % pekCodecVersion,
-    ),
   )
-
-val catsParseVersion = "0.3.10"
-val catsEffectVersion = "3.6.1"
-val fs2Version = "3.12.0"
-val http4sVersion = "1.0.0-M34"
-val bouncyCastleVersion = "1.81"
-val scalaTestVersion = "3.2.19"
-val catsEffectTestingScalaTestVersion = "1.6.0"
-
-val pekVersion = "0.1.0-SNAPSHOT"
-val pekCommonsVersion = pekVersion
-val pekExtVersion = pekVersion
-val pekInstancesVersion = pekVersion
-val pekValidationVersion = pekVersion
-val pekMethodVersion = pekVersion
-val pekCodecVersion = pekVersion
-
-val bouncyCastleProvider = "org.bouncycastle" % "bcprov-jdk18on" % bouncyCastleVersion
-val bouncyCastlePkix = "org.bouncycastle" % "bcpkix-jdk18on" % bouncyCastleVersion
