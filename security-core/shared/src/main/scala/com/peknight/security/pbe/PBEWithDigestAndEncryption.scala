@@ -4,10 +4,11 @@ import com.peknight.security.cipher.mode.CipherAlgorithmMode
 import com.peknight.security.cipher.padding.CipherAlgorithmPadding
 import com.peknight.security.cipher.{CipherAlgorithm, DES, DESede}
 import com.peknight.security.digest.{Digest, MD}
-import com.peknight.security.key.secret.SecretKeyFactoryAlgorithm
+import com.peknight.security.key.secret.{SecretKeyAlgorithm, SecretKeyFactoryAlgorithm}
 import com.peknight.security.parameter.AlgorithmParametersAlgorithm
 
 trait PBEWithDigestAndEncryption extends CipherAlgorithm
+  with SecretKeyAlgorithm
   with AlgorithmParametersAlgorithm
   with SecretKeyFactoryAlgorithm:
   type This = PBEWithDigestAndEncryption

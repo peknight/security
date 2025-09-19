@@ -1,6 +1,7 @@
 package com.peknight.security.signature
 
 import com.peknight.scodec.bits.ext.syntax.byteVector.toUnsignedBigInt
+import com.peknight.security.key.asymmetric.AsymmetricKeyAlgorithm
 import com.peknight.security.key.factory.KeyFactoryAlgorithm
 import com.peknight.security.key.pair.KeyPairGeneratorAlgorithm
 import com.peknight.security.spec.NamedParameterSpecName
@@ -10,6 +11,7 @@ import scodec.bits.ByteVector
  * Edwards-Curve signature algorithm with elliptic curves
  */
 trait EdDSA extends DSA
+  with AsymmetricKeyAlgorithm
   with SignatureAlgorithm
   with KeyFactoryAlgorithm
   with KeyPairGeneratorAlgorithm

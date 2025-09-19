@@ -4,9 +4,14 @@ import com.peknight.security.algorithm.NONE
 import com.peknight.security.cipher.mode.CipherAlgorithmMode
 import com.peknight.security.cipher.padding.{CipherAlgorithmPadding, NoPadding}
 import com.peknight.security.key.generator.KeyGeneratorAlgorithm
+import com.peknight.security.key.secret.SecretKeyAlgorithm
 import com.peknight.security.parameter.AlgorithmParametersAlgorithm
 
-trait Blowfish extends CipherAlgorithm with AlgorithmParametersAlgorithm with KeyGeneratorAlgorithm with BlockCipher
+trait Blowfish extends CipherAlgorithm
+  with AlgorithmParametersAlgorithm
+  with SecretKeyAlgorithm
+  with KeyGeneratorAlgorithm
+  with BlockCipher
   with Symmetric:
   type This = Blowfish
   val blockSize: Int = 8

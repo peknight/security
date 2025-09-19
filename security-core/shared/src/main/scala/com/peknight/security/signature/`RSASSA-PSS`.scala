@@ -2,6 +2,7 @@ package com.peknight.security.signature
 
 import com.peknight.security.cipher.RSA
 import com.peknight.security.digest.{MessageDigestAlgorithm, `SHA-256`}
+import com.peknight.security.key.asymmetric.AsymmetricKeyAlgorithm
 import com.peknight.security.key.factory.KeyFactoryAlgorithm
 import com.peknight.security.key.pair.KeyPairGeneratorAlgorithm
 import com.peknight.security.mgf.{MGF, MGF1}
@@ -10,6 +11,7 @@ import com.peknight.security.padding.{PSS, Padding}
 import com.peknight.security.parameter.AlgorithmParametersAlgorithm
 
 trait `RSASSA-PSS` extends SignatureAlgorithm
+  with AsymmetricKeyAlgorithm
   with AlgorithmParametersAlgorithm
   with KeyFactoryAlgorithm
   with KeyPairGeneratorAlgorithm

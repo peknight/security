@@ -2,7 +2,7 @@ package com.peknight.security.key.secret
 
 import com.peknight.security.random.PRF
 
-trait PBKDF2WithPRF extends SecretKeyFactoryAlgorithm:
+trait PBKDF2WithPRF extends SecretKeyAlgorithm with SecretKeyFactoryAlgorithm:
   def prf: PRF
   override def algorithm: String = s"PBKDF2With${prf.prf}"
 end PBKDF2WithPRF

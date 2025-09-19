@@ -3,11 +3,14 @@ package com.peknight.security.pbe
 import com.peknight.security.cipher.CipherAlgorithm
 import com.peknight.security.cipher.mode.CipherAlgorithmMode
 import com.peknight.security.cipher.padding.CipherAlgorithmPadding
-import com.peknight.security.key.secret.SecretKeyFactoryAlgorithm
+import com.peknight.security.key.secret.{SecretKeyAlgorithm, SecretKeyFactoryAlgorithm}
 import com.peknight.security.parameter.AlgorithmParametersAlgorithm
 import com.peknight.security.random.PRF
 
-trait PBEWithPRFAndEncryption extends CipherAlgorithm with AlgorithmParametersAlgorithm with SecretKeyFactoryAlgorithm:
+trait PBEWithPRFAndEncryption extends CipherAlgorithm
+  with SecretKeyAlgorithm
+  with AlgorithmParametersAlgorithm
+  with SecretKeyFactoryAlgorithm:
   type This = PBEWithPRFAndEncryption
   def prf: PRF
   def encryption: CipherAlgorithm

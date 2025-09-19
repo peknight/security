@@ -1,5 +1,6 @@
 package com.peknight.security.signature
 
+import com.peknight.security.key.asymmetric.AsymmetricKeyAlgorithm
 import com.peknight.security.key.factory.KeyFactoryAlgorithm
 import com.peknight.security.key.pair.KeyPairGeneratorAlgorithm
 import com.peknight.security.parameter.AlgorithmParametersAlgorithm
@@ -10,6 +11,7 @@ import com.peknight.security.parameter.generator.AlgorithmParameterGeneratorAlgo
  */
 trait DSA extends SSA
 object DSA extends DSA
+  with AsymmetricKeyAlgorithm
   with AlgorithmParameterGeneratorAlgorithm
   with AlgorithmParametersAlgorithm
   with KeyFactoryAlgorithm

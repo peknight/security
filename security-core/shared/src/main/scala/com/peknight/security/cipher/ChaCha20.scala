@@ -4,10 +4,14 @@ import com.peknight.security.algorithm.NONE
 import com.peknight.security.cipher.mode.CipherAlgorithmMode
 import com.peknight.security.cipher.padding.{CipherAlgorithmPadding, NoPadding}
 import com.peknight.security.key.generator.KeyGeneratorAlgorithm
-import com.peknight.security.key.secret.SecretKeyFactoryAlgorithm
+import com.peknight.security.key.secret.{SecretKeyAlgorithm, SecretKeyFactoryAlgorithm}
 import com.peknight.security.mac.{MAC, Poly1305}
 
-trait ChaCha20 extends CipherAlgorithm with KeyGeneratorAlgorithm with SecretKeyFactoryAlgorithm with StreamCipher
+trait ChaCha20 extends CipherAlgorithm
+  with SecretKeyAlgorithm
+  with KeyGeneratorAlgorithm
+  with SecretKeyFactoryAlgorithm
+  with StreamCipher
   with Symmetric:
   type This = ChaCha20
   def algorithm: String = "ChaCha20"

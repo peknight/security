@@ -5,12 +5,12 @@ import com.peknight.security.provider.Provider
 import com.peknight.security.spec.{NamedParameterSpec, NamedParameterSpecPlatform}
 import scodec.bits.ByteVector
 
-import java.security.{KeyPair, SecureRandom, Provider as JProvider}
 import java.security.interfaces.{XECPrivateKey, XECPublicKey}
 import java.security.spec.{XECPrivateKeySpec, XECPublicKeySpec}
+import java.security.{KeyPair, SecureRandom, Provider as JProvider}
 
 trait XDHPlatform extends NamedParameterSpecPlatform { self: XDH =>
-  def generateKeyPair[F[_] : Sync](random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None): F[KeyPair] =
+  def generateKeyPair[F[_]: Sync](random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None): F[KeyPair] =
     XDH.paramsGenerateKeyPair[F](NamedParameterSpec(self), random, provider)
 
   def publicKeySpec(publicKeyBytes: ByteVector): XECPublicKeySpec =
@@ -26,5 +26,4 @@ trait XDHPlatform extends NamedParameterSpecPlatform { self: XDH =>
   def privateKey[F[_]: Sync](privateKeyBytes: ByteVector, provider: Option[Provider | JProvider] = None)
   : F[XECPrivateKey] =
     XDH.privateKey[F](self, privateKeyBytes, provider)
-
 }

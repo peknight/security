@@ -4,7 +4,7 @@ import com.peknight.security.algorithm.NONE
 import com.peknight.security.cipher.mode.CipherAlgorithmMode
 import com.peknight.security.cipher.padding.{CipherAlgorithmPadding, NoPadding}
 import com.peknight.security.key.generator.KeyGeneratorAlgorithm
-import com.peknight.security.key.secret.SecretKeyFactoryAlgorithm
+import com.peknight.security.key.secret.{SecretKeyAlgorithm, SecretKeyFactoryAlgorithm}
 import com.peknight.security.parameter.AlgorithmParametersAlgorithm
 
 /**
@@ -12,6 +12,7 @@ import com.peknight.security.parameter.AlgorithmParametersAlgorithm
  */
 trait DES extends CipherAlgorithm
   with AlgorithmParametersAlgorithm
+  with SecretKeyAlgorithm
   with KeyGeneratorAlgorithm
   with SecretKeyFactoryAlgorithm
   with BlockCipher

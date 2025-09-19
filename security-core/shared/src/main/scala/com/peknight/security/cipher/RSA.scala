@@ -3,13 +3,17 @@ package com.peknight.security.cipher
 import com.peknight.security.algorithm.NONE
 import com.peknight.security.cipher.mode.CipherAlgorithmMode
 import com.peknight.security.cipher.padding.{CipherAlgorithmPadding, NoPadding}
+import com.peknight.security.key.asymmetric.AsymmetricKeyAlgorithm
 import com.peknight.security.key.factory.KeyFactoryAlgorithm
 import com.peknight.security.key.pair.KeyPairGeneratorAlgorithm
 
 /**
  * Rivest–Shamir–Adleman
  */
-trait RSA extends CipherAlgorithm with KeyFactoryAlgorithm with KeyPairGeneratorAlgorithm with Asymmetric:
+trait RSA extends CipherAlgorithm
+  with AsymmetricKeyAlgorithm
+  with KeyFactoryAlgorithm
+  with KeyPairGeneratorAlgorithm:
   type This = RSA
   def algorithm: String = "RSA"
   def /(mode: CipherAlgorithmMode): This = RSA(mode, padding)

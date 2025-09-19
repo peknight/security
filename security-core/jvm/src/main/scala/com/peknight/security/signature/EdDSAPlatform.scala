@@ -10,7 +10,7 @@ import java.security.spec.{EdECPrivateKeySpec, EdECPublicKeySpec}
 import java.security.{KeyPair, SecureRandom, Provider as JProvider}
 
 trait EdDSAPlatform extends NamedParameterSpecPlatform { self: EdDSA =>
-  def generateKeyPair[F[_] : Sync](random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None): F[KeyPair] =
+  def generateKeyPair[F[_]: Sync](random: Option[SecureRandom] = None, provider: Option[Provider | JProvider] = None): F[KeyPair] =
     EdDSA.paramsGenerateKeyPair[F](NamedParameterSpec(self), random, provider)
     
   def publicKeySpec(publicKeyBytes: ByteVector): EdECPublicKeySpec =
