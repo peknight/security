@@ -3,7 +3,7 @@ package com.peknight.security
 import cats.Show
 import cats.effect.Async
 import cats.syntax.functor.*
-import com.peknight.fs2.ext.pipe.evalMapChunks
+import com.peknight.fs2.pipe.evalMapChunks
 import com.peknight.security.certificate.factory.X509
 import com.peknight.security.provider.Provider
 import fs2.io.toInputStream

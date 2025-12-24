@@ -7,12 +7,12 @@ import cats.syntax.applicative.*
 import cats.syntax.either.*
 import cats.syntax.functor.*
 import cats.syntax.option.*
-import com.peknight.cats.ext.syntax.eitherT.{eLiftET, rLiftET}
+import com.peknight.cats.syntax.eitherT.{eLiftET, rLiftET}
 import com.peknight.error.Error
 import com.peknight.error.option.OptionEmpty
 import com.peknight.error.std.WrongClassTag
 import com.peknight.error.syntax.applicativeError.{asET, asError}
-import com.peknight.fs2.io.ext.syntax.path.createParentDirectories
+import com.peknight.fs2.io.syntax.path.createParentDirectories
 import com.peknight.method.cascade.{Source, fetch as cascadeFetch}
 import com.peknight.security.bouncycastle.openssl.jcajce.{JcaPEMKeyConverter, JcaPEMWriter}
 import com.peknight.security.bouncycastle.pkix.syntax.jcaPEMKeyConverter.getKeyPairF

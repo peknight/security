@@ -2,7 +2,7 @@ package com.peknight.security.cipher
 
 import cats.effect.Sync
 import cats.syntax.functor.*
-import com.peknight.scodec.bits.ext.syntax.bigInt.toUnsignedBytes
+import com.peknight.scodec.bits.syntax.bigInt.toUnsignedBytes
 import com.peknight.security.provider.Provider
 import com.peknight.security.spec.{RSAPrivateCrtKeySpec, RSAPrivateKeySpec, RSAPublicKeySpec}
 import scodec.bits.ByteVector

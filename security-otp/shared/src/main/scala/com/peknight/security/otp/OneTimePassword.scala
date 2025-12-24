@@ -5,7 +5,7 @@ import cats.syntax.either.*
 import cats.syntax.eq.*
 import cats.syntax.functor.*
 import cats.{Applicative, Monad}
-import com.peknight.cats.ext.instances.eitherT.given
+import com.peknight.cats.instances.eitherT.given
 import com.peknight.error.Error
 import com.peknight.error.syntax.either.{asError, label}
 import com.peknight.validation.spire.math.interval.either.{atOrBelow, contains}

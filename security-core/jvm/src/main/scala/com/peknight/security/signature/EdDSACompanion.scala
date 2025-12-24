@@ -3,7 +3,7 @@ package com.peknight.security.signature
 import cats.effect.Sync
 import cats.syntax.either.*
 import cats.syntax.functor.*
-import com.peknight.scodec.bits.ext.syntax.byteVector.adjustLength
+import com.peknight.scodec.bits.syntax.byteVector.adjustLength
 import com.peknight.security.error.{SecurityError, UnknownParameterSpecName}
 import com.peknight.security.provider.Provider
 import com.peknight.security.signature.EdDSA.{xCoordinateOdd, yCoordinate}

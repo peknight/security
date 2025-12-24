@@ -6,7 +6,7 @@ import cats.syntax.either.*
 import cats.syntax.functor.*
 import com.peknight.error.Error
 import com.peknight.error.syntax.applicativeError.asError
-import com.peknight.scodec.bits.ext.syntax.byteVector.{leftHalf, rightHalf, toUnsignedBigInt}
+import com.peknight.scodec.bits.syntax.byteVector.{leftHalf, rightHalf, toUnsignedBigInt}
 import com.peknight.security.error.InvalidSignature
 import com.peknight.security.provider.Provider
 import com.peknight.security.signature.ECDSA.{convertConcatenatedToDER, convertDERToConcatenated}

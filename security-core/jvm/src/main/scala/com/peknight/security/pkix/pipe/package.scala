@@ -12,7 +12,7 @@ import cats.{Foldable, Id, Monad, MonadError}
 import com.peknight.codec.base.Base64
 import com.peknight.error.Error
 import com.peknight.error.syntax.either.asError
-import com.peknight.fs2.ext.pipe.*
+import com.peknight.fs2.pipe.*
 import com.peknight.security.error.{PEMLabelNotMatch, PEMMissingEndLine}
 import com.peknight.security.pkix.PEMObject.{BeginLine, EndLine}
 import com.peknight.security.provider.Provider

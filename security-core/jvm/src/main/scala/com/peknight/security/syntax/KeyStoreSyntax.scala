@@ -2,7 +2,7 @@ package com.peknight.security.syntax
 
 import cats.data.NonEmptyList
 import cats.effect.{Resource, Sync}
-import com.peknight.fs2.io.ext.syntax.path.{toFileInputStream, toFileOutputStream}
+import com.peknight.fs2.io.syntax.path.{toFileInputStream, toFileOutputStream}
 import fs2.io.file.Path
 import scodec.bits.ByteVector
 

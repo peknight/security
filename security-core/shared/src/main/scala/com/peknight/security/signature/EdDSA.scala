@@ -1,6 +1,6 @@
 package com.peknight.security.signature
 
-import com.peknight.scodec.bits.ext.syntax.byteVector.toUnsignedBigInt
+import com.peknight.scodec.bits.syntax.byteVector.toUnsignedBigInt
 import com.peknight.security.key.asymmetric.AsymmetricKeyAlgorithm
 import com.peknight.security.key.factory.KeyFactoryAlgorithm
 import com.peknight.security.key.pair.KeyPairGeneratorAlgorithm

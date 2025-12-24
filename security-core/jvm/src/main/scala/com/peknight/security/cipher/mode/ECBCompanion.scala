@@ -2,7 +2,7 @@ package com.peknight.security.cipher.mode
 
 import cats.effect.Sync
 import cats.syntax.functor.*
-import com.peknight.fs2.ext.syntax.stream.{chunkTimesN, evalMapChunksInitLast}
+import com.peknight.fs2.syntax.stream.{chunkTimesN, evalMapChunksInitLast}
 import com.peknight.security.cipher.Opmode.{Decrypt, Encrypt}
 import com.peknight.security.cipher.padding.NoPadding
 import com.peknight.security.cipher.{BlockCipher, CipherAlgorithm, Opmode}

@@ -24,12 +24,12 @@ lazy val securityCore = (crossProject(JVMPlatform, JSPlatform) in file("security
   .settings(crossDependencies(
     typelevel.catsEffect,
     typelevel.catsParse,
-    peknight.ext.fs2,
-    peknight.ext.fs2.io,
+    peknight.fs2,
+    peknight.fs2.io,
     peknight.codec.base,
     peknight.validation,
     peknight.commons.time,
-    peknight.instances.cats.time,
+    peknight.cats,
   ))
   .settings(crossTestDependencies(
     scalaTest.flatSpec,
@@ -55,7 +55,7 @@ lazy val securityBouncyCastlePkix = (crossProject(JVMPlatform, JSPlatform) in fi
   .settings(name := "security-bcpkix")
   .settings(crossDependencies(
     peknight.method,
-    peknight.ext.cats,
+    peknight.cats,
     fs2.io,
   ))
   .jvmSettings(libraryDependencies ++= Seq(jvmDependency(bouncyCastle.pkix)))
@@ -64,7 +64,7 @@ lazy val securityOtp = (crossProject(JVMPlatform, JSPlatform) in file("security-
   .dependsOn(securityCore)
   .settings(name := "security-otp")
   .settings(crossDependencies(
-    peknight.ext.cats,
+    peknight.cats,
     peknight.validation.spire,
   ))
   .settings(crossTestDependencies(

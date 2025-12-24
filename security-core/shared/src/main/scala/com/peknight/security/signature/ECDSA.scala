@@ -1,6 +1,6 @@
 package com.peknight.security.signature
 
-import com.peknight.scodec.bits.ext.syntax.byteVector.{leftHalf, rightHalf}
+import com.peknight.scodec.bits.syntax.byteVector.{leftHalf, rightHalf}
 import com.peknight.security.digest.{MessageDigestAlgorithm, `SHA-1`}
 import com.peknight.security.error.{InvalidECDSASignatureFormat, SecurityError}
 import com.peknight.security.format.Format

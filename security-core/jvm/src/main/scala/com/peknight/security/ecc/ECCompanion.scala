@@ -3,7 +3,7 @@ package com.peknight.security.ecc
 import cats.effect.Sync
 import cats.syntax.either.*
 import cats.syntax.functor.*
-import com.peknight.scodec.bits.ext.syntax.bigInt.toUnsignedBytes
+import com.peknight.scodec.bits.syntax.bigInt.toUnsignedBytes
 import com.peknight.security.error.{PointNotOnCurve, SecurityError, UnsupportedECField}
 import com.peknight.security.provider.Provider
 import com.peknight.security.spec.{ECPoint, ECPrivateKeySpec}

@@ -3,8 +3,8 @@ package com.peknight.security.key.agreement
 import cats.effect.Sync
 import cats.syntax.either.*
 import cats.syntax.functor.*
-import com.peknight.scodec.bits.ext.syntax.bigInt.toByteVector
-import com.peknight.scodec.bits.ext.syntax.byteVector.{adjustLength, toUnsignedBigInt}
+import com.peknight.scodec.bits.syntax.bigInt.toByteVector
+import com.peknight.scodec.bits.syntax.byteVector.{adjustLength, toUnsignedBigInt}
 import com.peknight.security.error.{SecurityError, UncheckedParameterSpec, UnknownParameterSpecName}
 import com.peknight.security.provider.Provider
 import com.peknight.security.spec.{NamedParameterSpec, XECPrivateKeySpec, XECPublicKeySpec}

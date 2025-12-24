@@ -6,7 +6,7 @@ import cats.effect.Sync
 import cats.parse.Parser
 import cats.syntax.eq.*
 import cats.syntax.functor.*
-import com.peknight.cats.ext.syntax.eitherT.eLiftET
+import com.peknight.cats.syntax.eitherT.eLiftET
 import com.peknight.codec.base.Base64
 import com.peknight.codec.error.DecodingFailure
 import com.peknight.codec.{Decoder, Encoder}

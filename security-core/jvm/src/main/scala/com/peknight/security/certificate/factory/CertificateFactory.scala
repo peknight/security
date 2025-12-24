@@ -3,7 +3,7 @@ package com.peknight.security.certificate.factory
 import cats.effect.Sync
 import cats.syntax.flatMap.*
 import cats.syntax.functor.*
-import com.peknight.scodec.bits.ext.syntax.byteVector.toByteArrayInputStream
+import com.peknight.scodec.bits.syntax.byteVector.toByteArrayInputStream
 import com.peknight.security.provider.Provider
 import com.peknight.security.syntax.certificateFactory.{generateCertificateF, generateCertificatesF}
 import scodec.bits.ByteVector
