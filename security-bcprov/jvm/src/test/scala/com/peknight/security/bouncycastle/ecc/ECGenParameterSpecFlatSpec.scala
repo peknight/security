@@ -24,7 +24,7 @@ class ECGenParameterSpecFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
       sect283r1, sect409k1, sect409r1, sect571k1, sect571r1, brainpoolP256r1, brainpoolP384r1, brainpoolP512r1
     )
 
-  "ECGenParameterSpecFlatSpec" should "succeed" in {
+  "ECGenParameterSpecFlatSpec" should "pass" in {
     val run =
       for
         bouncyCastleProvider <- BouncyCastleProvider[IO]

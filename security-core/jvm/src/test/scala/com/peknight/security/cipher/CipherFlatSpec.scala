@@ -12,7 +12,7 @@ import org.scalatest.flatspec.AsyncFlatSpec
 import scodec.bits.ByteVector
 
 class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
-  "AES" should "succeed" in {
+  "AES" should "pass" in {
     val run =
       for
         secureRandom <- SecureRandom.getInstanceStrong[IO]
@@ -24,7 +24,7 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
     run.asserting(assert)
   }
 
-  "AES/CBC/PKCS5Padding" should "succeed" in {
+  "AES/CBC/PKCS5Padding" should "pass" in {
     val run =
       for
         secureRandom <- SecureRandom.getInstanceStrong[IO]
@@ -37,7 +37,7 @@ class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
     run.asserting(assert)
   }
 
-  "RSA" should "succeed" in {
+  "RSA" should "pass" in {
     val run =
       for
         keyPair <- KeyPairGenerator.keySizeGenerateKeyPair[IO](RSA, 1024)

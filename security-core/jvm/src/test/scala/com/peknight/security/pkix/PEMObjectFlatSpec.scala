@@ -7,7 +7,7 @@ import fs2.Stream
 import org.scalatest.flatspec.AsyncFlatSpec
 
 class PEMObjectFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
-  "PEM Object" should "succeed" in {
+  "PEM Object" should "pass" in {
     val certPEM = s"""
        |-----BEGIN CERTIFICATE-----
        |MIIDyzCCA1GgAwIBAgISBfbG3nAyif83yCzPU2aDSXv7MAoGCCqGSM49BAMDMDIx

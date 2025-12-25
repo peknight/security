@@ -10,7 +10,7 @@ import com.peknight.security.syntax.secureRandom.nextBytesF
 import org.scalatest.flatspec.AsyncFlatSpec
 
 class OneTimePasswordFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
-  "OneTimePassword" should "succeed" in {
+  "OneTimePassword" should "pass" in {
     val run =
       for
         secureRandom <- SecureRandom.getInstanceStrong[IO].asET

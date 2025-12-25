@@ -16,7 +16,7 @@ import org.scalatest.flatspec.AsyncFlatSpec
 import scodec.bits.ByteVector
 
 class CipherFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
-  "PBEwithSHA1and128bitAES-CBC-BC" should "succeed" in {
+  "PBEwithSHA1and128bitAES-CBC-BC" should "pass" in {
     val run =
       for
         bouncyCastleProvider <- BouncyCastleProvider[IO]

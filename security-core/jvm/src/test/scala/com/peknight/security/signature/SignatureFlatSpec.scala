@@ -9,7 +9,7 @@ import com.peknight.security.syntax.secureRandom.nextBytesF
 import org.scalatest.flatspec.AsyncFlatSpec
 
 class SignatureFlatSpec extends AsyncFlatSpec with AsyncIOSpec:
-  "SHA1withRSA" should "succeed" in {
+  "SHA1withRSA" should "pass" in {
     val run =
       for
         secureRandom <- SecureRandom.getInstanceStrong[IO]
