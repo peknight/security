@@ -12,7 +12,7 @@ import com.peknight.error.Error
 import com.peknight.error.option.OptionEmpty
 import com.peknight.error.std.WrongClassTag
 import com.peknight.error.syntax.applicativeError.{asET, asError}
-import com.peknight.fs2.io.syntax.path.createParentDirectories
+import com.peknight.fs2.io.syntax.path.{createParentDirectories, writeFile}
 import com.peknight.method.cascade.{Source, fetch as cascadeFetch}
 import com.peknight.security.bouncycastle.openssl.jcajce.{JcaPEMKeyConverter, JcaPEMWriter}
 import com.peknight.security.bouncycastle.pkix.syntax.jcaPEMKeyConverter.getKeyPairF
@@ -53,7 +53,7 @@ package object openssl:
   def writePEM[F[_] : {Sync, Files}](path: Path)(f: JJcaPEMWriter => F[Unit]): F[Either[Error, Unit]] =
     val eitherT =
       for
-        _ <- path.createParentDirectories[F].asET
+        _ <- path.createParentDirectories[F]().asET
         _ <- Resource.fromAutoCloseable[F, JJcaPEMWriter](JcaPEMWriter[F](path)).use(f).asET
       yield
         ()
@@ -104,19 +104,13 @@ package object openssl:
 
   def writeX509Certificates[F[_]: {Sync, Files}](path: Path)(certificates: NonEmptyList[X509Certificate])
   : F[Either[Error, Unit]] =
-    val eitherT =
-      for
-        _ <- path.createParentDirectories[F].asET
-        _ <- Stream.emits(certificates.toList).covary[F]
-          .through(certificate.encode[F])
-          .through(pemObject.encode[F])
-          .intersperse("\n")
-          .through(utf8.encode[F])
-          .through(Files[F].writeAll(path))
-          .compile.drain.asET
-      yield
-        ()
-    eitherT.value
+    path.writeFile[F](Stream.emits(certificates.toList).covary[F]
+      .through(certificate.encode[F])
+      .through(pemObject.encode[F])
+      .intersperse("\n")
+      .through(utf8.encode[F]))
+      .asET
+      .value
 
   def fetchX509Certificates[F[_]: {Sync, Files}](path: Path, provider: Option[Provider | JProvider] = None)
                                                 (source: F[Either[Error, NonEmptyList[X509Certificate]]])
