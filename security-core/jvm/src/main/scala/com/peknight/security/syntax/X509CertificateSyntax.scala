@@ -1,9 +1,13 @@
 package com.peknight.security.syntax
 
-import cats.effect.Sync
+import cats.Applicative
+import cats.effect.{Clock, Sync}
 import cats.syntax.applicative.*
 import cats.syntax.flatMap.*
 import cats.syntax.functor.*
+import cats.syntax.order.*
+import com.peknight.cats.instances.instant.given
+import com.peknight.commons.time.syntax.temporal.-
 import com.peknight.security.provider.Provider
 import com.peknight.security.signature.Signature
 import com.peknight.security.syntax.signature.*
@@ -12,6 +16,7 @@ import scodec.bits.ByteVector
 import java.security.cert.X509Certificate
 import java.security.spec.AlgorithmParameterSpec
 import java.security.{PrivateKey, SecureRandom, Provider as JProvider, Signature as JSignature}
+import scala.concurrent.duration.FiniteDuration
 
 trait X509CertificateSyntax:
   extension (certificate: X509Certificate)
@@ -38,6 +43,15 @@ trait X509CertificateSyntax:
         _ <- signature.updateF[F](data)
         res <- signature.verifyF[F](signed)
       yield res
+
+    def nearExpiry[F[_]: {Applicative, Clock}](threshold: FiniteDuration): F[Boolean] =
+      Option(certificate.getNotAfter).map(_.toInstant) match
+        case Some(notAfter) =>
+          Clock[F].realTimeInstant.map {
+            case now if now >= notAfter - threshold => true
+            case _ => false
+          }
+        case _ => false.pure[F]
   end extension
 end X509CertificateSyntax
 object X509CertificateSyntax extends X509CertificateSyntax

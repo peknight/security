@@ -1,19 +1,17 @@
 package com.peknight.security.resource
 
+import cats.Monad
 import cats.data.NonEmptyList
-import cats.effect.kernel.Resource
-import cats.effect.{Async, Clock, Ref}
+import cats.effect.{Async, Ref, Resource}
 import cats.syntax.applicative.*
 import cats.syntax.flatMap.*
 import cats.syntax.functor.*
 import cats.syntax.option.none
-import cats.syntax.order.*
-import com.peknight.cats.instances.instant.given
-import com.peknight.commons.time.syntax.temporal.-
 import com.peknight.error.syntax.applicativeError.asError
 import com.peknight.fs2.resource.ScheduledResource as Fs2ScheduledResource
 import com.peknight.security.key.store.pkcs12
 import com.peknight.security.provider.Provider
+import com.peknight.security.syntax.x509Certificate.nearExpiry
 import fs2.Stream
 
 import java.security.cert.X509Certificate
@@ -29,13 +27,7 @@ object ScheduledResource:
   : Resource[F, Ref[F, ((NonEmptyList[X509Certificate], KeyPair), A)]] =
     Fs2ScheduledResource[F, (NonEmptyList[X509Certificate], KeyPair), A](scheduler)(initF) {
       (certificateChain, keyPair) =>
-        Option(certificateChain.head.getNotAfter).map(_.toInstant) match
-          case Some(notAfter) =>
-            Clock[F].realTimeInstant.flatMap {
-              case now if now >= notAfter - threshold => nextF.asError.map(_.toOption)
-              case _ => none.pure[F]
-            }
-          case _ => none.pure[F]
+        Monad[F].ifM(certificateChain.head.nearExpiry[F](threshold))(nextF.asError.map(_.toOption), none.pure[F])
     } { (certificateChain, keyPair) =>
       for
         keyStore <- pkcs12[F](alias, keyPair.getPrivate, keyPassword, certificateChain, provider)
